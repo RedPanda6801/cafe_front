@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>부서 관리!</h1>
+    <h1>부서 관리</h1>
     <div style="margin-bottom: 5px">
       <b-row>
         <b-col style="text-align: left" cols="3">
