@@ -44,8 +44,8 @@ const routes = [
       },
       {
         path: '/auth/logout',
-        component: () => import('../views/auth/logout'),
-        meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/logout')
+        // meta: { header: false, noLogin: true }
       }
     ]
   },
