@@ -43,6 +43,11 @@ const routes = [
         meta: { header: false, noLogin: true }
       },
       {
+        path: '/auth/join',
+        component: () => import('../views/auth/emailAuth'),
+        meta: { header: false, noLogin: true }
+      },
+      {
         path: '/auth/logout',
         component: () => import('../views/auth/logout')
         // meta: { header: false, noLogin: true }
