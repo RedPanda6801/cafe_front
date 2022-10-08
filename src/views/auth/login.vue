@@ -89,7 +89,7 @@ export default {
     },
     signUp() {
       console.log('회원가입창')
-      this.$router.push('/signup')
+      this.$router.push('/join')
     },
     findId() {
       console.log('아디찾기')
