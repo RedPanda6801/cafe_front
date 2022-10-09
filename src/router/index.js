@@ -20,6 +20,24 @@ const routes = [
         component: () => import('../views/mypage')
       },
       {
+        path: '/main',
+        component: () => import('../views/main'),
+        children: [
+          {
+            path: '/main',
+            component: () => import('../views/main/main')
+          },
+          {
+            path: '/main/cafelist',
+            component: () => import('../views/main/cafelist')
+          },
+          {
+            path: '/main/addcafe',
+            component: () => import('../views/main/addcafe')
+          }
+        ]
+      },
+      {
         path: '/dashboard',
         component: () => import('../views/dashboard')
       },
