@@ -7,11 +7,16 @@
       </template>
 
       <b-card-body>
-        <b-card-sub-title class="mb-2">여기에 가입 진행상황 표기</b-card-sub-title>
+        <b-card-sub-title class="mt-3 mb-2">
+          인증메일 전송 > 이메일 인증 >
+          <span class="status"> 추가 정보 입력</span>
+        </b-card-sub-title>
         <b-card-title>가입</b-card-title>
         <b-card-text>
-          <b-input placeholder="이용하실 아이디를 입력해주세요"></b-input>
-          <b-button>중복확인</b-button>
+          <div class="mt-3 inputOrganize">
+            <b-input class="mr-5 mb-3 inputId" placeholder="이용하실 아이디를 입력해주세요" maxlength="20"></b-input>
+            <b-button class="mb-3">중복확인</b-button>
+          </div>
           <b-input disabled placeholder="인증한 이메일 주소 보여주는 용"></b-input>
           <b-input placeholder="비밀번호" type="password"></b-input>
           <b-input placeholder="비밀번호확인" type="password"></b-input>
@@ -21,7 +26,7 @@
       </b-card-body>
 
       <b-list-group flush>
-        <b-list-group-item><b-button>회원가입 완료</b-button></b-list-group-item>
+        <b-list-group-item><b-button block>회원가입 완료</b-button></b-list-group-item>
         <b-list-group-item>여기에 안내사항들 리스트로 표기 </b-list-group-item>
         <!-- <b-list-group-item>Vestibulum at eros</b-list-group-item> -->
       </b-list-group>
@@ -45,5 +50,11 @@ export default {}
 .join {
   display: flex;
   justify-content: center;
+}
+.inputOrganize {
+  display: flex;
+}
+.inputId {
+  width: 300px;
 }
 </style>
