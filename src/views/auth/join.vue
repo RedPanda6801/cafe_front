@@ -7,7 +7,7 @@
       </template>
 
       <b-card-body>
-        <b-card-sub-title class="mb-2">
+        <b-card-sub-title class="mt-3 mb-2">
           인증메일 전송 > 이메일 인증 >
           <span class="status"> 추가 정보 입력</span>
         </b-card-sub-title>
