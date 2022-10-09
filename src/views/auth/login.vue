@@ -17,8 +17,7 @@
             </b-form-group>
             <b-form-group>
               <b-button variant="primary" @click="signUp">회원가입</b-button>
-              <b-button variant="primary" @click="findId">ID찾기</b-button>
-              <b-button variant="primary" @click="findPw">PW찾기</b-button>
+              <b-button variant="primary" @click="findId">ID/PW찾기</b-button>
             </b-form-group>
           </b-card>
         </b-col>
