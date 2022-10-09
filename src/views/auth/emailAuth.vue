@@ -60,6 +60,7 @@
             </b-card-sub-title>
             <b-card-title>이메일로 발송된 인증코드를 입력해 주세요.</b-card-title>
             <b-card-text>
+              <!-- 백 서버 연결 후 이메일 제대로 담기게 기능 구현 예정 -->
               <b-input disabled placeholder="여기에 유저가 입력한 이메일 담길거"></b-input>
               <b-input class="mt-3 mb-3" maxlength="6" placeholder="인증코드 입력"></b-input>
             </b-card-text>
