@@ -32,6 +32,7 @@
             </b-list-group>
           </b-tab>
           <b-tab title="비밀번호 찾기">
+            <!-- 이메일 전송 전에 보여줄 창 -->
             <b-card-body>
               <b-card-title>비밀번호 찾기</b-card-title>
               <p>가입하실 때 입력하신 이메일과 아이디, 성함을 입력해 주세요</p>
@@ -41,6 +42,32 @@
             </b-card-body>
             <b-list-group flush>
               <b-list-group-item><b-button>이메일로 비밀번호 변경</b-button></b-list-group-item>
+              <b-list-group-item>여기에 안내사항들 리스트로 표기 </b-list-group-item>
+            </b-list-group>
+            <!-- 이메일 전송 후 인증 전에 보여줄 창 -->
+            <b-card-body>
+              <b-card-title>비밀번호 찾기</b-card-title>
+              <p>
+                인증메일이 발송되었습니다.<br />
+                이메일에서 인증을 완료해 주세요!
+              </p>
+            </b-card-body>
+            <b-list-group flush>
+              <b-list-group-item><b-button>혹시 이메일을 받지 못하셨나요?</b-button></b-list-group-item>
+              <b-list-group-item>여기에 안내사항들 리스트로 표기 </b-list-group-item>
+            </b-list-group>
+            <!-- 이메일로 인증 후 보여줄 비밀번호 변경창 -->
+            <b-card-body>
+              <b-card-title>비밀번호 변경</b-card-title>
+              <p>
+                본인인증이 완료되었습니다. <br />
+                변경하실 비밀번호를 입력해 주세요.
+              </p>
+              <b-input type="password" placeholder="변경하실 비밀번호를 입력해주세요"></b-input>
+              <b-input type="password" placeholder="비밀번호 확인"></b-input>
+            </b-card-body>
+            <b-list-group flush>
+              <b-list-group-item><b-button>비밀번호 변경하기</b-button></b-list-group-item>
               <b-list-group-item>여기에 안내사항들 리스트로 표기 </b-list-group-item>
             </b-list-group>
           </b-tab>
