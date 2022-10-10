@@ -1,7 +1,7 @@
 <template>
   <div class="join">
     <!-- v-show로 인증 메일 보내기 전 페이지 -->
-    <div v-show="emailSent">
+    <div v-show="!emailSent">
       <b-card no-body style="max-width: 50rem" img-src="#" img-alt="Image" img-top>
         <template #header>
           <h4 class="mb-0">여기에 이메일인증 위에는 사이트로고</h4>
@@ -46,7 +46,7 @@
       </b-card>
     </div>
     <!-- v-show로 인증메일 보낸 후 인증코드 입력할 페이지 -->
-    <div v-show="!emailSent">
+    <div v-show="emailSent">
       <b-card no-body style="max-width: 50rem" img-src="#" img-alt="Image" img-top>
         <template #header>
           <h4 class="mb-0">여기에 이메일인증 위에는 사이트로고</h4>
@@ -68,7 +68,20 @@
 
           <b-list-group flush>
             <b-list-group-item><b-button block variant="outline-dark">인증 확인</b-button></b-list-group-item>
-            <b-list-group-item><button class="modalBtn">인증메일을 받지 못하셨나요?</button></b-list-group-item>
+            <b-list-group-item>
+              <div>
+                <button class="modalBtn" id="show-btn" @click="$bvModal.show('emailModal')">
+                  인증메일을 받지 못하셨나요?
+                </button>
+                <b-modal id="emailModal" hide-footer>
+                  <template #modal-title>인증메일을 받지 못하셨나요?</template>
+                  <div class="d-block text-center">
+                    <b-button block @click="resend">이메일 재전송하기</b-button>
+                  </div>
+                  <b-button class="mt-3" block @click="newEmail">다른 이메일로 전송하기</b-button>
+                </b-modal>
+              </div>
+            </b-list-group-item>
             <!-- <b-list-group-item>Vestibulum at eros</b-list-group-item> -->
           </b-list-group>
         </form>
@@ -142,6 +155,14 @@ export default {
         .catch(error => {
           console.log('email fail : ', error)
         })
+    },
+    resend() {
+      this.sendEmail()
+      this.$bvModal.hide('emailModal')
+    },
+    newEmail() {
+      this.emailSent = false
+      this.$bvModal.hide('emailModal')
     }
   }
 }
