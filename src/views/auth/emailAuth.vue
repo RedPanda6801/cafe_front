@@ -70,7 +70,7 @@
             <b-list-group-item><b-button block variant="outline-dark">인증 확인</b-button></b-list-group-item>
             <b-list-group-item>
               <div>
-                <button class="modalBtn" id="show-btn" @click="$bvModal.show('emailModal')">
+                <button id="show-btn" class="modalBtn" @click="$bvModal.show('emailModal')">
                   인증메일을 받지 못하셨나요?
                 </button>
                 <b-modal id="emailModal" hide-footer>
