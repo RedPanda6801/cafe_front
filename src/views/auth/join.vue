@@ -13,15 +13,22 @@
         </b-card-sub-title>
         <b-card-title>가입</b-card-title>
         <b-card-text>
-          <div class="mt-3 inputOrganize">
-            <b-input class="mr-5 mb-3 inputId" placeholder="이용하실 아이디를 입력해주세요" maxlength="20"></b-input>
-            <b-button class="mb-3">중복확인</b-button>
+          <!-- validation 넣을 예정 -->
+          <b-input
+            id="userName"
+            v-model="userName"
+            class="mb-1"
+            :state="validation"
+            placeholder="성함을 입력해주세요"
+          ></b-input>
+          <div class="mt-1 inputOrganize">
+            <b-input class="mr-5 mb-1 inputId" placeholder="이용하실 아이디를 입력해주세요" maxlength="20"></b-input>
+            <b-button class="mb-1">중복확인</b-button>
           </div>
-          <b-input disabled placeholder="인증한 이메일 주소 보여주는 용"></b-input>
-          <b-input placeholder="비밀번호" type="password"></b-input>
-          <b-input placeholder="비밀번호확인" type="password"></b-input>
-          <b-input placeholder="성함을 입력해주세요"></b-input>
-          <b-input placeholder="휴대폰번호"></b-input>
+          <b-input class="mb-1" disabled placeholder="인증한 이메일 주소 보여주는 용"></b-input>
+          <b-input class="mb-1" placeholder="비밀번호" type="password"></b-input>
+          <b-input class="mb-1" placeholder="비밀번호확인" type="password"></b-input>
+          <b-input class="mb-1" placeholder="휴대폰번호"></b-input>
         </b-card-text>
       </b-card-body>
 
@@ -50,6 +57,10 @@ export default {}
 .join {
   display: flex;
   justify-content: center;
+}
+.status {
+  font-weight: bolder;
+  color: black;
 }
 .inputOrganize {
   display: flex;
