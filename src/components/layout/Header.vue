@@ -12,7 +12,7 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav v-if="!isLoggedin" class="ml-auto">
-          <b-btn>로그인 / 회원가입</b-btn>
+          <b-btn @click="$router.push('/auth/login')">로그인 / 회원가입</b-btn>
         </b-navbar-nav>
 
         <b-navbar-nav v-if="isLoggedin" class="ml-auto">
