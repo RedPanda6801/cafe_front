@@ -1,7 +1,7 @@
 <template>
   <b-container class="Main" fluid>
     <b-row>
-      <b-col cols="3" style="padding: 0px">
+      <b-col cols="2" style="padding: 0px">
         <app-sidebar />
       </b-col>
       <b-col class="cafelist" md="7" style="padding: 0px">
