@@ -13,7 +13,9 @@
             <b-form-group label-cols="3" label-cols-lg="6" label="사업자 번호" label-for="input-businessNum">
               <b-form-input id="input-businessNum" v-model="businessNum"></b-form-input>
             </b-form-group>
-            <b-button size="sm">카페 추가하기</b-button>
+            <b-button size="sm" variant="success">저장</b-button>
+            <b-button size="sm">결제하기</b-button>
+            <b-button size="sm" type="reset" variant="danger">취소하기</b-button>
             <!-- <AddcafeModal :open-dialog="statusModal" b-on :close-dialog="closeAddcafeModal" /> -->
           </b-col>
         </b-row>

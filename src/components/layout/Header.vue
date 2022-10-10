@@ -11,6 +11,10 @@
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
+        <b-navbar-nav v-if="!isLoggedin" class="ml-auto">
+          <b-btn>로그인 / 회원가입</b-btn>
+        </b-navbar-nav>
+
         <b-navbar-nav v-if="isLoggedin" class="ml-auto">
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
@@ -31,11 +35,11 @@
 export default {
   computed: {
     isLoggedin() {
-      // let login = false
-      // if (this.$store.getters.TokenUser && this.$store.getters.TokenUser.id > 0) {
-      //   login = true
-      // }
-      let login = true
+      let login = false
+      if (this.$store.getters.TokenUser && this.$store.getters.TokenUser.id > 0) {
+        login = true
+      }
+      // let login = true
 
       return login
     },
