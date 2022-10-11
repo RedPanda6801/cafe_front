@@ -14,44 +14,20 @@
           <b-card-title>가입</b-card-title>
           <b-card-text>
             <!-- validation 넣을 예정 -->
-            <b-input
-              id="name"
-              v-model="$v.form.name.$model"
-              class="mb-1"
-              :state="validateState('name')"
-              placeholder="성함을 입력해주세요"
-            ></b-input>
+            <b-input id="name" v-model="name" class="mb-1" placeholder="성함을 입력해주세요"></b-input>
             <div class="mt-1 inputOrganize">
               <b-input
-                v-model="$v.form.userId.$model"
+                v-model="userId"
                 class="mr-5 mb-1 inputId"
-                :state="validateState('userId')"
                 placeholder="이용하실 아이디를 입력해주세요"
                 maxlength="20"
               ></b-input>
               <b-button class="mb-1" @click="duplicationCheck">중복확인</b-button>
             </div>
-            <b-input v-model="v.form.email.$model" class="mb-1" :state="validateState('email')" disabled></b-input>
-            <b-input
-              v-model="v.form.password.$model"
-              class="mb-1"
-              :state="validateState('password')"
-              placeholder="비밀번호"
-              type="password"
-            ></b-input>
-            <b-input
-              v-model="v.form.pwCheck.$model"
-              class="mb-1"
-              :state="validateState('pwCheck')"
-              placeholder="비밀번호확인"
-              type="password"
-            ></b-input>
-            <b-input
-              v-model="v.form.phone.$model"
-              class="mb-1"
-              :state="validateState('phone')"
-              placeholder="휴대폰번호"
-            ></b-input>
+            <b-input v-model="email" class="mb-1" disabled></b-input>
+            <b-input v-model="password" class="mb-1" placeholder="비밀번호" type="password"></b-input>
+            <b-input v-model="pwCheck" class="mb-1" placeholder="비밀번호확인" type="password"></b-input>
+            <b-input v-model="phone" class="mb-1" placeholder="휴대폰번호"></b-input>
           </b-card-text>
         </b-card-body>
 
@@ -72,7 +48,9 @@
 
 <script>
 import axios from 'axios'
+// import Validate from '../../assets/mixins/Validate.vue'
 export default {
+  // mixins: [Validate],
   data() {
     return {
       email: '',
