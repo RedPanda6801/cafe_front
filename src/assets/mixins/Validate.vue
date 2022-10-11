@@ -1,5 +1,5 @@
 <script>
-import { required, email, max, min, confirmed } from 'vee-validate/dist/rules'
+import { required, email, max, min, confirmed } from 'vee-validate/dist/vee-validate'
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate'
 
 extend('required', {
