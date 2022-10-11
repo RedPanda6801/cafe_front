@@ -61,30 +61,33 @@
             <b-card-title>이메일로 발송된 인증코드를 입력해 주세요.</b-card-title>
             <b-card-text>
               <!-- 백 서버 연결 후 이메일 제대로 담기게 기능 구현 예정 -->
-              <b-input disabled placeholder="여기에 유저가 입력한 이메일 담길거"></b-input>
-              <b-input class="mt-3 mb-3" maxlength="6" placeholder="인증코드 입력"></b-input>
+              <b-input v-model="tempEmail" disabled></b-input>
+              <b-input v-model="inputCode" class="mt-3 mb-3" maxlength="6" placeholder="인증코드 입력"></b-input>
+              <b-button block variant="outline-dark" @click="authCode">인증 확인</b-button>
             </b-card-text>
           </b-card-body>
-
-          <b-list-group flush>
-            <b-list-group-item><b-button block variant="outline-dark">인증 확인</b-button></b-list-group-item>
-            <b-list-group-item>
-              <div>
-                <button id="show-btn" class="modalBtn" @click="$bvModal.show('emailModal')">
-                  인증메일을 받지 못하셨나요?
-                </button>
-                <b-modal id="emailModal" hide-footer>
-                  <template #modal-title>인증메일을 받지 못하셨나요?</template>
-                  <div class="d-block text-center">
-                    <b-button block @click="resend">이메일 재전송하기</b-button>
-                  </div>
-                  <b-button class="mt-3" block @click="newEmail">다른 이메일로 전송하기</b-button>
-                </b-modal>
-              </div>
-            </b-list-group-item>
-            <!-- <b-list-group-item>Vestibulum at eros</b-list-group-item> -->
-          </b-list-group>
         </form>
+        <b-list-group flush>
+          <!-- <b-list-group-item>
+              
+            </b-list-group-item> -->
+          <b-list-group-item>
+            <div>
+              <button id="show-btn" class="modalBtn" @click="$bvModal.show('emailModal')">
+                인증메일을 받지 못하셨나요?
+              </button>
+              <b-modal id="emailModal" hide-footer>
+                <template #modal-title>인증메일을 받지 못하셨나요?</template>
+                <div class="d-block text-center">
+                  <b-button block @click="resend">이메일 재전송하기</b-button>
+                </div>
+                <b-button class="mt-3" block @click="newEmail">다른 이메일로 전송하기</b-button>
+              </b-modal>
+            </div>
+          </b-list-group-item>
+          <!-- <b-list-group-item>Vestibulum at eros</b-list-group-item> -->
+        </b-list-group>
+
         <b-card-body>
           <a href="/auth/login" class="card-link">로그인창으로 돌아가기</a>
         </b-card-body>
@@ -103,12 +106,14 @@ export default {
       emailId: '',
       emailProvider: null,
       tempEmail: '',
+      inputCode: '',
       emailSent: false,
       options: [
         { value: null, text: '이메일을 선택해 주세요' },
         { value: 'gmail', text: 'gmail.com' },
         { value: 'naver', text: 'naver.com' },
-        { value: 'daumt', text: 'daum.net' },
+        { value: 'daum', text: 'daum.net' },
+        { value: 'hanmail', text: 'hanmail.net' },
         { value: 'kakao', text: 'kakao.com' }
       ]
     }
@@ -116,7 +121,9 @@ export default {
   methods: {
     authCode() {
       const email =
-        this.emailProvider === 'daum' ? `${this.emailId}@daum.net` : `${this.emailId}@${this.emailProvider}.com`
+        this.emailProvider === 'daum' || this.emailProvider === 'hanmail'
+          ? `${this.emailId}@${this.emailProvider}.net`
+          : `${this.emailId}@${this.emailProvider}.com`
       const user = JSON.parse(localStorage.getItem('auth'))
       console.log('유저 : ', user)
       axios
@@ -135,11 +142,14 @@ export default {
         })
         .catch(error => {
           console.log('auth fail : ', error)
+          alert('인증에 실패하셨습니다. 입력하신 인증코드를 다시 확인해 주세요!')
         })
     },
     sendEmail() {
       const email =
-        this.emailProvider === 'daum' ? `${this.emailId}@daum.net` : `${this.emailId}@${this.emailProvider}.com`
+        this.emailProvider === 'daum' || this.emailProvider === 'hanmail'
+          ? `${this.emailId}@${this.emailProvider}.net`
+          : `${this.emailId}@${this.emailProvider}.com`
       this.tempEmail = email
       alert(`"${email}"로 이메일을 발송합니다.`)
       axios
