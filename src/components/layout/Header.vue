@@ -1,23 +1,29 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="light" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1)">
-      <b-navbar-brand href="/">VUEPROJ</b-navbar-brand>
+    <b-navbar toggleable="lg" type="light" style="background-color: transparent">
+      <b-navbar-brand href="/">My Coupon</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">메뉴1</b-nav-item>
-          <b-nav-item href="#">메뉴2</b-nav-item>
+          <b-nav-item href="#">자주 묻는 질문</b-nav-item>
+          <b-nav-item href="#">협약 기업</b-nav-item>
+          <b-nav-item href="#">개발 크루 소개</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
+        <b-navbar-nav v-if="!isLoggedin" class="ml-auto">
+          <b-btn @click="$router.push('/auth/login')">로그인 / 회원가입</b-btn>
+        </b-navbar-nav>
+
         <b-navbar-nav v-if="isLoggedin" class="ml-auto">
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
-              <em>{{ tokenUserName }}</em>
+              <!-- <em>로그인 / 회원가입</em> -->
+              <em>{{ tokenUserName }}님 </em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#" @click="onClick('/auth/logout')">Log Out</b-dropdown-item>
+            <b-dropdown-item href="#" @click="$router.push('/mypage')">마이페이지</b-dropdown-item>
+            <b-dropdown-item href="#" @click="onClick('/auth/logout')">로그아웃</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -33,6 +39,7 @@ export default {
       if (this.$store.getters.TokenUser && this.$store.getters.TokenUser.id > 0) {
         login = true
       }
+      // let login = true
 
       return login
     },
@@ -48,4 +55,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>

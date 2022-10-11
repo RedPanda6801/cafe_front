@@ -16,6 +16,28 @@ const routes = [
         component: () => import('../views/Home.vue')
       },
       {
+        path: '/mypage',
+        component: () => import('../views/mypage')
+      },
+      {
+        path: '/main',
+        component: () => import('../views/main'),
+        children: [
+          {
+            path: '/main',
+            component: () => import('../views/main/main')
+          },
+          {
+            path: '/main/cafelist',
+            component: () => import('../views/main/cafelist')
+          },
+          {
+            path: '/main/addcafe',
+            component: () => import('../views/main/addcafe')
+          }
+        ]
+      },
+      {
         path: '/dashboard',
         component: () => import('../views/dashboard')
       },
@@ -39,8 +61,8 @@ const routes = [
     children: [
       {
         path: '/auth/login',
-        component: () => import('../views/auth/login'),
-        meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/login')
+        // meta: { header: false, noLogin: true }
       },
       {
         path: '/auth/join',
@@ -83,7 +105,7 @@ router.beforeEach(async (to, from, next) => {
 
   const noLogin = to.meta.noLogin // 이동할 페이지에서 로그인 허용여부 확인
 
-  if (noLogin === true) {
+  if (noLogin !== true) {
     // 로그인이 필요없는 페이지는 그냥 이동
     next()
   } else {
