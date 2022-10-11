@@ -11,16 +11,16 @@
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
-        <b-navbar-nav v-if="!isLoggedin" class="ml-auto">
+        <b-navbar-nav v-show="!isLoggedin" class="ml-auto">
           <b-btn @click="$router.push('/auth/login')">로그인 / 회원가입</b-btn>
         </b-navbar-nav>
 
-        <b-navbar-nav v-if="isLoggedin" class="ml-auto">
+        <b-navbar-nav v-show="isLoggedin" class="ml-auto">
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
               <!-- <em>로그인 / 회원가입</em> -->
-              <em>{{ tokenUserName }}님 </em>
+              <em>점장님</em>
             </template>
             <b-dropdown-item href="#" @click="$router.push('/mypage')">마이페이지</b-dropdown-item>
             <b-dropdown-item href="#" @click="onClick('/auth/logout')">로그아웃</b-dropdown-item>
@@ -33,19 +33,24 @@
 
 <script>
 export default {
+  // data() {
+  //   localStorage.getItem('token')
+  // },
+  data: () => ({
+    GE_LOGIN_STATUS: localStorage.getItem('token')
+  }),
   computed: {
     isLoggedin() {
-      // let login = false
-      // if (this.$store.getters.TokenUser && this.$store.getters.TokenUser.id > 0) {
-      //   login = true
-      // }
-      let login = true
-
+      //console.log(this.GE_LOGIN_STATUS)
+      let login = false
+      if (this.GE_LOGIN_STATUS) {
+        login = true
+      }
       return login
-    },
-    tokenUserName() {
-      return this.$store.getters.TokenUser && this.$store.getters.TokenUser.name
     }
+    // tokenUserName() {
+    //   return this.$store.getters.TokenUser && this.$store.getters.TokenUser.name
+    // }
   },
   methods: {
     onClick(path) {
