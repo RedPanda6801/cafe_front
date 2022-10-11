@@ -28,7 +28,12 @@
                 </b-col>
                 <b-col sm="10">
                   <b-form-list id="ownPhone" type="number">폰번호</b-form-list>
-                  <b-btn @click="onClickEdit">폰번호 수정</b-btn>
+                  <b-btn @click="$bvModal.show('modal-phone-infor')">폰번호 수정</b-btn>
+                  <b-modal id="modal-phone-infor" title="폰번호 수정">
+                    <b-form-group label="ownPhone" label-cols="3">
+                      <b-form-input id="input-ownPhone" v-model="ownPhone" type="number"></b-form-input>
+                    </b-form-group>
+                  </b-modal>
                 </b-col>
               </b-row>
               <b-row class="my-1">
@@ -45,7 +50,12 @@
                 </b-col>
                 <b-col sm="10">
                   <b-form-list id="password" type="password">비번</b-form-list>
-                  <b-btn>비밀번호 수정</b-btn>
+                  <b-btn @click="$bvModal.show('modal-pass-infor')">비밀번호 수정</b-btn>
+                  <b-modal id="modal-pass-infor" title="비밀번호 수정">
+                    <b-form-group label="password" label-cols="3">
+                      <b-form-input id="input-password" v-model="password" type="password"></b-form-input>
+                    </b-form-group>
+                  </b-modal>
                 </b-col>
               </b-row>
               <b-button type="submit" variant="primary">저장</b-button>
@@ -55,16 +65,11 @@
         </b-col>
       </b-row>
     </div>
-    <PhoneEditModal />
+    <password-edit />
   </div>
 </template>
 <script>
-import PhoneEditModal from './PhoneEditModal.vue'
-
 export default {
-  components: {
-    PhoneEditModal
-  },
   data: () => ({
     // fields: [
     //   { key: 'ownPhone', label: '폰번호' },
@@ -76,11 +81,7 @@ export default {
     email: '',
     password: ''
   }),
-  methods: {
-    onClickEdit() {
-      this.$bvModal.show('modal-owner-infor')
-    }
-  }
+  methods: {}
 }
 </script>
 <style></style>
