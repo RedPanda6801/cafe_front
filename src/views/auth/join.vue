@@ -16,15 +16,13 @@
             <!-- validation 넣을 예정 -->
             <b-input id="name" v-model="name" class="mb-1" placeholder="성함을 입력해주세요"></b-input>
             <div class="mt-1 inputOrganize">
-              <form @submit="handleSubmit(duplicationCheck)">
-                <b-input
-                  v-model="userId"
-                  class="mr-5 mb-1 inputId"
-                  placeholder="이용하실 아이디를 입력해주세요"
-                  maxlength="20"
-                ></b-input>
-                <b-button class="mb-1" @click="duplicationCheck">중복확인</b-button>
-              </form>
+              <b-input
+                v-model="userId"
+                class="mr-5 mb-1 inputId"
+                placeholder="이용하실 아이디를 입력해주세요"
+                maxlength="20"
+              ></b-input>
+              <b-button class="mb-1" @click="duplicationCheck">중복확인</b-button>
             </div>
             <b-input v-model="email" class="mb-1" disabled></b-input>
             <b-input v-model="password" class="mb-1" placeholder="비밀번호" type="password"></b-input>
@@ -90,7 +88,7 @@ export default {
         .post(process.env.VUE_APP_URL + '/auth/join', axiosBody)
         .then(async res => {
           const code = res.status
-          console.log('auth/register - response: ', code)
+          console.log('auth/register - response: ', res)
           if (code == 400) {
             alert('이미 존재하는 아이디 입니다. 다시 입력해주세요!')
           } else if (code == 200) {
@@ -103,7 +101,7 @@ export default {
         })
         .catch(err => {
           alert('다시 시도해주세요!')
-          console.log(err)
+          console.log('errerr', err)
         })
     },
     async duplicationCheck() {
@@ -112,15 +110,21 @@ export default {
         userId: this.userId
       }
       console.log('duplication check - axiosBody : ', axiosBody)
-      await axios.get(process.env.VUE_APP_URL + '/auth/check-id/' + axiosBody.userId).then(async res => {
-        const code = res.status
-        console.log('check code : ', code)
-        if (code == 200) {
-          alert('사용 가능한 아이디 입니다.')
-        } else {
+      await axios
+        .get(process.env.VUE_APP_URL + '/auth/check-id/' + axiosBody.userId)
+        .then(async res => {
+          const code = res.status
+          console.log('check code : ', code)
+          if (code == 200) {
+            alert('사용 가능한 아이디 입니다.')
+          } else if (code == 400) {
+            alert('이미 사용중인 아이디 입니다. 다른 아이디를 지정해 주세요!')
+          }
+        })
+        .catch(err => {
           alert('이미 사용중인 아이디 입니다. 다른 아이디를 지정해 주세요!')
-        }
-      })
+          console.log(err)
+        })
     }
   }
 }
