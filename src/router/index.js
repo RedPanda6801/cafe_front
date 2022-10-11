@@ -22,10 +22,12 @@ const routes = [
       {
         path: '/main',
         component: () => import('../views/main'),
+        meta: { header: false },
         children: [
           {
             path: '/main',
             component: () => import('../views/main/main')
+            // meta: { header: false }
           },
           {
             path: '/main/cafelist',

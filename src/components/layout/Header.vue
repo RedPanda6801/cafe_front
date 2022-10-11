@@ -35,11 +35,11 @@
 export default {
   computed: {
     isLoggedin() {
-      let login = false
-      if (this.$store.getters.TokenUser && this.$store.getters.TokenUser.id > 0) {
-        login = true
-      }
-      // let login = true
+      // let login = false
+      // if (this.$store.getters.TokenUser && this.$store.getters.TokenUser.id > 0) {
+      //   login = true
+      // }
+      let login = true
 
       return login
     },
