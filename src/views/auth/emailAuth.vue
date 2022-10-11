@@ -61,7 +61,7 @@
             <b-card-title>이메일로 발송된 인증코드를 입력해 주세요.</b-card-title>
             <b-card-text>
               <!-- 백 서버 연결 후 이메일 제대로 담기게 기능 구현 예정 -->
-              <b-input disabled>{{ tempEmail }}</b-input>
+              <b-input v-model="tempEmail" disabled></b-input>
               <b-input v-model="inputCode" class="mt-3 mb-3" maxlength="6" placeholder="인증코드 입력"></b-input>
               <b-button block variant="outline-dark" @click="authCode">인증 확인</b-button>
             </b-card-text>
