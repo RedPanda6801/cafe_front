@@ -16,7 +16,6 @@
             <b-button size="sm" variant="success">저장</b-button>
             <b-button size="sm">결제하기</b-button>
             <b-button size="sm" type="reset" variant="danger">취소하기</b-button>
-            <!-- <AddcafeModal :open-dialog="statusModal" b-on :close-dialog="closeAddcafeModal" /> -->
           </b-col>
         </b-row>
       </div>
@@ -25,23 +24,12 @@
 </template>
 
 <script>
-// import AddcafeModal from '../../components/AddcafeModal.vue'
 export default {
-  // components: { AddcafeModal },
   data: () => ({
     statusModal: false
   }),
   watch: {},
-  methods: {
-    // openAddcafeModal() {
-    //   this.statusModal = true
-    //   console.log('-- open : ', this.statusModal)
-    // },
-    // closeAddcafeModal() {
-    //   this.statusModal = false
-    //   console.log('-- close : ', this.statusModal)
-    // }
-  }
+  methods: {}
 }
 </script>
 
