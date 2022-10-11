@@ -25,15 +25,18 @@ const routes = [
         children: [
           {
             path: '/main',
-            component: () => import('../views/main/main')
+            component: () => import('../views/main/main'),
+            meta: { header: false }
           },
           {
             path: '/main/cafelist',
-            component: () => import('../views/main/cafelist')
+            component: () => import('../views/main/cafelist'),
+            meta: { header: false }
           },
           {
             path: '/main/addcafe',
-            component: () => import('../views/main/addcafe')
+            component: () => import('../views/main/addcafe'),
+            meta: { header: false }
           }
         ]
       },
@@ -61,29 +64,30 @@ const routes = [
     children: [
       {
         path: '/auth/login',
-        component: () => import('../views/auth/login')
-        // meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/login'),
+        meta: { header: false }
+        //meta: { header: false, noLogin: true }
       },
       {
         path: '/auth/join',
-        component: () => import('../views/auth/emailAuth')
-        // meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/emailAuth'),
+        meta: { header: false }
       },
       // url 어떻게 처리할지 구상 후 수정 예정
       {
         path: '/auth/join/info',
-        component: () => import('../views/auth/join')
-        // meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/join'),
+        meta: { header: false }
       },
       {
         path: '/auth/logout',
-        component: () => import('../views/auth/logout')
-        // meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/logout'),
+        meta: { header: false }
       },
       {
         path: '/auth/find',
         component: () => import('../views/auth/find'),
-        meta: { header: false, noLogin: true }
+        meta: { header: false }
       }
     ]
   },
