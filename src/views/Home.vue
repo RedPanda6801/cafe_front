@@ -50,6 +50,9 @@
         </p>
       </b-carousel-slide>
     </b-carousel>
+    <section>
+      <p>내용</p>
+    </section>
   </div>
 </template>
 

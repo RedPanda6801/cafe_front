@@ -5,7 +5,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">자주 묻는 질문</b-nav-item>
+          <b-nav-item href="#asked">자주 묻는 질문</b-nav-item>
           <b-nav-item href="#">협약 기업</b-nav-item>
           <b-nav-item href="#">개발 크루 소개</b-nav-item>
         </b-navbar-nav>
