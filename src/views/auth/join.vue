@@ -14,13 +14,7 @@
         <b-card-title>가입</b-card-title>
         <b-card-text>
           <!-- validation 넣을 예정 -->
-          <b-input
-            id="userName"
-            v-model="userName"
-            class="mb-1"
-            :state="validation"
-            placeholder="성함을 입력해주세요"
-          ></b-input>
+          <b-input id="userName" v-model="userName" class="mb-1" placeholder="성함을 입력해주세요"></b-input>
           <div class="mt-1 inputOrganize">
             <b-input class="mr-5 mb-1 inputId" placeholder="이용하실 아이디를 입력해주세요" maxlength="20"></b-input>
             <b-button class="mb-1">중복확인</b-button>
@@ -50,7 +44,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      userName: ''
+    }
+  }
+}
 </script>
 
 <style>

@@ -66,14 +66,14 @@ const routes = [
       },
       {
         path: '/auth/join',
-        component: () => import('../views/auth/emailAuth'),
-        meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/emailAuth')
+        // meta: { header: false, noLogin: true }
       },
       // url 어떻게 처리할지 구상 후 수정 예정
       {
         path: '/auth/join/info',
-        component: () => import('../views/auth/join'),
-        meta: { header: false, noLogin: true }
+        component: () => import('../views/auth/join')
+        // meta: { header: false, noLogin: true }
       },
       {
         path: '/auth/logout',
