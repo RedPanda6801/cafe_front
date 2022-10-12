@@ -37,6 +37,11 @@ const routes = [
             path: '/main/addcafe',
             component: () => import('../views/main/addcafe'),
             meta: { header: false }
+          },
+          {
+            path: '/main/customer',
+            component: () => import('../views/main/customerList'),
+            meta: { header: false }
           }
         ]
       },
