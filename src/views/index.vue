@@ -2,11 +2,6 @@
   <div>
     <div class="separate-body"></div>
     <b-row>
-      <!-- Side bar -->
-      <!-- <b-col cols="2" style="padding-right: 0px">
-          <app-sidebar />
-        </b-col> -->
-      <!-- Body contents -->
       <b-col style="padding-left: 0px; padding-right: 0px">
         <div class="content-body">
           <router-view />

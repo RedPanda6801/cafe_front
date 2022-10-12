@@ -51,10 +51,6 @@ const routes = [
       {
         path: '/user',
         component: () => import('../views/user')
-      },
-      {
-        path: '/device',
-        component: () => import('../views/device')
       }
     ]
   },
@@ -90,6 +86,22 @@ const routes = [
         meta: { header: false }
       }
     ]
+  },
+  {
+    path: '/phone',
+    component: () => import('../views/device/phoneControl'),
+    meta: { header: false }
+  },
+  {
+    path: '/tablet',
+    component: () => import('../views/device/tabletInput'),
+    meta: { header: false }
+    // children: [
+    //   {
+    //     path: '/main',
+    //     component: () => import('../views/main/main'),
+    //     meta: { header: false }
+    //   }
   },
   {
     path: '*',
