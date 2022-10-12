@@ -103,10 +103,16 @@ const routes = [
     meta: { header: false }
     // children: [
     //   {
-    //     path: '/main',
-    //     component: () => import('../views/main/main'),
+    //     path: '/tablet/stamp',
+    //     component: () => import('../views/device/tabletStamp'),
     //     meta: { header: false }
     //   }
+    // ]
+  },
+  {
+    path: '/tablet/stamp',
+    component: () => import('../views/device/tabletStamp'),
+    meta: { header: false }
   },
   {
     path: '*',
