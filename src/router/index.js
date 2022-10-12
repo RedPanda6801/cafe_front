@@ -76,8 +76,8 @@ const routes = [
       // url 어떻게 처리할지 구상 후 수정 예정
       {
         path: '/auth/join/info',
-        component: () => import('../views/auth/join'),
-        meta: { header: false }
+        component: () => import('../views/auth/join')
+        // meta: { header: false }
       },
       {
         path: '/auth/logout',

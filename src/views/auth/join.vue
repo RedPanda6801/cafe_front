@@ -50,7 +50,7 @@
                   type="password"
                 ></b-input>
               </ValidationProvider>
-              <ValidationProvider v-slot="{ errors }" name="pwCheck" rules="required|confirmed password">
+              <ValidationProvider v-slot="{ errors }" name="pwCheck" rules="required|confirmed:password">
                 <b-input
                   v-model="confirm"
                   :error-messages="errors"
@@ -97,7 +97,8 @@ export default {
       password: '',
       pwCheck: '',
       phone: '',
-      loading: ''
+      loading: '',
+      confirm: ''
     }
   },
   mounted() {
