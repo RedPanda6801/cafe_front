@@ -37,6 +37,11 @@ const routes = [
             path: '/main/addcafe',
             component: () => import('../views/main/addcafe'),
             meta: { header: false }
+          },
+          {
+            path: '/main/customer',
+            component: () => import('../views/main/customerList'),
+            meta: { header: false }
           }
         ]
       },
@@ -98,10 +103,16 @@ const routes = [
     meta: { header: false }
     // children: [
     //   {
-    //     path: '/main',
-    //     component: () => import('../views/main/main'),
+    //     path: '/tablet/stamp',
+    //     component: () => import('../views/device/tabletStamp'),
     //     meta: { header: false }
     //   }
+    // ]
+  },
+  {
+    path: '/tablet/stamp',
+    component: () => import('../views/device/tabletStamp'),
+    meta: { header: false }
   },
   {
     path: '*',
