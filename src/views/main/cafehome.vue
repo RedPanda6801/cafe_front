@@ -5,8 +5,18 @@
         ><b-icon icon="shop" scale="2.5"></b-icon
       ></b-avatar>
       <b-modal id="modal-cafe-img" title="카페 사진 추가">
-        <b-form-group label="phone" label-cols="3">
-          <b-form-input id="input-phone" type="number"></b-form-input>
+        <b-form-group>
+          <b-form-file
+            v-model="form.file"
+            :state="Boolean(form.file)"
+            placeholder="사진 추가하기..."
+            required
+            accept=".jpg"
+            @change="previewImage"
+          ></b-form-file>
+          <div>
+            <b-img :src="previewImageData" class="formStyle"></b-img>
+          </div>
         </b-form-group>
       </b-modal>
       <b-row class="my-1">
@@ -58,11 +68,52 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      form: {
+        file: ''
+      },
+      show: true,
+      previewImageData: null
+    }
+  },
+  methods: {
+    onSubmit(evt) {
+      evt.preventDefault()
+      alert(JSON.stringify(this.form))
+    },
+    onReset(evt) {
+      evt.preventDefault()
+      // Reset
+      this.form.file = ''
+      this.show = false
+      this.$nextTick(() => {
+        this.show = true
+      })
+    },
+    previewImage(event) {
+      let input = event.target
+
+      if (input.files && input.files[0]) {
+        let reader = new FileReader()
+        reader.onload = e => {
+          this.previewImageData = e.target.result
+        }
+        reader.readAsDataURL(input.files[0])
+      } else {
+        this.previewImageData = null
+      }
+    }
+  }
+}
 </script>
 
 <style>
 .cafehomeTB {
   margin-right: 10px;
+}
+.formStyle {
+  width: 10vw;
 }
 </style>

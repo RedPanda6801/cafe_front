@@ -3,7 +3,7 @@
     <b-list-group class="sidebarList">
       <div class="profile">
         <b-avatar button @click="$router.push('/mypage')"></b-avatar>
-        <div class="nav-side-menu">{{ name }} 점장님, 반갑습니다</div>
+        <div class="nav-side-menu">점장님, 반갑습니다</div>
       </div>
       <b-list-group-item class="sidebarListB" href="#" @click="$router.push('/main')">메인 화면</b-list-group-item>
       <b-list-group-item class="sidebarListB" href="#" @click="$router.push('/main/contact')"
@@ -26,10 +26,10 @@ export default {}
 
 <style>
 .sidebarList {
-  position: fixed;
-  overflow: auto;
-  height: 100vh;
+  height: 100%;
   background-color: black;
+  position: fixed;
+  padding: 10px;
 }
 .sidebarListB {
   background-color: black;
@@ -37,5 +37,7 @@ export default {}
 }
 .profile {
   color: #fff;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
 }
 </style>
