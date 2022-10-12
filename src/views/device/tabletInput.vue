@@ -7,23 +7,44 @@
         <h1>감자다방</h1>
       </div>
       <div class="cafeBanner">
-        <h1>여기에 카페 배너가 들어갈거야</h1>
+        <img src="../../../public/cafe-default.png" class="banner" />
       </div>
     </div>
     <div class="inputContainer">
       <div class="inputPrint">
         <div class="inputMessage">
-          <p>휴대폰번호 입력하셈~</p>
+          <h5>휴대폰 번호를 입력하세요</h5>
         </div>
         <!-- 입력창과 휴대폰번호 입력 안내 -->
         <div class="inputPrinter">
           <!-- 입력창 -->
-          <h1>여긴 고객이 입력한 휴대폰번호</h1>
+          <h1>010-0000-0000</h1>
         </div>
       </div>
       <div class="keypad">
         <!-- 번호 패드부분 -->
-        <h1>번호 키패드</h1>
+        <table>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>삭제</td>
+            <td>0</td>
+            <td>확인</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -37,52 +58,76 @@ export default {}
 .tabletContainer {
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  /*background-color: black;*/
   padding: 0px;
   display: grid;
   grid-template-columns: 50% 50%;
 }
 .cafeContainer {
-  background-color: yellow;
+  /*background-color: yellow;*/
   display: grid;
   grid-template-rows: 25% 75%;
   margin: 5px;
 }
 .cafeName {
-  background-color: lightgreen;
+  /*background-color: lightgreen;*/
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px;
 }
 .cafeBanner {
-  background-color: pink;
+  /*background-color: pink;*/
   margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner {
+  width: 90%;
+  height: 90%;
   justify-content: center;
   align-items: center;
 }
 .inputContainer {
-  background-color: green;
+  /*background-color: green;*/
   display: grid;
   grid-template-rows: 20% 80%;
   margin: 5px;
 }
 .inputPrint {
-  background-color: orange;
+  /*background-color: orange;*/
   display: grid;
   grid-template-rows: 20% 80%;
   margin: 5px;
 }
 .inputMessage {
-  background-color: rgb(244, 169, 244);
+  /*background-color: rgb(244, 169, 244);*/
+  text-align: center;
   margin: 5px;
 }
 .inputPrinter {
-  background-color: red;
+  /*background-color: red;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 5px;
 }
 .keypad {
-  background-color: blue;
+  /*background-color: blue;*/
   margin: 5px;
+}
+table {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 60px;
+  border: 1px solid #444444;
+  border-radius: 5px;
+}
+td {
+  border: 1px solid #444444;
+  border-radius: 5px;
+  width: 33%;
 }
 </style>
