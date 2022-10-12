@@ -103,7 +103,7 @@ export default {
           const code = res.data
           localStorage.setItem('token', res.data.token)
           console.log('/auth/login - response: ', code)
-          this.$router.push('/Home')
+          this.$router.push('/main')
         })
         .catch(err => {
           alert('다시 시도해주세요!')

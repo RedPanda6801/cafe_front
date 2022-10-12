@@ -11,7 +11,7 @@
                 <label for="id">아이디:</label>
               </b-col>
               <b-col sm="10">
-                <b-list-group-item id="id" v-model="id">아이디</b-list-group-item>
+                <b-list-group-item id="id" v-model="userId">아이디</b-list-group-item>
               </b-col>
             </b-row>
             <b-row class="my-1">
@@ -64,7 +64,6 @@
         </b-col>
       </b-row>
     </div>
-    <password-edit />
   </div>
 </template>
 <script>
@@ -72,7 +71,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      id: '',
+      userId: '',
       name: '',
       number: '',
       email: '',
@@ -85,7 +84,11 @@ export default {
   methods: {
     async inforData() {
       await axios
-        .get(process.env.VUE_APP_URL + '/profile/info')
+        .get(process.env.VUE_APP_URL + '/profile/info', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
         .then(async res => {
           const code = res.data
           console.log('inforData - response: ', code)
