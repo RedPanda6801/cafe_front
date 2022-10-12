@@ -17,7 +17,8 @@ const routes = [
       },
       {
         path: '/mypage',
-        component: () => import('../views/mypage')
+        component: () => import('../views/mypage'),
+        meta: { header: false }
       },
       {
         path: '/main',
@@ -29,13 +30,18 @@ const routes = [
             meta: { header: false }
           },
           {
-            path: '/main/cafelist',
-            component: () => import('../views/main/cafelist'),
+            path: '/main/contact',
+            component: () => import('../views/main/contact'),
             meta: { header: false }
           },
           {
             path: '/main/addcafe',
             component: () => import('../views/main/addcafe'),
+            meta: { header: false }
+          },
+          {
+            path: '/main/cafehome',
+            component: () => import('../views/main/cafehome'),
             meta: { header: false }
           }
         ]

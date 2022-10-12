@@ -2,9 +2,9 @@
   <b-container class="Main" fluid>
     <b-row>
       <b-col cols="2" style="padding: 0px">
-        <app-sidebar />
+        <Sidebar />
       </b-col>
-      <b-col class="cafelist" md="7" style="padding: 0px">
+      <b-col class="cafelist" md="9" style="padding: 0px">
         <router-view />
       </b-col>
     </b-row>
@@ -15,9 +15,8 @@
 import Sidebar from '../main/Sidebar.vue'
 export default {
   components: {
-    'app-sidebar': Sidebar
+    Sidebar
   }
 }
 </script>
-
 <style></style>

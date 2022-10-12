@@ -1,32 +1,33 @@
 <template>
   <div>
-    <b-card>
-      <h3>main</h3>
-      <b-button @click="$router.push('/main/addcafe')">카페 추가하기</b-button>
-      <div class="cafeList">
-        <b-avatar></b-avatar>
-        <span class="cafeName">카페이름</span>
-        <span>위치</span>
-      </div>
-      <div>
-        <!-- <b-table striped hover :items="items"></b-table> -->
-      </div>
+    <b-card class="cafelist">
+      <h3>Cafe List</h3>
+      <b-button class="cafeAddB" @click="$router.push('/main/addcafe')"
+        ><b-icon icon="plus-lg" scale="0.7"></b-icon> 카페 추가하기</b-button
+      >
+      <cafe-list />
     </b-card>
   </div>
 </template>
 
 <script>
-export default {}
+import cafeList from '../../components/cafe/cafeList.vue'
+export default {
+  components: {
+    cafeList
+  }
+}
 </script>
 
 <style>
-.cafeList {
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 30px;
-  /* box-shadow: 5px 5px 5px 1px rgba(1, 1, 1, 0.1); */
+.cafelist {
+  width: 82vw;
+  height: 1200px;
+  padding: 15px;
 }
-.cafeName {
-  margin-right: 5px;
+.cafeAddB {
+  width: 40vw;
+  height: 10vh;
+  margin: 5px 0px 30px 0px;
 }
 </style>
