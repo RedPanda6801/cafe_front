@@ -51,10 +51,6 @@ const routes = [
       {
         path: '/user',
         component: () => import('../views/user')
-      },
-      {
-        path: '/device',
-        component: () => import('../views/device')
       }
     ]
   },
@@ -76,8 +72,8 @@ const routes = [
       // url 어떻게 처리할지 구상 후 수정 예정
       {
         path: '/auth/join/info',
-        component: () => import('../views/auth/join')
-        // meta: { header: false }
+        component: () => import('../views/auth/join'),
+        meta: { header: false }
       },
       {
         path: '/auth/logout',
@@ -90,6 +86,22 @@ const routes = [
         meta: { header: false }
       }
     ]
+  },
+  {
+    path: '/phone',
+    component: () => import('../views/device/phoneControl'),
+    meta: { header: false }
+  },
+  {
+    path: '/tablet',
+    component: () => import('../views/device/tabletInput'),
+    meta: { header: false }
+    // children: [
+    //   {
+    //     path: '/main',
+    //     component: () => import('../views/main/main'),
+    //     meta: { header: false }
+    //   }
   },
   {
     path: '*',
