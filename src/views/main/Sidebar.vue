@@ -1,14 +1,21 @@
 <template>
   <div>
-    <b-list-group>
-      <b-list-group-item>
-        <b-avatar></b-avatar>
+    <b-list-group class="sidebarList">
+      <div class="profile">
+        <b-avatar button @click="$router.push('/mypage')"></b-avatar>
         <div class="nav-side-menu">{{ name }} 점장님, 반갑습니다</div>
-      </b-list-group-item>
-      <b-list-group-item href="#" @click="$router.push('/main')">메인 화면</b-list-group-item>
-      <b-list-group-item href="#" @click="$router.push('/main/cafelist')">카페 리스트</b-list-group-item>
-      <b-list-group-item href="#" @click="$router.push('/main/addcafe')">지점등록</b-list-group-item>
-      <b-list-group-item href="#" @click="$router.push('/device')"></b-list-group-item>
+      </div>
+      <b-list-group-item class="sidebarListB" href="#" @click="$router.push('/main')">메인 화면</b-list-group-item>
+      <b-list-group-item class="sidebarListB" href="#" @click="$router.push('/main/cafelist')"
+        >카페 리스트</b-list-group-item
+      >
+      <b-list-group-item class="sidebarListB" href="#" @click="$router.push('/main/addcafe')"
+        >지점등록</b-list-group-item
+      >
+      <div>
+        <b-btn>모바일 입장</b-btn>
+        <b-btn variant="success">테블릿 입장</b-btn>
+      </div>
     </b-list-group>
   </div>
 </template>
@@ -18,12 +25,15 @@ export default {}
 </script>
 
 <style>
-.list-group {
+.sidebarList {
   height: 100vh;
   background-color: black;
 }
-.list-group-item {
+.sidebarListB {
   background-color: black;
+  color: #fff;
+}
+.profile {
   color: #fff;
 }
 </style>

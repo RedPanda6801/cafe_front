@@ -22,8 +22,9 @@
               <!-- <em>로그인 / 회원가입</em> -->
               <em>점장님</em>
             </template>
+            <b-dropdown-item href="#" @click="$router.push('/main')">관리 페이지</b-dropdown-item>
             <b-dropdown-item href="#" @click="$router.push('/mypage')">마이페이지</b-dropdown-item>
-            <b-dropdown-item href="#" @click="onClick('/auth/logout')">로그아웃</b-dropdown-item>
+            <b-dropdown-item href="#" @click="signOut">로그아웃</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -41,7 +42,7 @@ export default {
   }),
   computed: {
     isLoggedin() {
-      //console.log(this.GE_LOGIN_STATUS)
+      console.log(this.GE_LOGIN_STATUS)
       let login = false
       if (this.GE_LOGIN_STATUS) {
         login = true
@@ -55,6 +56,10 @@ export default {
   methods: {
     onClick(path) {
       this.$router.push(path)
+    },
+    async signOut() {
+      localStorage.removeItem('token')
+      this.$router.go()
     }
   }
 }
