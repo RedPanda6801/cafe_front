@@ -42,6 +42,10 @@ const routes = [
           {
             path: '/main/cafehome',
             component: () => import('../views/main/cafehome'),
+          },
+          {
+            path: '/main/customer',
+            component: () => import('../views/main/customerList'),
             meta: { header: false }
           }
         ]
@@ -57,10 +61,6 @@ const routes = [
       {
         path: '/user',
         component: () => import('../views/user')
-      },
-      {
-        path: '/device',
-        component: () => import('../views/device')
       }
     ]
   },
@@ -96,6 +96,28 @@ const routes = [
         meta: { header: false }
       }
     ]
+  },
+  {
+    path: '/phone',
+    component: () => import('../views/device/phoneControl'),
+    meta: { header: false }
+  },
+  {
+    path: '/tablet',
+    component: () => import('../views/device/tabletInput'),
+    meta: { header: false }
+    // children: [
+    //   {
+    //     path: '/tablet/stamp',
+    //     component: () => import('../views/device/tabletStamp'),
+    //     meta: { header: false }
+    //   }
+    // ]
+  },
+  {
+    path: '/tablet/stamp',
+    component: () => import('../views/device/tabletStamp'),
+    meta: { header: false }
   },
   {
     path: '*',

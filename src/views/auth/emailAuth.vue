@@ -28,7 +28,7 @@
 
           <b-list-group flush>
             <b-list-group-item>
-              <b-button block variant="outline-dark" @click="sendEmail">인증메일 보내기</b-button>
+              <b-button block variant="outline-dark" @click="duplicationCheck">인증메일 보내기</b-button>
             </b-list-group-item>
             <b-list-group-item>
               - 입력하신 이메일로 인증코드가 전송됩니다.<br />
@@ -173,6 +173,29 @@ export default {
     newEmail() {
       this.emailSent = false
       this.$bvModal.hide('emailModal')
+    },
+    async duplicationCheck() {
+      const email =
+        this.emailProvider === 'daum' || this.emailProvider === 'hanmail'
+          ? `${this.emailId}@${this.emailProvider}.net`
+          : `${this.emailId}@${this.emailProvider}.com`
+      this.tempEmail = email
+      console.log('duplication check : ', email)
+      await axios
+        .get(process.env.VUE_APP_URL + '/auth/check-email/' + email)
+        .then(async res => {
+          const code = res.status
+          console.log('check code : ', code)
+          if (code == 200) {
+            this.sendEmail()
+          } else {
+            alert('이미 사용중인 이메일 입니다.')
+          }
+        })
+        .catch(err => {
+          alert('이미 사용중인 이메일 입니다. 다른 이메일을 지정해 주세요!')
+          console.log(err)
+        })
     }
   }
 }
