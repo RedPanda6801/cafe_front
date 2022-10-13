@@ -14,8 +14,16 @@
         <p>현재 사용 가능한 쿠폰 갯수 : 10000개</p>
       </div>
       <div class="stampBody">
-        <h4>My Stamp</h4>
-        <h5>여기에 쿠폰 현황 프린트</h5>
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stamp.png" class="stamp" />
+        <img src="../../../public/stampDefault.png" class="stamp" />
+        <img src="../../../public/stampDefault.png" class="stamp" />
       </div>
     </div>
   </div>
@@ -50,10 +58,15 @@ export default {}
 .stampBody {
   /* background-color: red; */
   margin: 10px;
-  border: 1px;
-  border-color: greenyellow;
+  border: 5px;
+  border-color: rgb(0, 0, 0);
   border-style: solid;
   border-radius: 10px;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 50% 50%;
+  align-items: center;
+  justify-content: center;
 }
 .greetingContainer {
   /* background-color: green; */
@@ -74,5 +87,8 @@ export default {}
   justify-content: center;
   align-items: center;
   font-size: 35px;
+}
+.stamp {
+  width: 60%;
 }
 </style>

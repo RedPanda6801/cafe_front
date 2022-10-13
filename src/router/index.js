@@ -97,6 +97,7 @@ const routes = [
       }
     ]
   },
+  // 라우터 고민해봐야 함
   {
     path: '/phone',
     component: () => import('../views/device/phoneControl'),
