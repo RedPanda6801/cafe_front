@@ -12,7 +12,7 @@
             </b-form-group>
             <b-form-group label-cols="4" label-cols-lg="3" label="로그인">
               <b-button variant="primary" :disabled="loading" @click="OwnerLogin"
-                ><b-spinner v-if="loading" small></b-spinner> 로그인</b-button
+                ><b-spinner v-if="loading" type="submit" small></b-spinner> 로그인</b-button
               >
             </b-form-group>
             <b-form-group>

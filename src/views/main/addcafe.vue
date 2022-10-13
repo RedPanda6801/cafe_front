@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div title="addcafe">
+    <div title="addcafe" class="AddCafe">
       <h3>AddCafe</h3>
       <div style="margin-top: 10px">
         <b-col cols="8">
@@ -31,4 +31,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.AddCafe {
+  margin: 25px;
+}
+</style>

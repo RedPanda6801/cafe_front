@@ -2,9 +2,10 @@
   <div class="maiNpage">
     <div class="cafelist">
       <h3>Cafe List</h3>
-      <b-button class="cafeAddB" @click="$router.push('/main/addcafe')"
-        ><b-icon icon="plus-lg" scale="0.7"></b-icon> 카페 추가하기</b-button
-      >
+      <button class="cafeAddB" @click="$router.push('/main/addcafe')">
+        <span class="Btext"><b-icon icon="plus-lg" scale="0.7"></b-icon> 카페추가하기</span>
+        <!-- <b-icon icon="plus-lg" scale="0.7"></b-icon> 카페 추가하기 -->
+      </button>
       <cafe-list />
     </div>
     <div class="footer">2022 My_Coupon &copy; All Rights Reserved.</div>
@@ -27,14 +28,24 @@ export default {
 }
 .cafelist {
   width: 82vw;
-  height: 800px;
-  padding: 20px;
+  height: 700px;
+  padding: 25px;
   /* background-color: aqua; */
 }
 .cafeAddB {
-  width: 40vw;
-  height: 10vh;
+  width: 95%;
+  height: 15vh;
   margin: 5px 0px 30px 0px;
+  border: none;
+  background-image: url('https://www.worldatlas.com/r/w768/upload/12/f8/83/coffee-cup.jpg');
+  background-size: cover;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+.cafeAddB:hover {
+  filter: brightness(70%);
 }
 .footer {
   font-size: 12px;

@@ -8,7 +8,7 @@
           <label for="id">아이디:</label>
         </b-col>
         <b-col sm="10">
-          <b-list-group-item id="id" v-model="userId">아이디</b-list-group-item>
+          <b-list-group-item id="Id">{{ user.user.userId }}</b-list-group-item>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -16,7 +16,7 @@
           <label for="name">이름:</label>
         </b-col>
         <b-col sm="10">
-          <b-list-group-item id="name" v-model="name">이름</b-list-group-item>
+          <b-list-group-item id="name">{{ user.user.name }}</b-list-group-item>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -24,7 +24,7 @@
           <label for="phone">폰번호:</label>
         </b-col>
         <b-col sm="10">
-          <b-list-group-item id="phone" v-model="phone">폰번호</b-list-group-item>
+          <b-list-group-item id="phone">{{ user.user.ownerPhone }}</b-list-group-item>
           <b-btn @click="$bvModal.show('modal-phone-infor')">폰번호 수정</b-btn>
           <b-modal id="modal-phone-infor" title="폰번호 수정">
             <b-form-group label="phone" label-cols="3">
@@ -38,7 +38,7 @@
           <label for="email">이메일:</label>
         </b-col>
         <b-col sm="10">
-          <b-list-group-item id="email" type="email">이메일</b-list-group-item>
+          <b-list-group-item id="email">{{ user.user.email }}</b-list-group-item>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -46,7 +46,7 @@
           <label for="password">비밀번호:</label>
         </b-col>
         <b-col sm="10">
-          <b-list-group-item id="password" v-modal="password">비번</b-list-group-item>
+          <b-list-group-item id="password">비번</b-list-group-item>
           <b-btn @click="$bvModal.show('modal-pass-infor')">비밀번호 수정</b-btn>
           <b-modal id="modal-pass-infor" title="비밀번호 수정">
             <b-form-group label="password" label-cols="3">
@@ -62,15 +62,14 @@
 <script>
 import axios from 'axios'
 export default {
-  data() {
-    return {
-      userId: '',
-      name: '',
-      number: '',
-      email: '',
-      password: ''
-    }
-  },
+  data: () => ({
+    user: {},
+    userId: '',
+    name: '',
+    number: '',
+    email: '',
+    password: ''
+  }),
   mounted() {
     this.inforData()
   },
@@ -83,8 +82,8 @@ export default {
           }
         })
         .then(async res => {
-          const code = res.data
-          console.log('inforData - response: ', code)
+          this.user = res.data
+          console.log('inforData - response: ', res)
         })
         .catch(err => {
           console.log('inforData - error: ', err)
