@@ -13,7 +13,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        flex-grow: 0;
+        flex-grow: 1;
         max-height: calc(100% - 0px);
       "
     >
@@ -359,15 +359,6 @@ body {
   padding: 0 20px 0 50px;
   width: 100%;
 }
-.sidebar .bx-search {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  font-size: 22px;
-  background: var(--secondary-color);
-  color: var(--icons-color);
-}
 .sidebar.open .bx-search:hover {
   background: var(--secondary-color);
   color: var(--icons-color);
@@ -409,23 +400,27 @@ body {
   color: var(--bg-color);
 }
 .deviceB {
-  margin: 6px 14px 20px 14px;
+  margin: 6px 14px 90px 14px;
 }
 .deviceB button {
   color: var(--menu-items-text-color);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
-  height: 100%;
+  height: 85%;
   width: 100%;
-  border: 0px;
+  border: 2px solid var(--menu-items-text-color);
   border-radius: 12px;
   align-items: center;
   text-decoration: none;
   transition: all 0.4s ease;
   background: var(--bg-color);
 }
+.deviceB .deviceTablet {
+  margin-top: 9px;
+}
 .deviceB button:hover {
   background: var(--menu-items-hover-color);
+  color: var(--bg-color);
 }
 .sidebar li i {
   height: 50px;

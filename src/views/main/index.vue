@@ -15,9 +15,10 @@ export default {
 </script>
 <style>
 .Main {
+  width: 100%;
   margin: 0px;
   padding: 0px;
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 1fr 2fr;
 }
 </style>
