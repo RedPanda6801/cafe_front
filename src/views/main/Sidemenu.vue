@@ -46,7 +46,7 @@
       </div>
       <div class="deviceB">
         <button class="deviceMobile">Mobile</button>
-        <button class="deviceTablet">Tablet</button>
+        <button class="deviceTablet" @click="$router.push('/tablet')">Tablet</button>
       </div>
     </div>
   </div>
