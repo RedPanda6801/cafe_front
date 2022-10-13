@@ -66,7 +66,7 @@ export default {}
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 50% 50%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .greetingContainer {
   /* background-color: green; */
