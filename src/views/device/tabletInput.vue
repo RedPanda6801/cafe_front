@@ -17,32 +17,31 @@
         </div>
         <!-- 입력창과 휴대폰번호 입력 안내 -->
         <div class="inputPrinter">
-          <!-- 입력창 -->
-          <h1>010-0000-0000</h1>
+          {{ phone }}
         </div>
       </div>
       <div class="keypad">
         <!-- 번호 패드부분 -->
         <table>
           <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+            <td><button class="numberPad" @click="addNumber(1)">1</button></td>
+            <td><button class="numberPad" @click="addNumber(2)">2</button></td>
+            <td><button class="numberPad" @click="addNumber(3)">3</button></td>
           </tr>
           <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
+            <td><button class="numberPad" @click="addNumber(4)">4</button></td>
+            <td><button class="numberPad" @click="addNumber(5)">5</button></td>
+            <td><button class="numberPad" @click="addNumber(6)">6</button></td>
           </tr>
           <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
+            <td><button class="numberPad" @click="addNumber(7)">7</button></td>
+            <td><button class="numberPad" @click="addNumber(8)">8</button></td>
+            <td><button class="numberPad" @click="addNumber(9)">9</button></td>
           </tr>
           <tr>
-            <td>삭제</td>
-            <td>0</td>
-            <td>확인</td>
+            <td><button class="numberPad" @click="deleteNumber()">삭제</button></td>
+            <td><button class="numberPad" @click="addNumber(0)">0</button></td>
+            <td><button class="numberPad">확인</button></td>
           </tr>
         </table>
       </div>
@@ -51,7 +50,32 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      phone: ''
+    }
+  },
+  methods: {
+    addNumber(num) {
+      if (this.phone.length === 13) {
+        return this.phone
+      }
+      this.phone = this.phone + num
+      if (this.phone.length === 3) {
+        this.phone = this.phone + '-'
+        return this.phone
+      } else if (this.phone.length === 8) {
+        this.phone = this.phone + '-'
+        return this.phone
+      } else return this.phone
+    },
+    deleteNumber() {
+      this.phone = this.phone.slice(0, -1)
+      return this.phone
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -59,7 +83,6 @@ export default {}
   height: 100vh;
   width: 100vw;
   /*background-color: black;*/
-  padding: 0px;
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -107,27 +130,41 @@ export default {}
   margin: 5px;
 }
 .inputPrinter {
-  /*background-color: red;*/
+  background-color: rgb(249, 249, 249);
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  margin: 10px;
+  font-size: 60px;
+  letter-spacing: 5px;
 }
 .keypad {
   /*background-color: blue;*/
   margin: 5px;
 }
+.numberPad {
+  width: 95%;
+  height: 95%;
+  border: none;
+  color: black;
+  border-radius: 15px;
+}
+.numberPad:active {
+  background-color: grey;
+}
+
 table {
   width: 100%;
   height: 100%;
   text-align: center;
-  font-size: 60px;
-  border: 1px solid #444444;
-  border-radius: 5px;
+  font-size: 45px;
+  /*  border: 1px solid #444444;
+  border-radius: 5px; */
 }
 td {
-  border: 1px solid #444444;
-  border-radius: 5px;
+  /* border: 1px solid #444444;
+  border-radius: 5px; */
   width: 33%;
 }
 </style>

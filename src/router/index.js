@@ -41,7 +41,7 @@ const routes = [
           },
           {
             path: '/main/cafehome',
-            component: () => import('../views/main/cafehome'),
+            component: () => import('../views/main/cafehome')
           },
           {
             path: '/main/customer',
@@ -97,6 +97,7 @@ const routes = [
       }
     ]
   },
+  // 라우터 고민해봐야 함
   {
     path: '/phone',
     component: () => import('../views/device/phoneControl'),
