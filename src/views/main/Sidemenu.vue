@@ -22,7 +22,7 @@
           <i class="bx bxs-user-rectangle" />
           <div class="name_job">
             <div class="name">
-              {{ profileName }}
+              {{ user.user.name }}
             </div>
             <div class="job">
               {{ profileRole }}
@@ -53,8 +53,10 @@
 </template>
 
 <script>
+import mypage from './mypage.vue'
 export default {
   name: 'SidebarMenuAkahon',
+  mixins: [mypage],
   props: {
     //! Menu settings
     isMenuOpen: {
@@ -125,10 +127,6 @@ export default {
       ]
     },
 
-    profileName: {
-      type: String,
-      default: '진주하'
-    },
     profileRole: {
       type: String,
       default: '점장님, 반갑습니다.'
