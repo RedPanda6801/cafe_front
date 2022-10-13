@@ -136,7 +136,8 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 10px;
-  font-size: 40px;
+  font-size: 60px;
+  letter-spacing: 5px;
 }
 .keypad {
   /*background-color: blue;*/

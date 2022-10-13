@@ -2,35 +2,43 @@
   <div class="tabletContainer">
     <div class="greetingContainer">
       <div class="userPhone">
-        <p>010-0000-0000님</p>
+        <p>{{ userNumber }} 님</p>
       </div>
       <div class="userGreeting">
-        <p>N 번째 방문해 주셔서 감사합니다!</p>
+        <p>{{ visitedNum }} 번째 방문해 주셔서 감사합니다!</p>
       </div>
     </div>
     <div class="stampContainer">
-      <!-- <h1>여기에 도장 현황 보여줄거야</h1> -->
       <div class="stampHeader">
-        <p>현재 사용 가능한 쿠폰 갯수 : 10000개</p>
+        <p>현재 사용 가능한 음료 쿠폰 : {{ completedCoupon }}개</p>
       </div>
+      <!-- <h1>여기에 도장 현황 보여줄거야</h1> -->
       <div class="stampBody">
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stamp.png" class="stamp" />
-        <img src="../../../public/stampDefault.png" class="stamp" />
-        <img src="../../../public/stampDefault.png" class="stamp" />
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stampDefault.png" class="stamp" /></div>
+        <div class="stampHolder"><img src="../../../public/stampDefault.png" class="stamp" /></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      userNumber: '010-000-0000',
+      visitedNum: 'N',
+      completedCoupon: 'N'
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -45,7 +53,7 @@ export default {}
 .stampContainer {
   /* background-color: yellow; */
   display: grid;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 20% 80%;
   margin: 5px;
 }
 .stampHeader {
@@ -66,7 +74,10 @@ export default {}
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 50% 50%;
   align-items: center;
-  justify-content: space-evenly;
+}
+.stampHolder {
+  display: flex;
+  justify-content: center;
 }
 .greetingContainer {
   /* background-color: green; */
