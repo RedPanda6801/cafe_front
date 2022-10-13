@@ -1,15 +1,15 @@
 <template>
   <div class="Main">
-    <Sidebar />
+    <Sidemenu />
     <router-view />
   </div>
 </template>
 
 <script>
-import Sidebar from '../main/Sidebar.vue'
+import Sidemenu from '../main/Sidemenu.vue'
 export default {
   components: {
-    Sidebar
+    Sidemenu
   }
 }
 </script>

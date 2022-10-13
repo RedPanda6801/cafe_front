@@ -14,7 +14,7 @@
       >
       <div>
         <b-btn>모바일 입장</b-btn>
-        <b-btn variant="success">테블릿 입장</b-btn>
+        <b-btn variant="success" @click="$router.push('/tablet')">테블릿 입장</b-btn>
       </div>
     </b-list-group>
   </div>
