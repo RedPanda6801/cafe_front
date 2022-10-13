@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-card>
+    <b-card class="cafehome-card">
       <b-avatar size="100px" button @click="$bvModal.show('modal-cafe-img')"
         ><b-icon icon="shop" scale="2.5"></b-icon
       ></b-avatar>
@@ -115,5 +115,8 @@ export default {
 }
 .formStyle {
   width: 10vw;
+}
+.cafehome-card {
+  width: 100%;
 }
 </style>

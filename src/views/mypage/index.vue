@@ -59,7 +59,6 @@
               </b-col>
             </b-row>
             <!-- <b-button variant="primary">저장</b-button> -->
-            <b-button variant="danger">탈퇴</b-button>
           </b-card>
         </b-col>
       </b-row>
