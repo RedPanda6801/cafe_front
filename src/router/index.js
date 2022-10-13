@@ -41,7 +41,7 @@ const routes = [
           },
           {
             path: '/main/cafehome',
-            component: () => import('../views/main/cafehome'),
+            component: () => import('../views/main/cafehome')
           },
           {
             path: '/main/customer',
