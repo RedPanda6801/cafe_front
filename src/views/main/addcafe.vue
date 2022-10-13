@@ -1,25 +1,24 @@
 <template>
   <div>
-    <b-card title="addcafe">
+    <div title="addcafe">
+      <h3>AddCafe</h3>
       <div style="margin-top: 10px">
-        <b-row align-h="center">
-          <b-col cols="8">
-            <b-form-group label-cols="3" label-cols-lg="6" label="카페이름" label-for="input-cafeName">
-              <b-form-input id="input-cafeName" v-model="cafeName"></b-form-input>
-            </b-form-group>
-            <b-form-group label-cols="3" label-cols-lg="6" label="주소" label-for="input-location">
-              <b-form-input id="input-location" v-model="location"></b-form-input>
-            </b-form-group>
-            <b-form-group label-cols="3" label-cols-lg="6" label="사업자 번호" label-for="input-businessNum">
-              <b-form-input id="input-businessNum" v-model="businessNum"></b-form-input>
-            </b-form-group>
-            <b-button size="sm" variant="success">저장</b-button>
-            <b-button size="sm">결제하기</b-button>
-            <b-button size="sm" type="reset" variant="danger">취소하기</b-button>
-          </b-col>
-        </b-row>
+        <b-col cols="8">
+          <b-form-group label-cols="3" label-cols-lg="6" label="카페이름" label-for="input-cafeName">
+            <b-form-input id="input-cafeName" v-model="cafeName"></b-form-input>
+          </b-form-group>
+          <b-form-group label-cols="3" label-cols-lg="6" label="주소" label-for="input-location">
+            <b-form-input id="input-location" v-model="location"></b-form-input>
+          </b-form-group>
+          <b-form-group label-cols="3" label-cols-lg="6" label="사업자 번호" label-for="input-businessNum">
+            <b-form-input id="input-businessNum" v-model="businessNum"></b-form-input>
+          </b-form-group>
+          <b-button size="sm" variant="success">저장</b-button>
+          <b-button size="sm">결제하기</b-button>
+          <b-button size="sm" type="reset" variant="danger">취소하기</b-button>
+        </b-col>
       </div>
-    </b-card>
+    </div>
   </div>
 </template>
 

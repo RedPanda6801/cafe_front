@@ -12,13 +12,7 @@
 </template>
 
 <script>
-// import Sidebar from '../components/layout/Sidebar'
-
-export default {
-  // components: {
-  //   'app-sidebar': Sidebar
-  // }
-}
+export default {}
 </script>
 
 <style lang="scss" scoped></style>

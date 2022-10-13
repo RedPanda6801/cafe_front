@@ -42,7 +42,7 @@ export default {
   }),
   computed: {
     isLoggedin() {
-      console.log(this.GE_LOGIN_STATUS)
+      //console.log(this.GE_LOGIN_STATUS)
       let login = false
       if (this.GE_LOGIN_STATUS) {
         login = true

@@ -1,23 +1,23 @@
 <template>
-  <b-container class="Main" fluid>
-    <b-row>
-      <b-col cols="2" style="padding: 0px">
-        <app-sidebar />
-      </b-col>
-      <b-col class="cafelist" md="7" style="padding: 0px">
-        <router-view />
-      </b-col>
-    </b-row>
-  </b-container>
+  <div class="Main">
+    <Sidebar />
+    <router-view />
+  </div>
 </template>
 
 <script>
 import Sidebar from '../main/Sidebar.vue'
 export default {
   components: {
-    'app-sidebar': Sidebar
+    Sidebar
   }
 }
 </script>
-
-<style></style>
+<style>
+.Main {
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+</style>
