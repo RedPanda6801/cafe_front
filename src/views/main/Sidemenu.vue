@@ -22,7 +22,7 @@
           <i class="bx bxs-user-rectangle" />
           <div class="name_job">
             <div class="name">
-              <!-- {{ user.user.name }} -->
+              {{ getName }}
             </div>
             <div class="job">
               {{ profileRole }}
@@ -45,7 +45,7 @@
         </ul>
       </div>
       <div class="deviceB">
-        <button class="deviceMobile">Mobile</button>
+        <button class="deviceMobile" @click="$router.push('/phone')">Mobile</button>
         <button class="deviceTablet" @click="$router.push('/tablet')">Tablet</button>
       </div>
     </div>
@@ -209,6 +209,10 @@ export default {
         '--menu-items-text-color': this.menuItemsTextColor,
         '--menu-footer-text-color': this.menuFooterTextColor
       }
+    },
+    getName() {
+      const user = this.user?.user?.name || '감자'
+      return user
     }
   },
   watch: {
