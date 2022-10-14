@@ -7,7 +7,7 @@
         <h1>감자다방</h1>
       </div>
       <div class="cafeBanner">
-        <img src="../../../public/cafe-default.png" class="banner" />
+        <img src="../../../public/cafeDefault.png" class="banner" />
       </div>
     </div>
     <div class="inputContainer">
