@@ -3,23 +3,27 @@
     <div style="margin-top: 80px">
       <b-row align-h="center">
         <b-col cols="4">
-          <b-card title="로그인">
-            <b-form-group label-cols="4" label-cols-lg="3" label="아이디" label-for="input-userid">
-              <b-form-input id="input-userid" v-model="userId"></b-form-input>
-            </b-form-group>
-            <b-form-group label-cols="4" label-cols-lg="3" label="패스워드" label-for="input-password">
-              <b-form-input id="input-password" v-model="password" type="password"></b-form-input>
-            </b-form-group>
-            <b-form-group label-cols="4" label-cols-lg="3" label="로그인">
-              <b-button variant="primary" :disabled="loading" @click="OwnerLogin"
-                ><b-spinner v-if="loading" type="submit" small></b-spinner> 로그인</b-button
-              >
-            </b-form-group>
-            <b-form-group>
-              <b-button variant="primary" @click="signUp">회원가입</b-button>
-              <b-button variant="primary" @click="findId">ID/PW찾기</b-button>
-            </b-form-group>
-          </b-card>
+          <ValidationObserver ref="signUpForm" v-slot="{ handleSubmit, invalid, validate }">
+            <b-card title="로그인">
+              <b-form>
+                <b-form-group label-cols="4" label-cols-lg="3" label="아이디" label-for="input-userid">
+                  <b-form-input id="input-userid" v-model="userId"></b-form-input>
+                </b-form-group>
+                <b-form-group label-cols="4" label-cols-lg="3" label="패스워드" label-for="input-password">
+                  <b-form-input id="input-password" v-model="password" type="password"></b-form-input>
+                </b-form-group>
+                <b-form-group label-cols="4" label-cols-lg="3" label="로그인">
+                  <b-button variant="primary" :disabled="loading" @click="OwnerLogin"
+                    ><b-spinner v-if="loading" type="submit" small></b-spinner> 로그인</b-button
+                  >
+                </b-form-group>
+                <b-form-group>
+                  <b-button variant="primary" @click="signUp">회원가입</b-button>
+                  <b-button variant="primary" @click="findId">ID/PW찾기</b-button>
+                </b-form-group>
+              </b-form>
+            </b-card>
+          </ValidationObserver>
         </b-col>
       </b-row>
     </div>
@@ -28,9 +32,11 @@
 
 <script>
 // import jwtDecode from 'jwt-decode'
+import Validate from '@/assets/mixins/Validate.vue'
 import axios from 'axios'
 
 export default {
+  mixins: [Validate],
   data() {
     return {
       userId: '',
