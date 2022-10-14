@@ -95,7 +95,7 @@ export default {
         userId: this.userId,
         password: this.password
       }
-      console.log('아시오스 들어오나', axiosBody)
+      //console.log('아시오스 들어오나', axiosBody)
       await axios
         .post(process.env.VUE_APP_URL + '/auth/login', axiosBody)
         .then(async res => {

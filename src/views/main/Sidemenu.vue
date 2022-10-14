@@ -184,7 +184,8 @@ export default {
   },
   data() {
     return {
-      isOpened: false
+      isOpened: false,
+      name: ''
     }
   },
   computed: {
