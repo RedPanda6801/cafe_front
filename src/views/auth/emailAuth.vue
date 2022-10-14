@@ -159,6 +159,7 @@ export default {
           if (localStorage.getItem('auth')) {
             localStorage.removeItem('auth')
           }
+          console.log(response.data)
           this.emailSent = true
           localStorage.setItem('auth', JSON.stringify(response.data.user))
         })

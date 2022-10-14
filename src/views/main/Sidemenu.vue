@@ -107,10 +107,10 @@ export default {
           icon: 'bx-chat'
         },
         {
-          link: '/Home',
-          name: 'Solution',
-          tooltip: 'Solution',
-          icon: 'bx-pie-chart-alt-2'
+          link: '#',
+          name: 'F&Q',
+          tooltip: 'F&Q',
+          icon: 'bx-comment-detail'
         },
         {
           link: '#',
