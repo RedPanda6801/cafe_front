@@ -22,7 +22,7 @@
           <i class="bx bxs-user-rectangle" />
           <div class="name_job">
             <div class="name">
-              {{ user.user.name }}
+              <!-- {{ user.user.name }} -->
             </div>
             <div class="job">
               {{ profileRole }}
@@ -113,7 +113,7 @@ export default {
           icon: 'bx-comment-detail'
         },
         {
-          link: '#',
+          link: '/Home',
           name: 'Setting',
           tooltip: 'Setting',
           icon: 'bx-cog'
@@ -265,6 +265,9 @@ body {
 }
 .sidebar.open {
   width: 250px;
+}
+.sidebar.close {
+  display: none;
 }
 .sidebar .logo-details {
   height: 60px;
