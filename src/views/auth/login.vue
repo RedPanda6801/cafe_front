@@ -3,17 +3,35 @@
     <div style="margin-top: 80px">
       <b-row align-h="center">
         <b-col cols="4">
-          <ValidationObserver ref="signUpForm" v-slot="{ handleSubmit, invalid, validate }">
-            <b-card title="로그인">
-              <b-form>
+          <b-card title="로그인">
+            <ValidationObserver ref="signUpForm" v-slot="{ handleSubmit, invalid, validate }">
+              <b-form @submit.prevent="handleSubmit(OwnerLogin)">
                 <b-form-group label-cols="4" label-cols-lg="3" label="아이디" label-for="input-userid">
-                  <b-form-input id="input-userid" v-model="userId"></b-form-input>
+                  <ValidationProvider v-slot="{ errors }" name="userid" rules="required">
+                    <b-form-input
+                      id="input-userid"
+                      v-model="userId"
+                      :counter="10"
+                      :error-messages="errors"
+                      required
+                      @keyup.enter="OwnerLogin"
+                    ></b-form-input>
+                  </ValidationProvider>
                 </b-form-group>
                 <b-form-group label-cols="4" label-cols-lg="3" label="패스워드" label-for="input-password">
-                  <b-form-input id="input-password" v-model="password" type="password"></b-form-input>
+                  <ValidationProvider v-slot="{ errors }" name="password" rules="required|min:6|max:20">
+                    <b-form-input
+                      id="input-password"
+                      v-model="password"
+                      :error-messages="errors"
+                      required
+                      type="password"
+                      @keyup.enter="OwnerLogin"
+                    ></b-form-input>
+                  </ValidationProvider>
                 </b-form-group>
                 <b-form-group label-cols="4" label-cols-lg="3" label="로그인">
-                  <b-button variant="primary" :disabled="loading" @click="OwnerLogin"
+                  <b-button variant="primary" :disabled="invalid || !validate" @click="OwnerLogin"
                     ><b-spinner v-if="loading" type="submit" small></b-spinner> 로그인</b-button
                   >
                 </b-form-group>
@@ -22,8 +40,8 @@
                   <b-button variant="primary" @click="findId">ID/PW찾기</b-button>
                 </b-form-group>
               </b-form>
-            </b-card>
-          </ValidationObserver>
+            </ValidationObserver>
+          </b-card>
         </b-col>
       </b-row>
     </div>
