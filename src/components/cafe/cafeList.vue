@@ -4,7 +4,7 @@
       <b-avatar icon="shop"></b-avatar>
       <span class="cafeName">카페이름</span>
       <span class="cafelocation">카페주소</span>
-      <span>멤버쉽 만료기간</span>
+      <span class="cafeTime">멤버쉽 만료기간</span>
     </div>
   </div>
 </template>
@@ -18,8 +18,10 @@ export default {}
   cursor: pointer;
 }
 .cafeList {
+  width: 95%;
   padding: 10px;
-  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
   border-radius: 30px;
   transition: 0.5s;
   box-shadow: 2px 2px 2px 1px rgba(1, 1, 1, 0.1);
@@ -28,9 +30,21 @@ export default {}
   background-color: rgba(232, 232, 232, 0.47);
 }
 .cafeName {
-  margin: 0px 10px 0px 20px;
+  margin-top: 10px;
+  width: 10vw;
+  text-align: center;
+  /* background-color: azure; */
 }
 .cafelocation {
-  margin: 0px 20px 0px 10px;
+  margin-top: 10px;
+  width: 35vw;
+  text-align: center;
+  /* background-color: aqua; */
+}
+.cafeTime {
+  margin-top: 10px;
+  width: 20vw;
+  text-align: center;
+  /* background-color: fuchsia; */
 }
 </style>

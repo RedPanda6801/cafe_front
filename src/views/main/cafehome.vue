@@ -56,7 +56,8 @@
           <label for="id">멤버쉽 만료기간:</label>
         </b-col>
         <b-col sm="5">
-          <p id="id">~ 2022-11-11</p>
+          <span id="id">~ 2022-11-11</span>
+          <b-btn>멤버쉽 결제</b-btn>
         </b-col>
       </b-row>
       <div class="cafehomeB">

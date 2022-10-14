@@ -1,23 +1,24 @@
 <template>
   <div class="Main">
-    <Sidebar />
+    <Sidemenu />
     <router-view />
   </div>
 </template>
 
 <script>
-import Sidebar from '../main/Sidebar.vue'
+import Sidemenu from '../main/Sidemenu.vue'
 export default {
   components: {
-    Sidebar
+    Sidemenu
   }
 }
 </script>
 <style>
 .Main {
+  width: 100%;
   margin: 0px;
   padding: 0px;
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 1fr 2fr;
 }
 </style>

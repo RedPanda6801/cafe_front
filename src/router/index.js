@@ -16,17 +16,17 @@ const routes = [
         component: () => import('../views/Home.vue')
       },
       {
-        path: '/mypage',
-        component: () => import('../views/mypage'),
-        meta: { header: false }
-      },
-      {
         path: '/main',
         component: () => import('../views/main'),
         children: [
           {
             path: '/main',
             component: () => import('../views/main/main'),
+            meta: { header: false }
+          },
+          {
+            path: '/mypage',
+            component: () => import('../views/main/mypage'),
             meta: { header: false }
           },
           {
@@ -41,7 +41,8 @@ const routes = [
           },
           {
             path: '/main/cafehome',
-            component: () => import('../views/main/cafehome')
+            component: () => import('../views/main/cafehome'),
+            meta: { header: false }
           },
           {
             path: '/main/customer',
