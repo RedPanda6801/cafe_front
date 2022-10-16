@@ -49,6 +49,11 @@ const routes = [
             component: () => import('../views/main/customerList'),
             meta: { header: false }
           }
+          // {
+          //   path: '/main/qna',
+          //   component: () => import('../views/main/qna'),
+          //   meta: { header: false }
+          // }
         ]
       },
       {
@@ -115,6 +120,11 @@ const routes = [
     //     meta: { header: false }
     //   }
     // ]
+  },
+  {
+    path: '/qna',
+    component: () => import('../views/user/qna'),
+    meta: { header: false }
   },
   {
     path: '/tablet/stamp',
