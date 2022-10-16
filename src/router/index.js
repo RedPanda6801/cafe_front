@@ -48,6 +48,11 @@ const routes = [
             path: '/main/customer',
             component: () => import('../views/main/customerList'),
             meta: { header: false }
+          },
+          {
+            path: '/main/qna',
+            component: () => import('../views/main/qna'),
+            meta: { header: false }
           }
         ]
       },
