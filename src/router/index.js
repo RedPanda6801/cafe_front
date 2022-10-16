@@ -16,6 +16,10 @@ const routes = [
         component: () => import('../views/Home.vue')
       },
       {
+        path: '/F&Q',
+        component: () => import('../views/FQ.vue')
+      },
+      {
         path: '/main',
         component: () => import('../views/main'),
         children: [
