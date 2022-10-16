@@ -1,5 +1,6 @@
 <template>
   <div class="qnaContainer">
+    <Sidemenu />
     <div class="qnaHeader">
       <!-- 제목 -->
       <p>내 문의사항</p>
@@ -20,7 +21,12 @@
 </template>
 
 <script>
-export default {}
+import Sidemenu from '../main/Sidemenu.vue'
+export default {
+  components: {
+    Sidemenu
+  }
+}
 </script>
 
 <style scoped>
