@@ -207,7 +207,7 @@ export default {
       }
     },
     getName() {
-      const user = this.user?.user?.name || '감자'
+      const user = this.user?.name || '감자'
       return user
     }
   },
