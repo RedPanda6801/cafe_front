@@ -130,7 +130,7 @@ export default {
   width: 100%;
   padding-left: 18%;
   display: grid;
-  grid-template-columns: 2fr 6fr;
+  grid-template-columns: 1fr 4fr;
 }
 .CafeHome {
   margin: 25px;
