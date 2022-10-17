@@ -30,8 +30,7 @@ export default {
   data() {
     return {
       cafeLists: [],
-      cafeLength: '',
-      cafeName: ''
+      cafeLength: ''
     }
   },
   mounted() {
@@ -57,9 +56,7 @@ export default {
         })
     },
     cafeRoute(cafeId) {
-      console.log('넌 뭐니?', typeof cafeId)
-      const cafeRouter = parseInt(cafeId)
-      this.$router.push(`/tablet/${cafeRouter}`)
+      this.$router.push(`/tablet/${cafeId}`)
     }
   }
 }
