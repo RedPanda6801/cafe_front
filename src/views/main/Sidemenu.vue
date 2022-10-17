@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar" :class="isOpened ? 'open' : ''" :style="cssVars">
     <div class="logo-details" style="margin: 6px 14px 0 14px">
-      <img v-if="menuLogo" :src="menuLogo" alt="menu-logo" class="menu-logo icon" />
+      <!-- <img src="../../../public/whitelogo.png" alt="menu-logo" class="menu-logo icon" /> -->
       <div class="logo_name" style="margin: 0px 0px 0px 40px">
-        {{ menuTitle }}
+        <img src="../../../public/whitelogo.png" alt="menu-logo" />
       </div>
       <i id="btn" class="bx" :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'" @click="isOpened = !isOpened" />
     </div>
@@ -63,10 +63,10 @@ export default {
       type: Boolean,
       default: true
     },
-    menuTitle: {
-      type: String,
-      default: 'My Coupon'
-    },
+    // menuTitle: {
+    //   type: String,
+    //   default: 'My Coupon'
+    // },
     menuLogo: {
       type: String,
       default: ''
@@ -169,15 +169,11 @@ export default {
     },
     itemsTooltipColor: {
       type: String,
-      default: '#e4e9f7'
-    },
-    searchInputTextColor: {
-      type: String,
       default: '#fff'
     },
     menuItemsHoverColor: {
       type: String,
-      default: '#fff'
+      default: '#5a38d4'
     },
     menuItemsTextColor: {
       type: String,
@@ -284,9 +280,6 @@ body {
   transition: all 0.5s ease;
 }
 .sidebar .logo-details .logo_name {
-  color: var(--logo-title-color);
-  font-size: 20px;
-  font-weight: 600;
   opacity: 0;
   transition: all 0.5s ease;
 }
@@ -409,7 +402,7 @@ body {
 .sidebar li button:hover .links_name,
 .sidebar li button:hover i {
   transition: all 0.5s ease;
-  color: var(--bg-color);
+  color: #fff;
 }
 .deviceB {
   margin: 6px 14px 90px 14px;
@@ -431,8 +424,9 @@ body {
   margin-top: 9px;
 }
 .deviceB button:hover {
+  border: 2px solid var(--menu-items-hover-color);
   background: var(--menu-items-hover-color);
-  color: var(--bg-color);
+  color: #fff;
 }
 .sidebar li i {
   height: 50px;
@@ -447,7 +441,7 @@ body {
   /* left: 0;
     bottom: 0; */
   padding: 10px 14px;
-  background: var(--secondary-color);
+  background: #251b4b;
   transition: all 0.5s ease;
   overflow: hidden;
 }
@@ -461,7 +455,6 @@ body {
 }
 .sidebar div img {
   height: 45px;
-  width: 45px;
   object-fit: cover;
   border-radius: 6px;
   margin-right: 10px;
@@ -481,7 +474,7 @@ body {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  background: var(--secondary-color);
+  background: #251b4b;
   width: 100%;
   height: 60px;
   line-height: 60px;
@@ -490,7 +483,7 @@ body {
 }
 .sidebar.open .profile #log_out {
   width: 50px;
-  background: var(--secondary-color);
+  background: #251b4b;
   opacity: 0;
 }
 .sidebar.open .profile:hover #log_out {

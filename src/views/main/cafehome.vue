@@ -1,70 +1,75 @@
 <template>
-  <div>
-    <b-card class="cafehome-card">
-      <b-avatar size="100px" button @click="$bvModal.show('modal-cafe-img')"
-        ><b-icon icon="shop" scale="2.5"></b-icon
-      ></b-avatar>
-      <b-modal id="modal-cafe-img" title="카페 사진 추가">
-        <b-form-group>
-          <b-form-file
-            v-model="form.file"
-            :state="Boolean(form.file)"
-            placeholder="사진 추가하기..."
-            required
-            accept=".jpg"
-            @change="previewImage"
-          ></b-form-file>
-          <div>
-            <b-img :src="previewImageData" class="formStyle"></b-img>
-          </div>
-        </b-form-group>
-      </b-modal>
-      <b-row class="my-1">
-        <b-col sm="2">
-          <label for="id">카페이름:</label>
-        </b-col>
-        <b-col sm="5">
-          <p id="id">UVC카페</p>
-        </b-col>
-      </b-row>
-      <b-row class="my-1">
-        <b-col sm="2">
-          <label for="id">카페번호:</label>
-        </b-col>
-        <b-col sm="5">
-          <p id="id">02-475-0655</p>
-        </b-col>
-      </b-row>
-      <b-row class="my-1">
-        <b-col sm="2">
-          <label for="id">카페주소:</label>
-        </b-col>
-        <b-col sm="5">
-          <p id="id">서울시 어쩌구</p>
-        </b-col>
-      </b-row>
-      <b-row class="my-1">
-        <b-col sm="2">
-          <label for="id">사업자 번호:</label>
-        </b-col>
-        <b-col sm="5">
-          <p id="id">731-87-02887</p>
-        </b-col>
-      </b-row>
-      <b-row class="my-1">
-        <b-col sm="2">
-          <label for="id">멤버쉽 만료기간:</label>
-        </b-col>
-        <b-col sm="5">
-          <span id="id">~ 2022-11-11</span>
-          <b-btn>멤버쉽 결제</b-btn>
-        </b-col>
-      </b-row>
-      <div class="cafehomeB">
-        <b-btn class="cafehomeTB">테블릿 사진 변경</b-btn>
-        <b-btn>고객관리</b-btn>
+  <div class="CAHO">
+    <h3 class="CafeHome">Cafe Home</h3>
+    <div class="cafehome-card">
+      <div class="cafepro">
+        <b-avatar size="150px" button @click="$bvModal.show('modal-cafe-img')"
+          ><b-icon icon="shop" scale="3.3"></b-icon
+        ></b-avatar>
+        <b-modal id="modal-cafe-img" title="카페 사진 추가">
+          <b-form-group>
+            <b-form-file
+              v-model="form.file"
+              :state="Boolean(form.file)"
+              placeholder="사진 추가하기..."
+              required
+              accept=".jpg"
+              @change="previewImage"
+            ></b-form-file>
+            <div>
+              <b-img :src="previewImageData" class="formStyle"></b-img>
+            </div>
+          </b-form-group>
+        </b-modal>
       </div>
-    </b-card>
+      <div class="cafehoMeM">
+        <b-row class="my-1">
+          <b-col sm="3">
+            <label for="id">카페이름:</label>
+          </b-col>
+          <b-col sm="5">
+            <p>UVC카페</p>
+          </b-col>
+        </b-row>
+        <b-row class="my-1">
+          <b-col sm="3">
+            <label for="id">카페번호:</label>
+          </b-col>
+          <b-col sm="5">
+            <p>02-475-0655</p>
+          </b-col>
+        </b-row>
+        <b-row class="my-1">
+          <b-col sm="3">
+            <label for="id">카페주소:</label>
+          </b-col>
+          <b-col sm="5">
+            <p>서울시 어쩌구</p>
+          </b-col>
+        </b-row>
+        <b-row class="my-1">
+          <b-col sm="3">
+            <label for="id">사업자 번호:</label>
+          </b-col>
+          <b-col sm="5">
+            <p>731-87-02887</p>
+          </b-col>
+        </b-row>
+        <b-row class="my-1">
+          <b-col sm="3">
+            <label for="id">멤버쉽<br />만료기간:</label>
+          </b-col>
+          <b-col sm="5">
+            <span>~ 2022-11-11</span>
+            <b-btn class="memberB">멤버쉽 결제</b-btn>
+          </b-col>
+        </b-row>
+        <div class="cafehomeB">
+          <b-btn class="cafehomeTB">테블릿 사진 변경</b-btn>
+          <b-btn>고객관리</b-btn>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -111,6 +116,10 @@ export default {
 </script>
 
 <style>
+.CAHO {
+  width: 100%;
+  height: 100vh;
+}
 .cafehomeTB {
   margin-right: 10px;
 }
@@ -119,5 +128,21 @@ export default {
 }
 .cafehome-card {
   width: 100%;
+  padding-left: 18%;
+  display: grid;
+  grid-template-columns: 2fr 6fr;
+}
+.CafeHome {
+  margin: 25px;
+}
+.memberB {
+  margin-left: 5vw;
+  width: 8vw;
+}
+.cafehoMeM {
+  width: 75%;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
