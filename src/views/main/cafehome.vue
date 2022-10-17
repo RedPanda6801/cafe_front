@@ -13,7 +13,7 @@
               :state="Boolean(form.file)"
               placeholder="사진 추가하기..."
               required
-              accept=".jpg, .png"
+              accept=".jpg"
               @change="previewImage"
             ></b-form-file>
             <div>
