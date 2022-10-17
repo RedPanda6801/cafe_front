@@ -224,7 +224,6 @@ export default {
     signOut() {
       localStorage.removeItem('token')
       this.$router.push('/auth/login')
-      this.$router.go()
     }
   }
 }

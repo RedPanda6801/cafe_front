@@ -41,12 +41,11 @@ export default {
   }),
   computed: {
     isLoggedin() {
-      //console.log(this.GE_LOGIN_STATUS)
-      // let login = false
-      // if (this.GE_LOGIN_STATUS) {
-      //   login = true
-      // }
-      let login = true
+      let login = false
+      if (this.GE_LOGIN_STATUS) {
+        login = true
+      }
+      console.log(login)
       return login
     }
     // tokenUserName() {
