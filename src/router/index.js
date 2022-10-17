@@ -44,7 +44,7 @@ const routes = [
             meta: { header: false }
           },
           {
-            path: '/main/cafehome',
+            path: '/main/:id',
             component: () => import('../views/main/cafehome'),
             meta: { header: false }
           },

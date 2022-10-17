@@ -28,7 +28,7 @@
             <label for="id">카페이름:</label>
           </b-col>
           <b-col sm="5">
-            <p>UVC카페</p>
+            <p>UVC 카페</p>
           </b-col>
         </b-row>
         <b-row class="my-1">
@@ -59,7 +59,7 @@
           <b-col sm="3">
             <label for="id">멤버쉽<br />만료기간:</label>
           </b-col>
-          <b-col sm="5">
+          <b-col sm="8">
             <span>~ 2022-11-11</span>
             <b-btn class="memberB">멤버쉽 결제</b-btn>
           </b-col>

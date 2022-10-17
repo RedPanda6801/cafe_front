@@ -81,7 +81,11 @@ export default {
         subscribeDate: this.subscribeDate
       }
       await axios
-        .post(process.env.VUE_APP_URL + '/cafe/add-cafe', axiosBody)
+        .post(process.env.VUE_APP_URL + '/cafe/add-cafe', axiosBody, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
         .then(async res => {
           console.log(res)
           const code = res.data

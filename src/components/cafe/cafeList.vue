@@ -1,21 +1,31 @@
 <template>
-  <div class="cafehomeList" @click="$router.push('/main/cafehome')">
+  <div class="cafehomeList" @click="$router.push('/main/:id')">
     <div class="cafeList">
       <b-avatar icon="shop"></b-avatar>
-      <span class="cafeName">카페이름</span>
-      <span class="cafelocation">카페주소</span>
-      <span class="cafeTime">멤버쉽 만료기간</span>
+      <span class="cafeName">{{ cafeList.cafeName }}</span>
+      <span class="cafelocation">{{ cafeList.location }}</span>
+      <span class="cafeTime">{{ setDateFormat(cafeList.createdAt) }}</span>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import SetFormat from '../../assets/mixins/SetFormat.vue'
+export default {
+  mixins: [SetFormat],
+  props: {
+    cafeList: {
+      type: Object,
+      required: true
+    }
+  }
+}
 </script>
 
 <style>
 .cafehomeList {
   cursor: pointer;
+  margin-bottom: 15px;
 }
 .cafeList {
   width: 95%;
