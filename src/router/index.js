@@ -2,7 +2,6 @@ import jwtDecode from 'jwt-decode'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -112,17 +111,22 @@ const routes = [
     component: () => import('../views/device/tabletChoice'),
     meta: { header: false },
     children: [
-      {
-        path: '/tablet/:id',
-        component: () => import('../views/device/tabletInput'),
-        meta: { header: false }
-      },
+      // {
+      //   path: '/:id',
+      //   component: () => import('../views/device/tabletInput'),
+      //   meta: { header: false }
+      // },
       {
         path: '/tablet/:id/stamp',
         component: () => import('../views/device/tabletStamp'),
         meta: { header: false }
       }
     ]
+  },
+  {
+    path: '/tablet/:id',
+    component: () => import('../views/device/tabletInput'),
+    meta: { header: false }
   },
   // 라우터 고민해봐야 함
   {

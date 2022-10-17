@@ -12,7 +12,9 @@
     </div>
     <div v-show="cafeLength > 0">
       <div v-for="(cafeList, index) in cafeLists" :key="cafeList.id">
-        <button class="cafeBtn" @click="cafeRoute(cafeLists[index].id)">{{ cafeLists[index].cafeName }}</button>
+        <button class="cafeBtn" @click="cafeRoute(cafeLists[index].id)">
+          {{ cafeLists[index].cafeName }}
+        </button>
       </div>
     </div>
   </div>
@@ -31,6 +33,9 @@ export default {
       cafeLength: '',
       cafeName: ''
     }
+  },
+  mounted() {
+    this.getCafeLists()
   },
   methods: {
     async getCafeLists() {
@@ -52,11 +57,10 @@ export default {
         })
     },
     cafeRoute(cafeId) {
-      this.$router.push(`/tablet/${cafeId}`)
+      console.log('넌 뭐니?', typeof cafeId)
+      const cafeRouter = parseInt(cafeId)
+      this.$router.push(`/tablet/${cafeRouter}`)
     }
-  },
-  mounted() {
-    this.getCafeLists()
   }
 }
 </script>

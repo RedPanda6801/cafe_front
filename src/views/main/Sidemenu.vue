@@ -220,6 +220,9 @@ export default {
   mounted() {
     this.isOpened = this.isMenuOpen
   },
+  destroyed() {
+    window.document.body.style.paddingLeft = '0px'
+  },
   methods: {
     signOut() {
       localStorage.removeItem('token')
