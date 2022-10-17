@@ -1,6 +1,6 @@
 <template>
   <div class="MyPage">
-    <h2>마이페이지</h2>
+    <h3>My Page</h3>
     <b-card title="기본정보" class="mpcard">
       <!-- <b-form @submit="onSubmit" @reset="onReset"> -->
       <b-row class="my-1">
@@ -94,7 +94,12 @@ export default {
   padding: 25px;
 }
 .mpcard {
-  width: 80%;
-  height: 70vh;
+  width: 75%;
+  height: 55vh;
+  margin-top: 20px;
+  margin-left: 10vw;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 </style>

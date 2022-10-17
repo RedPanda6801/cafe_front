@@ -6,7 +6,9 @@
         <span class="Btext"><b-icon icon="plus-lg" scale="0.7"></b-icon> 카페추가하기</span>
         <!-- <b-icon icon="plus-lg" scale="0.7"></b-icon> 카페 추가하기 -->
       </button>
-      <cafe-list />
+      <div>
+        <cafe-list v-for="cafeList in cafeLists" :key="cafeList.id" :cafe-list="cafeList" />
+      </div>
     </div>
     <div class="footer">2022 My_Coupon &copy; All Rights Reserved.</div>
   </div>
@@ -14,9 +16,35 @@
 
 <script>
 import cafeList from '../../components/cafe/cafeList.vue'
+import axios from 'axios'
 export default {
   components: {
     cafeList
+  },
+  data() {
+    return {
+      cafeLists: []
+    }
+  },
+  mounted() {
+    this.getCafeLists()
+  },
+  methods: {
+    async getCafeLists() {
+      await axios
+        .get(process.env.VUE_APP_URL + '/cafe/info', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          this.cafeLists = res.data.data
+          console.log('cafeList : ', res.data.data)
+        })
+        .catch(err => {
+          console.log('cafeList -error : ', err)
+        })
+    }
   }
 }
 </script>
@@ -24,7 +52,7 @@ export default {
 <style>
 .maiNpage {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 .cafelist {
   width: 82vw;
@@ -33,7 +61,7 @@ export default {
   /* background-color: aqua; */
 }
 .cafeAddB {
-  width: 95%;
+  width: 75vw;
   height: 15vh;
   margin: 5px 0px 30px 0px;
   border: none;
