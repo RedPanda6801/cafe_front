@@ -8,7 +8,7 @@
           <label for="id">아이디:</label>
         </b-col>
         <b-col sm="8">
-          <b-list-group-item id="Id">{{ user.user.userId }}</b-list-group-item>
+          <b-list-group-item id="Id">{{ user.userId }}</b-list-group-item>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -16,7 +16,7 @@
           <label>이름:</label>
         </b-col>
         <b-col sm="8">
-          <b-list-group-item>{{ user.user.name }}</b-list-group-item>
+          <b-list-group-item>{{ user.name }}</b-list-group-item>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -24,7 +24,7 @@
           <label for="phone">폰번호:</label>
         </b-col>
         <b-col sm="8">
-          <b-list-group-item id="phone">{{ user.user.ownerPhone }}</b-list-group-item>
+          <b-list-group-item id="phone">{{ user.ownerPhone }}</b-list-group-item>
           <b-btn @click="$bvModal.show('modal-phone-infor')">폰번호 수정</b-btn>
           <b-modal id="modal-phone-infor" title="폰번호 수정">
             <b-form-group label="phone" label-cols="3">
@@ -38,7 +38,7 @@
           <label for="email">이메일:</label>
         </b-col>
         <b-col sm="8">
-          <b-list-group-item id="email">{{ user.user.email }}</b-list-group-item>
+          <b-list-group-item id="email">{{ user.email }}</b-list-group-item>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -77,8 +77,8 @@ export default {
           }
         })
         .then(async res => {
-          this.user = res.data
-          console.log('inforData - response: ', res)
+          this.user = res.data.data
+          console.log('inforData - response: ', res.data.data)
         })
         .catch(err => {
           console.log('inforData - error: ', err)
