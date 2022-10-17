@@ -1,28 +1,43 @@
 <template>
   <div class="tabletContainer">
-    <p>입장하실 카페를 선택해주세요!</p>
-    <div class="cafeList">
+    <Sidemenu />
+    <div class="tabletHeader">
+      <p>입장하실 카페를 선택해주세요!</p>
+    </div>
+    <div>
       <!-- v-for 로 카페 수만큼 버튼에 뿌려주기 -->
-      <button></button>
+      <button class="cafeBtn">감자다방</button>
     </div>
   </div>
 </template>
 
 <script>
+import Sidemenu from '../main/Sidemenu.vue'
 export default {
+  components: {
+    Sidemenu
+  },
   data() {
     return {}
-  },
-  methods: {}
+  }
 }
 </script>
 
 <style scoped>
 .tabletContainer {
-  height: 100vh;
-  width: 100vw;
-  /*background-color: black;*/
+  height: 100%;
+  width: 100%;
+}
+.tabletHeader {
+  margin-top: 50px;
   display: grid;
-  grid-template-rows: 50% 50%;
+  justify-content: center;
+  font-size: 50px;
+}
+.cafeBtn {
+  width: 90%;
+  height: 100px;
+  border-radius: 30px;
+  margin-top: 20px;
 }
 </style>

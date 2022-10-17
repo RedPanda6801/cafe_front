@@ -1,22 +1,28 @@
 <template>
   <div class="qnaContainer">
     <Sidemenu />
-    <div class="qnaHeader">
-      <!-- 제목 -->
-      <p>내 문의사항</p>
-    </div>
-    <div class="qnaList">
-      <!-- 문의글 작성 / 조회 파트 -->
-      <div class="qnaBtn">
-        <!-- 문의글 작성 버튼 -->
-        <button>문의글 작성하기</button>
+    <div class="qna">
+      <h3>문의하기</h3>
+      <div class="btnOrganizer">
+        <button class="qnaBtn" @click="$router.push('/qna/write')">
+          <span class="Btext"><b-icon icon="plus-lg" scale="0.7"></b-icon> 문의글 남기기</span>
+        </button>
       </div>
-      <div>
-        <!-- v-show 이용해서 문의글 작성된 게 없다면 작성된 문의글이 없습니다 문구만 보여주기 -->
-        <!-- 작성된 내 작성글 모아볼 수 있게 리스트 출력 -->
-        <!-- 작성 문의글 제목 누르면 상세페이지로 이동할 수 있게 -->
+      <div v-show="!qnaList" class="qnaNone">
+        <div class="iconHolder">
+          <b-icon icon="exclamation-circle" class="qnaNoneIcon"></b-icon>
+        </div>
+        <span class="mt-4"><p>작성하신 문의내역이 없습니다.</p></span>
+      </div>
+      <!-- v-for로 질문 갯수만큼 반복 -->
+      <div v-show="qnaList" class="qnaList">
+        <div><p>답변여부</p></div>
+        <div><p>카테고리</p></div>
+        <div><p>제목</p></div>
+        <div><p>문의날짜</p></div>
       </div>
     </div>
+    <div class="footer">2022 My_Coupon &copy; All Rights Reserved.</div>
   </div>
 </template>
 
@@ -25,33 +31,71 @@ import Sidemenu from '../main/Sidemenu.vue'
 export default {
   components: {
     Sidemenu
+  },
+  data() {
+    return {
+      qnaList: false
+    }
   }
 }
 </script>
 
-<style scoped>
+<style>
 .qnaContainer {
-  display: grid;
-  grid-template-rows: 20% 80%;
-  height: 95%;
-  width: 95%;
-  justify-content: center;
-  /* align-items: center; */
-}
-.qnaHeader {
-  font-size: 30px;
-  margin-top: 30px;
-  display: center;
-  justify-content: center;
   width: 100%;
+  height: 100%;
+}
+.btnOrganizer {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}
+.qnaNone {
+  align-items: center;
+  color: grey;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  justify-content: center;
+  font-size: 30px;
+  margin-top: 50px;
+}
+.iconHolder {
+  display: grid;
+  justify-items: center;
+}
+.qnaNoneIcon {
+  width: 250px;
+  height: 250px;
+  color: #eee;
 }
 .qnaList {
   display: grid;
-  grid-template-rows: 10% 90%;
-  height: 100%;
-  width: 100%;
+  grid-template-columns: 15% 15% 50% 20%;
+}
+.qna {
+  width: 82vw;
+  height: 700px;
+  padding: 25px;
+  /* background-color: aqua; */
 }
 .qnaBtn {
-  display: grid;
+  width: 180px;
+  height: 50px;
+  margin: 5px 0px 30px 0px;
+  border: none;
+  font-size: 18px;
+  color: grey;
+  border-radius: 20px;
+}
+.qnaBtn:hover {
+  filter: brightness(70%);
+}
+.footer {
+  font-size: 12px;
+  color: #fff;
+  background: #708ab8;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 3vh 5vw;
 }
 </style>
