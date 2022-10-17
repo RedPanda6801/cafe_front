@@ -130,8 +130,7 @@ export default {
         .post(process.env.VUE_APP_URL + '/mail/process-code', {
           email: email,
           code: this.inputCode,
-          hash: user.hash,
-          provider: user.emailProvider
+          hash: user.hash
         })
         .then(response => {
           console.log('auth success : ', response)

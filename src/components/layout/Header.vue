@@ -47,6 +47,7 @@ export default {
         login = true
       }
       // let login = true
+      console.log(login)
       return login
     }
     // tokenUserName() {

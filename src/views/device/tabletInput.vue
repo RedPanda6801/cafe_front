@@ -7,7 +7,7 @@
         <h1>감자다방</h1>
       </div>
       <div class="cafeBanner">
-        <img src="../../../public/cafe-default.png" class="banner" />
+        <img src="../../../public/cafeDefault.png" class="banner" />
       </div>
     </div>
     <div class="inputContainer">
@@ -39,9 +39,23 @@
             <td><button class="numberPad" @click="addNumber(9)">9</button></td>
           </tr>
           <tr>
-            <td><button class="numberPad" @click="deleteNumber()">삭제</button></td>
+            <td><button class="numberPad" @click="deleteNumber">삭제</button></td>
             <td><button class="numberPad" @click="addNumber(0)">0</button></td>
-            <td><button class="numberPad">확인</button></td>
+            <td>
+              <button id="show-btn" class="numberPad" @click="$bvModal.show('confirmModal')">적립</button>
+              <b-modal id="confirmModal" size="xl" centered backdrop hide-footer>
+                <template #modal-title>입력하신 번호를 확인해 주세요!</template>
+                <div class="confirmContainer">
+                  <p class="confirmMessage">{{ phone }}으로</p>
+                  <p class="confirmMessage">적립하시겠습니까?</p>
+                </div>
+                <div class="d-block text-center btnOrganizer">
+                  <b-button class="modalBtn" @click="submit">네</b-button>
+                  <b-button class="modalBtn" @click="reset">아니오</b-button>
+                </div>
+              </b-modal>
+            </td>
+            <!-- <td><button class="numberPad" @click="confirmMessage">확인</button></td> -->
           </tr>
         </table>
       </div>
@@ -53,7 +67,8 @@
 export default {
   data() {
     return {
-      phone: ''
+      phone: '',
+      confirmModal: false
     }
   },
   methods: {
@@ -73,7 +88,15 @@ export default {
     deleteNumber() {
       this.phone = this.phone.slice(0, -1)
       return this.phone
-    }
+    },
+    confirmMessage() {
+      this.$bvModal.hide('confirmModal')
+    },
+    reset() {
+      this.$bvModal.hide('confirmModal')
+      this.phone = ''
+    },
+    submit() {}
   }
 }
 </script>
@@ -153,7 +176,28 @@ export default {
 .numberPad:active {
   background-color: grey;
 }
-
+.btnOrganizer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 5px;
+  justify-content: space-between;
+}
+.modalBtn {
+  width: 45%;
+  height: 5%;
+  margin: 5px;
+}
+.confirmContainer {
+  height: 300px;
+  font-size: 60px;
+  /* display: grid;
+  grid-template-rows: 50% 50%; */
+}
+.confirmMessage {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
 table {
   width: 100%;
   height: 100%;

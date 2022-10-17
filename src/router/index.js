@@ -53,6 +53,11 @@ const routes = [
             component: () => import('../views/main/customerList'),
             meta: { header: false }
           }
+          // {
+          //   path: '/main/qna',
+          //   component: () => import('../views/main/qna'),
+          //   meta: { header: false }
+          // }
         ]
       },
       {
@@ -102,27 +107,47 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/tablet',
+    component: () => import('../views/device/tabletChoice'),
+    meta: { header: false },
+    children: [
+      {
+        path: '/tablet/:id',
+        component: () => import('../views/device/tabletInput'),
+        meta: { header: false }
+      },
+      {
+        path: '/tablet/:id/stamp',
+        component: () => import('../views/device/tabletStamp'),
+        meta: { header: false }
+      }
+    ]
+  },
   // 라우터 고민해봐야 함
   {
     path: '/phone',
     component: () => import('../views/device/phoneControl'),
     meta: { header: false }
   },
+  // {
+  //   path: '/tablet',
+  //   component: () => import('../views/device/tabletInput'),
+  //   meta: { header: false }
+  // },
+  // {
+  //   path: '/tablet/stamp',
+  //   component: () => import('../views/device/tabletStamp'),
+  //   meta: { header: false }
+  // },
+  // {
+  //   path: '/tablet/Choice',
+  //   component: () => import('../views/device/tabletChoice'),
+  //   meta: { header: false }
+  // },
   {
-    path: '/tablet',
-    component: () => import('../views/device/tabletInput'),
-    meta: { header: false }
-    // children: [
-    //   {
-    //     path: '/tablet/stamp',
-    //     component: () => import('../views/device/tabletStamp'),
-    //     meta: { header: false }
-    //   }
-    // ]
-  },
-  {
-    path: '/tablet/stamp',
-    component: () => import('../views/device/tabletStamp'),
+    path: '/qna',
+    component: () => import('../views/user/qna'),
     meta: { header: false }
   },
   {

@@ -14,16 +14,12 @@
       </div>
       <!-- <h1>여기에 도장 현황 보여줄거야</h1> -->
       <div class="stampBody">
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stamp.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stampDefault.png" class="stamp" /></div>
-        <div class="stampHolder"><img src="../../../public/stampDefault.png" class="stamp" /></div>
+        <div v-for="stamp in 8" :key="stamp" class="stampHolder">
+          <img src="../../../public/stamp.png" class="stamp" />
+        </div>
+        <div v-for="empty in 2" :key="empty" class="stampHolder">
+          <img src="../../../public/stampDefault.png" class="stamp" />
+        </div>
       </div>
     </div>
   </div>

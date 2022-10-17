@@ -37,7 +37,7 @@
                 </b-form-group>
                 <b-form-group>
                   <b-button variant="primary" @click="signUp">회원가입</b-button>
-                  <b-button variant="primary" @click="findId">ID/PW찾기</b-button>
+                  <b-button variant="primary" @click="find">ID/PW찾기</b-button>
                 </b-form-group>
               </b-form>
             </ValidationObserver>
@@ -136,16 +136,10 @@ export default {
         })
     },
     signUp() {
-      console.log('회원가입창')
       this.$router.push('/auth/join')
     },
-    findId() {
-      console.log('아디찾기')
-      this.$router.push('/find-id')
-    },
-    findPw() {
-      console.log('비번찾기')
-      this.$router.push('/find-pw')
+    find() {
+      this.$router.push('/auth/find')
     }
   }
 }
