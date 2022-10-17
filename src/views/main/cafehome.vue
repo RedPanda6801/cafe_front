@@ -13,7 +13,7 @@
               :state="Boolean(form.file)"
               placeholder="사진 추가하기..."
               required
-              accept=".jpg"
+              accept=".jpg, .png"
               @change="previewImage"
             ></b-form-file>
             <div>
@@ -144,5 +144,8 @@ export default {
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+.cafehomeB {
+  margin-top: 25px;
 }
 </style>
