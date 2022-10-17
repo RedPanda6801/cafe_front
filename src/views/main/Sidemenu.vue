@@ -101,15 +101,15 @@ export default {
           icon: 'bx-user'
         },
         {
-          link: '/main/contact',
+          link: '/qna',
           name: 'Contact',
           tooltip: 'Contact',
           icon: 'bx-chat'
         },
         {
           link: '#',
-          name: 'F&Q',
-          tooltip: 'F&Q',
+          name: 'FAQ',
+          tooltip: 'FAQ',
           icon: 'bx-comment-detail'
         },
         {
