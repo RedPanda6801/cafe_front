@@ -28,15 +28,7 @@
             <label for="id">카페이름:</label>
           </b-col>
           <b-col sm="5">
-            <p>UVC 카페</p>
-          </b-col>
-        </b-row>
-        <b-row class="my-1">
-          <b-col sm="3">
-            <label for="id">카페번호:</label>
-          </b-col>
-          <b-col sm="5">
-            <p>02-475-0655</p>
+            <p>{{ watchCafe.cafeName }}</p>
           </b-col>
         </b-row>
         <b-row class="my-1">
@@ -44,7 +36,7 @@
             <label for="id">카페주소:</label>
           </b-col>
           <b-col sm="5">
-            <p>서울시 어쩌구</p>
+            <p>{{ watchCafe.location }}</p>
           </b-col>
         </b-row>
         <b-row class="my-1">
@@ -52,7 +44,7 @@
             <label for="id">사업자 번호:</label>
           </b-col>
           <b-col sm="5">
-            <p>731-87-02887</p>
+            <p>{{ watchCafe.businessNum }}</p>
           </b-col>
         </b-row>
         <b-row class="my-1">
@@ -74,6 +66,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -81,8 +74,12 @@ export default {
         file: ''
       },
       show: true,
-      previewImageData: null
+      previewImageData: null,
+      watchCafe: {}
     }
+  },
+  mounted() {
+    this.getWatchData()
   },
   methods: {
     onSubmit(evt) {
@@ -110,6 +107,23 @@ export default {
       } else {
         this.previewImageData = null
       }
+    },
+
+    async getWatchData() {
+      console.log('여기', this.$route.params.id)
+      await axios
+        .get(process.env.VUE_APP_URL + `/cafe/info-one/${this.$route.params.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(response => {
+          console.log('getWatchData - response : ', response.data.data)
+          this.watchCafe = response.data.data
+        })
+        .catch(error => {
+          console.log('getWatchData - error : ', error)
+        })
     }
   }
 }

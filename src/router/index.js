@@ -15,7 +15,7 @@ const routes = [
         component: () => import('../views/Home.vue')
       },
       {
-        path: '/F&Q',
+        path: '/FAQ',
         component: () => import('../views/FQ.vue')
       },
       {
@@ -30,11 +30,6 @@ const routes = [
           {
             path: '/mypage',
             component: () => import('../views/main/mypage'),
-            meta: { header: false }
-          },
-          {
-            path: '/main/contact',
-            component: () => import('../views/main/contact'),
             meta: { header: false }
           },
           {

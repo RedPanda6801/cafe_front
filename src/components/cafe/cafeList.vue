@@ -1,5 +1,5 @@
 <template>
-  <div class="cafehomeList" @click="$router.push('/main/:id')">
+  <div class="cafehomeList" @click="cafeRoute(cafeList.id)">
     <div class="cafeList">
       <b-avatar icon="shop"></b-avatar>
       <span class="cafeName">{{ cafeList.cafeName }}</span>
@@ -17,6 +17,11 @@ export default {
     cafeList: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    cafeRoute(cafeId) {
+      this.$router.push(`/main/${cafeId}`)
     }
   }
 }
