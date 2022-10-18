@@ -48,6 +48,7 @@ export default {
   margin-top: 10px;
   width: 10vw;
   text-align: center;
+  font-weight: bold;
   /* background-color: azure; */
 }
 .cafelocation {
@@ -57,9 +58,12 @@ export default {
   /* background-color: aqua; */
 }
 .cafeTime {
+  font-size: 12px;
   margin-top: 10px;
-  width: 20vw;
+  width: 15vw;
   text-align: center;
+  color: #432a9f;
+  border-radius: 15px;
   /* background-color: fuchsia; */
 }
 </style>
