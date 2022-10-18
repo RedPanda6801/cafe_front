@@ -7,7 +7,8 @@
         <p>{{ cafeName }}</p>
       </div>
       <div class="cafeBanner">
-        <img src="../../../public/cafeDefault.png" class="banner" />
+        <img v-if="cafeImg === null" src="../../../public/cafeDefault.png" class="banner" />
+        <img v-else :src="`http://192.168.0.50:8002/uploads/${cafeImg}`" class="banner" />
       </div>
     </div>
     <div class="inputContainer">
@@ -39,10 +40,10 @@
             <td><button class="numberPad" @click="addNumber(9)">9</button></td>
           </tr>
           <tr>
-            <td><button class="numberPad" @click="deleteNumber">삭제</button></td>
+            <td><button class="stringPad" @click="deleteNumber">삭제</button></td>
             <td><button class="numberPad" @click="addNumber(0)">0</button></td>
             <td>
-              <button id="show-btn" class="numberPad" @click="$bvModal.show('confirmModal')">확인</button>
+              <button id="show-btn" class="stringPad" @click="$bvModal.show('confirmModal')">확인</button>
               <b-modal id="confirmModal" size="xl" centered backdrop hide-footer>
                 <template #modal-title>입력하신 번호를 확인해 주세요!</template>
                 <div class="confirmContainer">
@@ -72,7 +73,8 @@ export default {
       phone: '',
       confirmModal: false,
       cafeName: '',
-      cafeId: ''
+      cafeId: '',
+      cafeImg: ''
     }
   },
   mounted() {
@@ -89,6 +91,7 @@ export default {
         .then(async res => {
           this.cafeName = res.data.data.cafeName
           this.cafeId = res.data.data.id
+          this.cafeImg = res.data.data.img
           console.log('cafeName : ', this.cafeName)
           console.log('res.data.data: ', res.data.data)
         })
@@ -220,8 +223,20 @@ export default {
   color: black;
   border-radius: 15px;
 }
+.stringPad {
+  width: 95%;
+  height: 95%;
+  border: none;
+  color: white;
+  border-radius: 15px;
+  background-color: #573cb8;
+}
 .numberPad:active {
   background-color: grey;
+  color: white;
+}
+.stringPad:active {
+  background-color: #29166d;
 }
 .btnOrganizer {
   display: grid;
