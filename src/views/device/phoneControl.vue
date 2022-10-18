@@ -4,6 +4,11 @@
       <b-card-text>
         <div class="stampSelect">
           <div class="quantity">
+            <div class="returnBtnDiv">
+              <button class="returnBtn" @click="$router.go(-1)">
+                <span><b-icon icon="arrow-left"></b-icon> 돌아가기</span>
+              </button>
+            </div>
             <div class="userHeader">
               <h2>{{ userPhone }} 님</h2>
               <p>고객 메모: {{ memo }}</p>
@@ -12,13 +17,6 @@
             </div>
             <div>
               <p>적용하실 갯수를 입력해 주세요.</p>
-              <p>
-                <span style="color: #dc3545">빨간색 버튼</span>은 5씩 증감,
-                <span style="color: #ffc107">노란색 버튼</span>은 1씩 증감합니다.<br />
-                <span style="color: grey; font-size: 15px">
-                  적용하실 숫자를 입력 후 원하시는 기능의 버튼을 누르면 해당 숫자 만큼 적립 / 사용 됩니다!
-                </span>
-              </p>
               <div class="inputOrganizer">
                 <b-btn pill size="sm" variant="outline-danger" @click="decrement(5)">-</b-btn>
                 <b-btn class="ml-2" variant="outline-warning" @click="decrement(1)">-</b-btn>
@@ -28,10 +26,17 @@
                 <b-btn class="mr-2" variant="outline-warning" @click="increment(1)">+</b-btn>
                 <b-btn pill size="sm" variant="outline-danger" @click="increment(5)">+</b-btn>
               </div>
+              <p>
+                <span style="color: #dc3545">빨간색 버튼</span>은 5씩 증감,
+                <span style="color: #ffc107">노란색 버튼</span>은 1씩 증감합니다.<br />
+                <span style="color: grey; font-size: 15px">
+                  적용하실 숫자를 입력 후 원하시는 기능의 버튼을 누르면 해당 숫자 만큼 적립 / 사용 됩니다!
+                </span>
+              </p>
               <div>
                 <!-- 버튼들 모아둘거임 -->
-                <b-button block href="#" variant="primary">적립하기</b-button>
-                <b-button block href="#" variant="primary">쿠폰 사용하기</b-button>
+                <b-button block variant="primary" @click="addStamp">적립하기</b-button>
+                <b-button block variant="primary" @click="useCoupon">쿠폰 사용하기</b-button>
                 <b-button block href="#" variant="primary">적립 취소</b-button>
               </div>
             </div>
@@ -43,16 +48,24 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Quantity',
   data() {
     return {
       quantity: 1,
-      visit: '0',
-      completedCoupon: '0',
+      visit: '',
+      completedCoupon: '',
       userPhone: '0119',
-      memo: ''
+      memo: '',
+      userNumber: '000-0000-0000',
+      cafeId: '1'
     }
+  },
+  mounted() {
+    // this.addStamp()
+    // this.useCoupon()
+    this.getCouponInfo()
   },
   methods: {
     increment(n) {
@@ -67,6 +80,59 @@ export default {
         this.quantity = this.quantity - n
         return this.quantity
       }
+    },
+    async addStamp() {
+      const axiosBody = { addCount: this.quantity }
+      await axios
+        .put(process.env.VUE_APP_URL + `/stamp/add-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          console.log('res.data : ', res.data)
+          // this.visit = res.data.stamp.visit + 1
+          // this.completedCoupon = res.data.stamp.leftStamp / 10
+          // this.stackedStamp = res.data.stamp.leftStamp % 10
+        })
+        .catch(err => {
+          console.log('addStamp -error : ', err)
+        })
+    },
+    async useCoupon() {
+      const axiosBody = { useCount: this.quantity }
+      await axios
+        .put(process.env.VUE_APP_URL + `/stamp/use-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          console.log('res.data : ', res.data)
+          // this.visit = res.data.stamp.visit + 1
+          // this.completedCoupon = res.data.stamp.leftStamp / 10
+          // this.stackedStamp = res.data.stamp.leftStamp % 10
+        })
+        .catch(err => {
+          console.log('addStamp -error : ', err)
+        })
+    },
+    async getCouponInfo() {
+      await axios
+        .get(process.env.VUE_APP_URL + `/stamp/search/${this.userNumber}/${this.cafeId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          console.log('res : ', res.data.stamp)
+          this.visit = res.data.stamp.visit + 1
+          this.completedCoupon = res.data.stamp.leftStamp / 10
+          // this.stackedStamp = res.data.stamp.leftStamp % 10
+        })
+        .catch(err => {
+          console.log('cafeList -error : ', err)
+        })
     }
   }
 }
@@ -111,5 +177,19 @@ export default {
   justify-content: center;
   width: 150px;
   height: 150px;
+}
+.returnBtn {
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  color: grey;
+  width: 100px;
+}
+.returnBtn:active {
+  filter: brightness(80%);
+}
+.returnBtnDiv {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
