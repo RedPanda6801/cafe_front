@@ -143,6 +143,11 @@ const routes = [
   // 라우터 고민해봐야 함
   {
     path: '/phone',
+    component: () => import('../views/device/phoneChoice'),
+    meta: { header: false }
+  },
+  {
+    path: '/phone/:id',
     component: () => import('../views/device/phoneControl'),
     meta: { header: false }
   },

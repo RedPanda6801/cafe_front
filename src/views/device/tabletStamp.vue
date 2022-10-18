@@ -33,7 +33,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.params)
     this.getCouponInfo()
   },
   methods: {
