@@ -119,5 +119,6 @@ export default {
 }
 .stamp {
   width: 70%;
+  transform: rotate(25deg);
 }
 </style>

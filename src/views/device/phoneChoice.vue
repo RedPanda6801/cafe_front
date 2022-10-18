@@ -2,6 +2,9 @@
   <div class="phoneContainer">
     <b-card class="cardContainer">
       <b-card-text>
+        <b-btn>
+          <b-icon icon="exclamation-circle"></b-icon>
+        </b-btn>
         <div class="stampSelect">
           <div class="mt-5 quantity">
             <h4>입장하실 카페를 선택해 주세요!</h4>
@@ -67,7 +70,7 @@ export default {
 .phoneContainer {
   display: flex;
   justify-content: center;
-  background-color: rgb(255, 174, 174);
+  background-color: #3f269a;
 }
 .stampSelect {
   height: 400px;
@@ -78,6 +81,7 @@ export default {
 }
 .quantity {
   width: 200px;
+  color: #2c1876;
 }
 .cardContainer {
   height: 100vh;
@@ -106,6 +110,9 @@ export default {
   width: 95%;
   height: 100px;
   border-radius: 30px;
+  border: none;
+  background-color: #ede9ff;
+  color: #3f269a;
   margin-top: 20px;
 }
 </style>
