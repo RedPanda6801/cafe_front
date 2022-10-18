@@ -36,9 +36,9 @@
               ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-2" label="구독 일자:" label-for="input-2">
+            <!-- <b-form-group id="input-group-2" label="구독 일자:" label-for="input-2">
               <b-form-input id="input-2" v-model="subscribeDate" required></b-form-input>
-            </b-form-group>
+            </b-form-group> -->
 
             <!-- <b-button size="sm">결제하기</b-button><br /> -->
             <b-button variant="primary" @click="AddCafe">추가하기</b-button>
@@ -58,7 +58,7 @@ export default {
       cafeName: '',
       location: '',
       businessNum: '',
-      subscribeDate: '',
+      subscribeDate: '1',
       show: true
     }
   },

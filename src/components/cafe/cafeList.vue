@@ -1,7 +1,10 @@
 <template>
   <div class="cafehomeList" @click="cafeRoute(cafeList.id)">
     <div class="cafeList">
-      <b-avatar icon="shop"></b-avatar>
+      <b-avatar>
+        <b-icon v-if="!cafeList.img" icon="shop"></b-icon>
+        <img v-if="cafeList.img" class="ProIMG" :src="`http://192.168.0.50:8002/uploads/${cafeList.img}`" />
+      </b-avatar>
       <span class="cafeName">{{ cafeList.cafeName }}</span>
       <span class="cafelocation">{{ cafeList.location }}</span>
       <span class="cafeTime">{{ setDateFormat(cafeList.createdAt) }}</span>
@@ -58,12 +61,14 @@ export default {
   /* background-color: aqua; */
 }
 .cafeTime {
-  font-size: 12px;
   margin-top: 10px;
   width: 15vw;
   text-align: center;
   color: #432a9f;
   border-radius: 15px;
   /* background-color: fuchsia; */
+}
+.ProIMG {
+  width: 100%;
 }
 </style>
