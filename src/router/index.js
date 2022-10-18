@@ -26,6 +26,13 @@ const routes = [
             path: '/main',
             component: () => import('../views/main/main'),
             meta: { header: false }
+            // beforeEnter: function (to, from, next) {
+            //   if (localStorage.getItem('token') !== '') {
+            //     return next()
+            //   }
+            //   alert('로그인이 필요한 서비스입니다.')
+            //   to()
+            // }
           },
           {
             path: '/mypage',

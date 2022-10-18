@@ -5,7 +5,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item class="navItem" href="#" @click="$router.push('/F&Q')">자주 묻는 질문</b-nav-item>
+          <b-nav-item class="navItem" href="#" @click="$router.push('/FAQ')">자주 묻는 질문</b-nav-item>
           <b-nav-item class="navItem" href="#">협약 기업</b-nav-item>
           <b-nav-item class="navItem" href="#">개발 크루 소개</b-nav-item>
         </b-navbar-nav>
@@ -47,7 +47,6 @@ export default {
         login = true
       }
       // let login = true
-      console.log(login)
       return login
     }
     // tokenUserName() {
@@ -73,7 +72,7 @@ export default {
   margin-right: 3vw;
 }
 .navItem {
-  font-size: 1vw;
+  font-size: 13px;
   font-weight: bold;
   color: #2b2b2b;
   margin-right: 1.2vw;
@@ -86,7 +85,7 @@ export default {
   border-radius: 10px;
 }
 .loginBBB {
-  font-size: 1vw;
+  font-size: 13px;
   font-weight: bold;
   color: #2b2b2b;
   padding-left: 0.3vw;
@@ -98,7 +97,7 @@ export default {
   border-radius: 10px;
 }
 .loginName {
-  font-size: 1vw;
+  font-size: 13px;
   font-weight: bold;
   font-style: normal;
   color: #2b2b2b;
@@ -106,7 +105,7 @@ export default {
   padding-right: 0.3vw;
 }
 .downITem {
-  font-size: 1vw;
+  font-size: 13px;
   font-weight: bold;
 }
 </style>
