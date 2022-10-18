@@ -2,6 +2,11 @@
   <div class="phoneContainer">
     <b-card class="cardContainer">
       <b-card-text>
+        <div class="returnBtnDiv">
+          <button class="returnBtn" @click="$router.go(-1)">
+            <span><b-icon icon="arrow-left"></b-icon> 돌아가기</span>
+          </button>
+        </div>
         <div class="stampSelect">
           <div class="mt-5 quantity">
             <h4>입장하실 카페를 선택해 주세요!</h4>
@@ -67,7 +72,7 @@ export default {
 .phoneContainer {
   display: flex;
   justify-content: center;
-  background-color: rgb(255, 174, 174);
+  background-color: #5a38d4;
 }
 .stampSelect {
   height: 400px;
@@ -78,6 +83,7 @@ export default {
 }
 .quantity {
   width: 200px;
+  color: #2c1876;
 }
 .cardContainer {
   height: 100vh;
@@ -106,6 +112,26 @@ export default {
   width: 95%;
   height: 100px;
   border-radius: 30px;
+  border: none;
+  background-color: #ede9ff;
+  color: #3f269a;
   margin-top: 20px;
+}
+.cafeBtn:active {
+  filter: brightness(80%);
+}
+.returnBtn {
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  color: grey;
+  width: 100px;
+}
+.returnBtn:active {
+  filter: brightness(80%);
+}
+.returnBtnDiv {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
