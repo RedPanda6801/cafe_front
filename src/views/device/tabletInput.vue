@@ -106,6 +106,7 @@ export default {
         .then(async res => {
           console.log('cafeId: ', this.cafeId)
           console.log('res : ', res)
+          this.$router.push(`/tablet/${this.cafeId}/${this.phone}`)
         })
         .catch(err => {
           console.log('cafeList -error : ', err)
@@ -139,7 +140,6 @@ export default {
       this.getCouponInfo()
       console.log('아이디 제대로 뜨니?', this.cafeId)
       this.$bvModal.hide('confirmModal')
-      this.$router.push(`/tablet/${this.cafeId}/${this.phone}`)
     }
   }
 }
