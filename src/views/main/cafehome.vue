@@ -4,8 +4,8 @@
     <div class="cafehome-card">
       <div class="cafepro">
         <b-avatar size="150px" button @click="$bvModal.show('modal-cafe-img')"
-          ><b-icon v-if="!watchCafe.img" icon="shop" scale="3.3"></b-icon>
-          <img :src="watchCafe.img" />
+          ><b-icon v-if="!watchCafe.icon" icon="shop" scale="3.3"></b-icon>
+          <img v-if="watchCafe.icon" class="ProIMG" :src="`http://192.168.0.50:8002/uploads/${watchCafe.icon}`" />
         </b-avatar>
         <b-modal id="modal-cafe-img" title="카페 사진 추가" hide-footer>
           <b-form-group>
@@ -82,7 +82,24 @@
         </b-row>
         <div class="cafehomeB">
           <b-btn variant="success" @click="updateCafe">저장</b-btn>
-          <b-btn class="cafehomeTB">테블릿 사진 변경</b-btn>
+          <b-btn class="cafehomeTB" @click="$bvModal.show('modal-cafe')">테블릿 사진 변경</b-btn>
+          <b-modal id="modal-cafe" title="카페 사진 추가" hide-footer>
+            <b-form-group>
+              <b-form-file
+                v-model="tablet"
+                :state="Boolean(tablet)"
+                placeholder="사진 추가하기..."
+                required
+                accept="image/*"
+                @change="previewImage"
+              ></b-form-file>
+              <div>
+                <b-img :src="previewImageData" class="formStyle"></b-img>
+                <b-btn>삭제</b-btn>
+              </div>
+              <b-btn variant="success" @click="updateTablet">저장</b-btn>
+            </b-form-group>
+          </b-modal>
           <b-btn>고객관리</b-btn>
         </div>
       </div>
@@ -96,6 +113,7 @@ export default {
   data() {
     return {
       avatar: [],
+      tablet: [],
       show: true,
       on: true,
       watch: true,
@@ -104,7 +122,8 @@ export default {
       watchCafe: {},
       cafeName: '',
       location: '',
-      businessNum: ''
+      businessNum: '',
+      mainImg: ''
     }
   },
   mounted() {
@@ -155,7 +174,7 @@ export default {
     },
     async updateLogo() {
       const photoFormData = new FormData()
-      photoFormData.append('image', this.avatar)
+      photoFormData.append('icon', this.avatar)
       console.log('updateLogo - photoUrl : ', this.avatar)
 
       await axios
@@ -169,6 +188,24 @@ export default {
         })
         .catch(error => {
           console.log('updateLogo - error : ', error)
+        })
+    },
+    async updateTablet() {
+      const photoForData = new FormData()
+      photoForData.append('img', this.tablet)
+      console.log('updateTablet - photoUrl : ', this.tablet)
+
+      await axios
+        .put(process.env.VUE_APP_URL + `/cafe/update-cafe/${this.watchCafe.id}`, photoForData, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(response => {
+          console.log('updateTablet - response : ', response)
+        })
+        .catch(error => {
+          console.log('updateTablet - error : ', error)
         })
     },
     async updateCafe() {
@@ -231,5 +268,8 @@ export default {
 }
 .cafehomeB {
   margin-top: 25px;
+}
+.ProIMG {
+  width: 100%;
 }
 </style>
