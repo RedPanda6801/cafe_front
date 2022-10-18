@@ -104,35 +104,45 @@ const routes = [
   {
     path: '/tablet',
     component: () => import('../views/device/tabletChoice'),
-    meta: { header: false },
-    children: [
-      // {
-      //   path: '/:id',
-      //   component: () => import('../views/device/tabletInput'),
-      //   meta: { header: false }
-      // },
-      // {
-      //   path: '/tablet/:id/stamp',
-      //   component: () => import('../views/device/tabletStamp'),
-      //   meta: { header: false }
-      // }
-    ]
+    meta: { header: false }
+    // children: [
+    //   {
+    //     path: '/tablet/:id',
+    //     component: () => import('../views/device/tabletInput'),
+    //     meta: { header: false }
+    //   }
+    // {
+    //   path: '/tablet/:id/stamp',
+    //   component: () => import('../views/device/tabletStamp'),
+    //   meta: { header: false }
+    // }
+    // ]
   },
   {
     path: '/tablet/:id',
     component: () => import('../views/device/tabletInput'),
-    meta: { header: false },
-    children: [
-      {
-        path: '/:id',
-        component: () => import('../views/device/tabletStamp'),
-        meta: { header: false }
-      }
-    ]
+    meta: { header: false }
+    // children: [
+    //   {
+    //     path: '/:id',
+    //     component: () => import('../views/device/tabletStamp'),
+    //     meta: { header: false }
+    //   }
+    // ]
+  },
+  {
+    path: '/tablet/:id/:id1',
+    component: () => import('../views/device/tabletStamp'),
+    meta: { header: false }
   },
   // 라우터 고민해봐야 함
   {
     path: '/phone',
+    component: () => import('../views/device/phoneChoice'),
+    meta: { header: false }
+  },
+  {
+    path: '/phone/:id',
     component: () => import('../views/device/phoneControl'),
     meta: { header: false }
   },

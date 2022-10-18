@@ -2,10 +2,10 @@
   <div class="tabletContainer">
     <div class="greetingContainer">
       <div class="userPhone">
-        <p>{{ userNumber }} 님</p>
+        <p>{{ $route.params.id1 }} 님</p>
       </div>
       <div class="userGreeting">
-        <p>{{ visitedNum }} 번째 방문해 주셔서 감사합니다!</p>
+        <p>{{ visit }} 번째 방문해 주셔서 감사합니다!</p>
       </div>
     </div>
     <div class="stampContainer">
@@ -14,11 +14,8 @@
       </div>
       <!-- <h1>여기에 도장 현황 보여줄거야</h1> -->
       <div class="stampBody">
-        <div v-for="stamp in 8" :key="stamp" class="stampHolder">
+        <div v-for="stamp in stackedStamp" :key="stamp" class="stampHolder">
           <img src="../../../public/stamp.png" class="stamp" />
-        </div>
-        <div v-for="empty in 2" :key="empty" class="stampHolder">
-          <img src="../../../public/stampDefault.png" class="stamp" />
         </div>
       </div>
     </div>
@@ -26,12 +23,35 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
-      userNumber: '010-000-0000',
-      visitedNum: 'N',
-      completedCoupon: 'N'
+      visit: '',
+      completedCoupon: '',
+      stackedStamp: ''
+    }
+  },
+  mounted() {
+    this.getCouponInfo()
+  },
+  methods: {
+    async getCouponInfo() {
+      await axios
+        .get(process.env.VUE_APP_URL + `/stamp/search/${this.$route.params.id1}/${this.$route.params.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          console.log('res : ', res.data.stamp)
+          this.visit = res.data.stamp.visit + 1
+          this.completedCoupon = res.data.stamp.leftStamp / 10
+          this.stackedStamp = res.data.stamp.leftStamp % 10
+        })
+        .catch(err => {
+          console.log('cafeList -error : ', err)
+        })
     }
   }
 }
@@ -62,6 +82,8 @@ export default {
 .stampBody {
   /* background-color: red; */
   margin: 10px;
+  background-image: url('../../../public/stampBackground.png');
+  background-size: 100% 100%;
   border: 5px;
   border-color: rgb(0, 0, 0);
   border-style: solid;
@@ -96,6 +118,6 @@ export default {
   font-size: 35px;
 }
 .stamp {
-  width: 60%;
+  width: 70%;
 }
 </style>
