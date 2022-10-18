@@ -58,8 +58,8 @@ export default {
       completedCoupon: '',
       userPhone: '0119',
       memo: '',
-      userNumber: '000-0000-0000',
-      cafeId: '1'
+      userNumber: '999-9999-9999',
+      cafeId: '6'
     }
   },
   mounted() {
@@ -91,6 +91,7 @@ export default {
         })
         .then(async res => {
           console.log('res.data : ', res.data)
+          this.quantity = 1
           // this.visit = res.data.stamp.visit + 1
           // this.completedCoupon = res.data.stamp.leftStamp / 10
           // this.stackedStamp = res.data.stamp.leftStamp % 10
@@ -109,6 +110,7 @@ export default {
         })
         .then(async res => {
           console.log('res.data : ', res.data)
+          this.quantity = 1
           // this.visit = res.data.stamp.visit + 1
           // this.completedCoupon = res.data.stamp.leftStamp / 10
           // this.stackedStamp = res.data.stamp.leftStamp % 10

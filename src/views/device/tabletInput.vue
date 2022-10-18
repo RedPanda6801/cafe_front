@@ -147,8 +147,9 @@ export default {
 
 <style scoped>
 .tabletContainer {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  padding-top: 25px;
   /*background-color: black;*/
   display: grid;
   grid-template-columns: 50% 50%;

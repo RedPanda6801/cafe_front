@@ -59,9 +59,9 @@ export default {
 
 <style scoped>
 .tabletContainer {
-  height: 100vh;
-  width: 100vw;
-  /*background-color: black;*/
+  height: 97vh;
+  width: 100%;
+  color: #120836;
   padding: 0px;
   display: grid;
   grid-template-rows: 30% 70%;
@@ -80,13 +80,13 @@ export default {
   justify-content: center;
 }
 .stampBody {
-  /* background-color: red; */
   margin: 10px;
   background-image: url('../../../public/stampBackground.png');
   background-size: 100% 100%;
   border: 5px;
-  border-color: rgb(0, 0, 0);
-  border-style: solid;
+  border-color: #6147be;
+  border-style: outset;
+  /* border-style: solid; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -98,20 +98,17 @@ export default {
   justify-content: center;
 }
 .greetingContainer {
-  /* background-color: green; */
   display: grid;
   grid-template-rows: 60% 40%;
   margin: 5px;
 }
 .userPhone {
   align-items: center;
-  /* background-color: lightgreen; */
   display: flex;
   justify-content: center;
   font-size: 65px;
 }
 .userGreeting {
-  /* background-color: lightseagreen; */
   display: flex;
   justify-content: center;
   align-items: center;
