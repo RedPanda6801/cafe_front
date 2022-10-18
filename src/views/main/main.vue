@@ -10,7 +10,7 @@
         <cafe-list v-for="cafeList in cafeLists" :key="cafeList.id" :cafe-list="cafeList" />
       </div>
     </div>
-    <div class="footer">2022 My_Coupon &copy; All Rights Reserved.</div>
+    <div class="footer">2022 My_Coupon &copy; All Rights Reserved</div>
   </div>
 </template>
 
