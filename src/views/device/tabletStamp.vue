@@ -46,7 +46,7 @@ export default {
       }
     )
     this.socket.emit('token', localStorage.getItem('token'))
-    this.socket.on('connect', data => console.log(data))
+    this.socket.on('success', data => console.log(data))
     this.socket.emit('search', { custPhone: this.custPhone, cafeId: this.cafeId })
 
     this.socket.on('messages', messages => {

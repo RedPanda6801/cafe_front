@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import { io } from 'socket.io-client'
 export default {
   name: 'Quantity',
@@ -79,7 +79,7 @@ export default {
     this.socket.emit('token', localStorage.getItem('token'))
     this.socket.on('success', data => {
       ;(this.userNumber = data.data.custPhone),
-        (this.cafeId = data.data.cafeId),
+        (this.cafeId = data.data.CafeId),
         (this.completedCoupon = data.data.leftStamp / 10),
         (this.visit = data.data.visit),
         (this.memo = data.data.memo),
@@ -111,42 +111,56 @@ export default {
       }
     },
     async addStamp() {
-      const axiosBody = { addCount: this.quantity }
-      await axios
-        .put(process.env.VUE_APP_URL + `/stamp/add-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-        .then(async res => {
-          console.log('res.data : ', res.data)
-          this.quantity = 1
-          // this.visit = res.data.stamp.visit + 1
-          // this.completedCoupon = res.data.stamp.leftStamp / 10
-          // this.stackedStamp = res.data.stamp.leftStamp % 10
-        })
-        .catch(err => {
-          console.log('addStamp -error : ', err)
-        })
+      const body = {
+        custPhone: this.userNumber,
+        cafeId: this.cafeId,
+        addCount: this.quantity
+      }
+      this.socket.emit('stack', body)
+      // const axiosBody = { addCount: this.quantity }
+      // await axios
+      //   .put(process.env.VUE_APP_URL + `/stamp/add-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
+      //     headers: {
+      //       Authorization: `Bearer ${localStorage.getItem('token')}`
+      //     }
+      //   })
+      //   .then(async res => {
+      //     console.log('res.data : ', res.data)
+      //     this.quantity = 1
+      //     this.visit = res.data.stamp.visit + 1
+      //     this.completedCoupon = res.data.stamp.leftStamp / 10
+      //     this.stackedStamp = res.data.stamp.leftStamp % 10
+      //   })
+      //   .catch(err => {
+      //     console.log('addStamp -error : ', err)
+      //   })
     },
     async useCoupon() {
-      const axiosBody = { useCount: this.quantity }
-      await axios
-        .put(process.env.VUE_APP_URL + `/stamp/use-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-        .then(async res => {
-          console.log('res.data : ', res.data)
-          this.quantity = 1
-          // this.visit = res.data.stamp.visit + 1
-          // this.completedCoupon = res.data.stamp.leftStamp / 10
-          // this.stackedStamp = res.data.stamp.leftStamp % 10
-        })
-        .catch(err => {
-          console.log('addStamp -error : ', err)
-        })
+      console.log(this.quantity)
+      const body = {
+        custPhone: this.userNumber,
+        cafeId: this.cafeId,
+        useCount: this.quantity
+      }
+      console.log(body.useCount)
+      this.socket.emit('stack', body)
+      //   const axiosBody = { useCount: this.quantity }
+      //   await axios
+      //     .put(process.env.VUE_APP_URL + `/stamp/use-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
+      //       headers: {
+      //         Authorization: `Bearer ${localStorage.getItem('token')}`
+      //       }
+      //     })
+      //     .then(async res => {
+      //       console.log('res.data : ', res.data)
+      //       this.quantity = 1
+      //       // this.visit = res.data.stamp.visit + 1
+      //       // this.completedCoupon = res.data.stamp.leftStamp / 10
+      //       // this.stackedStamp = res.data.stamp.leftStamp % 10
+      //     })
+      //     .catch(err => {
+      //       console.log('addStamp -error : ', err)
+      //     })
     }
     // async getCouponInfo() {
     //   await axios
