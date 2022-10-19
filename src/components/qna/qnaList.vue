@@ -1,5 +1,5 @@
 <template>
-  <div class="QNAhomeList">
+  <div class="QNAhomeList" @click="qnaRoute(qnaList.id)">
     <div class="QNAList">
       <span class="QNAName">답변여부</span>
       <span class="QNAtitle">{{ qnaList.title }}</span>
@@ -20,9 +20,9 @@ export default {
     }
   },
   methods: {
-    // cafeRoute(cafeId) {
-    //   this.$router.push(`/main/${cafeId}`)
-    // }
+    qnaRoute(questionId) {
+      this.$router.push(`/qna/${questionId}`)
+    }
   }
 }
 </script>

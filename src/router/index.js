@@ -73,7 +73,7 @@ const routes = [
             meta: { header: false }
           },
           {
-            path: '/qna/page',
+            path: '/qna/:id',
             component: () => import('../views/main/qnaDetail'),
             meta: { header: false }
           }
