@@ -10,7 +10,7 @@
       </div>
       <span class="mt-4"><p>카페를 먼저 등록해 주세요!</p></span>
     </div>
-    <div v-show="cafeLength > 0">
+    <div v-show="cafeLength > 0" class="btnHolder">
       <div v-for="(cafeList, index) in cafeLists" :key="cafeList.id">
         <button class="cafeBtn" @click="cafeRoute(cafeLists[index].id)">
           {{ cafeLists[index].cafeName }}
@@ -30,8 +30,7 @@ export default {
   data() {
     return {
       cafeLists: [],
-      cafeLength: '',
-      cafeName: ''
+      cafeLength: ''
     }
   },
   mounted() {
@@ -57,9 +56,7 @@ export default {
         })
     },
     cafeRoute(cafeId) {
-      console.log('넌 뭐니?', typeof cafeId)
-      const cafeRouter = parseInt(cafeId)
-      this.$router.push(`/tablet/${cafeRouter}`)
+      this.$router.push(`/tablet/${cafeId}`)
     }
   }
 }
@@ -70,6 +67,7 @@ export default {
   height: 100%;
   width: 100%;
   margin-left: 50px;
+  color: #1d0d56;
 }
 .tabletHeader {
   margin-top: 50px;
@@ -77,11 +75,21 @@ export default {
   justify-content: center;
   font-size: 50px;
 }
+.btnHolder {
+  margin-top: 30px;
+}
 .cafeBtn {
   width: 90%;
   height: 100px;
   border-radius: 30px;
   margin-top: 20px;
+  font-size: 25px;
+  background-color: #ede9ff;
+  color: #2c1876;
+  border: none;
+}
+.cafeBtn:active {
+  filter: brightness(80%);
 }
 .listNone {
   align-items: center;

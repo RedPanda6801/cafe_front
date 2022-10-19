@@ -19,6 +19,7 @@
     "dayjs": "^1.11.5",
     "jwt-decode": "^3.1.2",
     "mqtt": "^4.2.8",
+    "socket.io-client": "^4.5.3",
     "swiper": "^5.3.7",
     "vee-validate": "^3.4.14",
     "vue": "^2.6.11",

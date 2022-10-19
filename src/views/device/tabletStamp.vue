@@ -2,10 +2,10 @@
   <div class="tabletContainer">
     <div class="greetingContainer">
       <div class="userPhone">
-        <p>{{ userNumber }} 님</p>
+        <p>{{ $route.params.id1 }} 님</p>
       </div>
       <div class="userGreeting">
-        <p>{{ visitedNum }} 번째 방문해 주셔서 감사합니다!</p>
+        <p>{{ visit }} 번째 방문해 주셔서 감사합니다!</p>
       </div>
     </div>
     <div class="stampContainer">
@@ -14,11 +14,8 @@
       </div>
       <!-- <h1>여기에 도장 현황 보여줄거야</h1> -->
       <div class="stampBody">
-        <div v-for="stamp in 8" :key="stamp" class="stampHolder">
+        <div v-for="stamp in stackedStamp" :key="stamp" class="stampHolder">
           <img src="../../../public/stamp.png" class="stamp" />
-        </div>
-        <div v-for="empty in 2" :key="empty" class="stampHolder">
-          <img src="../../../public/stampDefault.png" class="stamp" />
         </div>
       </div>
     </div>
@@ -26,12 +23,57 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { io } from 'socket.io-client'
 export default {
   data() {
     return {
-      userNumber: '010-000-0000',
-      visitedNum: 'N',
-      completedCoupon: 'N'
+      visit: '',
+      completedCoupon: '',
+      stackedStamp: '',
+      custPhone: this.$route.params.id1,
+      cafeId: this.$route.params.id
+    }
+  },
+  async created() {
+    this.socket = io(
+      process.env.VUE_APP_URL + '/tablet',
+      {
+        cors: { origin: '*' }
+      },
+      {
+        extraHeaders: { token: localStorage.getItem('token') }
+      }
+    )
+    this.socket.emit('token', localStorage.getItem('token'))
+    this.socket.on('success', data => console.log(data))
+    this.socket.emit('search', { custPhone: this.custPhone, cafeId: this.cafeId })
+
+    this.socket.on('messages', messages => {
+      //커스텀 이벤트
+      this.receivedMessage = messages
+    })
+  },
+  mounted() {
+    this.getCouponInfo()
+  },
+  methods: {
+    async getCouponInfo() {
+      await axios
+        .get(process.env.VUE_APP_URL + `/stamp/search/${this.$route.params.id1}/${this.$route.params.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          console.log('res : ', res.data.data)
+          this.visit = res.data.data.stamp.visit + 1
+          this.completedCoupon = res.data.data.stamp.leftStamp / 10
+          this.stackedStamp = res.data.data.stamp.leftStamp % 10
+        })
+        .catch(err => {
+          console.log('cafeList -error : ', err)
+        })
     }
   }
 }
@@ -39,9 +81,9 @@ export default {
 
 <style scoped>
 .tabletContainer {
-  height: 100vh;
-  width: 100vw;
-  /*background-color: black;*/
+  height: 97vh;
+  width: 100%;
+  color: #120836;
   padding: 0px;
   display: grid;
   grid-template-rows: 30% 70%;
@@ -60,11 +102,13 @@ export default {
   justify-content: center;
 }
 .stampBody {
-  /* background-color: red; */
   margin: 10px;
+  background-image: url('../../../public/stampBackground.png');
+  background-size: 100% 100%;
   border: 5px;
-  border-color: rgb(0, 0, 0);
-  border-style: solid;
+  border-color: #6147be;
+  border-style: outset;
+  /* border-style: solid; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -76,26 +120,24 @@ export default {
   justify-content: center;
 }
 .greetingContainer {
-  /* background-color: green; */
   display: grid;
   grid-template-rows: 60% 40%;
   margin: 5px;
 }
 .userPhone {
   align-items: center;
-  /* background-color: lightgreen; */
   display: flex;
   justify-content: center;
   font-size: 65px;
 }
 .userGreeting {
-  /* background-color: lightseagreen; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 35px;
 }
 .stamp {
-  width: 60%;
+  width: 70%;
+  transform: rotate(25deg);
 }
 </style>

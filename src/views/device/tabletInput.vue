@@ -4,10 +4,11 @@
       <!-- 여기는 카페 정보부분 -->
       <div class="cafeName">
         <!-- 카페이름 -->
-        <h1>감자다방</h1>
+        <p>{{ cafeName }}</p>
       </div>
       <div class="cafeBanner">
-        <img src="../../../public/cafeDefault.png" class="banner" />
+        <img v-if="cafeImg === null" src="../../../public/cafeDefault.png" class="banner" />
+        <img v-else :src="`http://192.168.0.50:8002/uploads/${cafeImg}`" class="banner" />
       </div>
     </div>
     <div class="inputContainer">
@@ -39,10 +40,10 @@
             <td><button class="numberPad" @click="addNumber(9)">9</button></td>
           </tr>
           <tr>
-            <td><button class="numberPad" @click="deleteNumber">삭제</button></td>
+            <td><button class="stringPad" @click="deleteNumber">삭제</button></td>
             <td><button class="numberPad" @click="addNumber(0)">0</button></td>
             <td>
-              <button id="show-btn" class="numberPad" @click="$bvModal.show('confirmModal')">적립</button>
+              <button id="show-btn" class="stringPad" @click="$bvModal.show('confirmModal')">확인</button>
               <b-modal id="confirmModal" size="xl" centered backdrop hide-footer>
                 <template #modal-title>입력하신 번호를 확인해 주세요!</template>
                 <div class="confirmContainer">
@@ -64,15 +65,56 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'TabletInput',
   data() {
     return {
       phone: '',
-      confirmModal: false
+      confirmModal: false,
+      cafeName: '',
+      cafeId: '',
+      cafeImg: ''
     }
   },
+  mounted() {
+    this.getCafeInfo()
+  },
   methods: {
+    async getCafeInfo() {
+      await axios
+        .get(process.env.VUE_APP_URL + `/cafe/info-one/${this.$route.params.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          this.cafeName = res.data.data.cafeName
+          this.cafeId = res.data.data.id
+          this.cafeImg = res.data.data.img
+          console.log('cafeName : ', this.cafeName)
+          console.log('res.data.data: ', res.data.data)
+        })
+        .catch(err => {
+          console.log('cafeList -error : ', err)
+        })
+    },
+    async getCouponInfo() {
+      await axios
+        .get(process.env.VUE_APP_URL + `/stamp/search/${this.phone}/${this.cafeId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          console.log('cafeId: ', this.cafeId)
+          console.log('res : ', res)
+          this.$router.push(`/tablet/${this.cafeId}/${this.phone}`)
+        })
+        .catch(err => {
+          console.log('cafeList -error : ', err)
+        })
+    },
     addNumber(num) {
       if (this.phone.length === 13) {
         return this.phone
@@ -97,15 +139,20 @@ export default {
       this.$bvModal.hide('confirmModal')
       this.phone = ''
     },
-    submit() {}
+    submit() {
+      this.getCouponInfo()
+      console.log('아이디 제대로 뜨니?', this.cafeId)
+      this.$bvModal.hide('confirmModal')
+    }
   }
 }
 </script>
 
 <style scoped>
 .tabletContainer {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  padding-top: 25px;
   /*background-color: black;*/
   display: grid;
   grid-template-columns: 50% 50%;
@@ -122,6 +169,8 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 5px;
+  width: 100%;
+  font-size: 50px;
 }
 .cafeBanner {
   /*background-color: pink;*/
@@ -174,8 +223,20 @@ export default {
   color: black;
   border-radius: 15px;
 }
+.stringPad {
+  width: 95%;
+  height: 95%;
+  border: none;
+  color: white;
+  border-radius: 15px;
+  background-color: #573cb8;
+}
 .numberPad:active {
   background-color: grey;
+  color: white;
+}
+.stringPad:active {
+  background-color: #29166d;
 }
 .btnOrganizer {
   display: grid;
@@ -204,12 +265,8 @@ table {
   height: 100%;
   text-align: center;
   font-size: 45px;
-  /*  border: 1px solid #444444;
-  border-radius: 5px; */
 }
 td {
-  /* border: 1px solid #444444;
-  border-radius: 5px; */
   width: 33%;
 }
 </style>
