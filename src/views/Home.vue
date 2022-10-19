@@ -176,7 +176,7 @@ export default {
   font-weight: bold;
   background-color: #5a38d4;
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   transition: 0.5s;
 }
 .SignUpB:hover {

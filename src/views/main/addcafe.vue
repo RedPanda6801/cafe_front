@@ -1,7 +1,7 @@
 <template>
   <div>
     <div title="addcafe" class="AddCafe">
-      <h3>AddCafe</h3>
+      <h3><b-icon icon="plus-circle" scale="0.9"></b-icon> Cafe List</h3>
       <div style="margin-top: 10px">
         <b-col cols="6">
           <b-form v-if="show" @reset="onReset">

@@ -2,17 +2,15 @@
   <div class="join">
     <!-- v-show로 인증 메일 보내기 전 페이지 -->
     <div v-show="!emailSent">
-      <b-card no-body style="max-width: 50rem" img-src="#" img-alt="Image" img-top>
-        <template #header>
-          <h4 class="mb-0">여기에 이메일인증 위에는 사이트로고</h4>
-        </template>
+      <b-card no-body class="join-box">
+        <h2><img class="logoImg" src="../../../public/logo.png" /></h2>
         <form @submit.prevent="handleSubmit(sendEmail)">
-          <b-card-body>
+          <b-card-body style="text-align: center">
             <b-card-sub-title class="mt-3 mb-2">
               <span class="status">인증메일 전송 </span>
               > 이메일 인증 > 추가 정보 입력
             </b-card-sub-title>
-            <b-card-title>
+            <b-card-title style="margin: 20px">
               인증 과정에서 사용하실<br />
               이메일 주소를 입력해 주세요.
             </b-card-title>
@@ -202,9 +200,31 @@ export default {
 </script>
 
 <style>
+.join-box {
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 550px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  z-index: 1;
+}
+.join-box h2 {
+  padding: 0;
+  color: #5a38d4;
+  text-align: center;
+}
 .join {
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
+  background-color: #f0f2f3;
 }
 .emailInput {
   display: flex;

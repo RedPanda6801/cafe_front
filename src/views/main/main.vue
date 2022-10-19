@@ -56,7 +56,7 @@ export default {
 }
 .cafelist {
   width: 95%;
-  height: 700px;
+  height: 100vh;
   padding: 25px;
   /* background-color: aqua; */
 }

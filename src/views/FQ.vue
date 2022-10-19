@@ -6,7 +6,7 @@
       </div>
       <div class="job-text">
         <p>자주묻는 질문과 답변</p>
-        <span>F&Q</span>
+        <span>FAQ</span>
       </div>
     </div>
   </div>

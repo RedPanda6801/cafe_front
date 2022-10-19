@@ -53,12 +53,17 @@ const routes = [
             path: '/main/customer',
             component: () => import('../views/main/customerList'),
             meta: { header: false }
+          },
+          {
+            path: '/qna',
+            component: () => import('../views/main/qna'),
+            meta: { header: false }
+          },
+          {
+            path: '/qna/write',
+            component: () => import('../views/main/qnaWrite'),
+            meta: { header: false }
           }
-          // {
-          //   path: '/main/qna',
-          //   component: () => import('../views/main/qna'),
-          //   meta: { header: false }
-          // }
         ]
       },
       {
@@ -151,11 +156,22 @@ const routes = [
   //   component: () => import('../views/device/tabletChoice'),
   //   meta: { header: false }
   // },
-  {
-    path: '/qna',
-    component: () => import('../views/user/qna'),
-    meta: { header: false }
-  },
+  // {
+  //   path: '/qna',
+  //   component: () => import('../views/qna'),
+  //   children: [
+  //     {
+  //       path: '/qna',
+  //       component: () => import('../views/qna/qna'),
+  //       meta: { header: false }
+  //     },
+  //     {
+  //       path: '/qna/write',
+  //       component: () => import('../views/qna/qnaWrite'),
+  //       meta: { header: false }
+  //     }
+  //   ]
+  // },
   {
     path: '*',
     component: () => import('../components/NotFound.vue'),
