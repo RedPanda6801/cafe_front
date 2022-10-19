@@ -109,6 +109,14 @@
         </div>
       </div>
     </div>
+    <div class="deletCafe" style="cursor: pointer" @click="$bvModal.show('modal-deletCafe')">탈퇴하기</div>
+    <b-modal id="modal-deletCafe" title="카페삭제" style="text-align: center" hide-footer>
+      <b-form-group style="text-align: center">
+        <p>정말로 탈퇴하시겠습니까?</p>
+        <p>가입한 멤버쉽 정보를 살펴보신 후 눌러주세요.</p>
+        <b-btn variant="danger" @click="deleteprofile">탈퇴하기</b-btn>
+      </b-form-group>
+    </b-modal>
   </div>
 </template>
 
@@ -304,5 +312,11 @@ export default {
 }
 .cafeSAVE {
   margin-right: 10px;
+}
+.deletCafe {
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 50%;
+  color: red;
 }
 </style>

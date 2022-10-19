@@ -155,4 +155,7 @@ export default {
   margin-top: 15px;
   margin-right: 10px;
 }
+.AddCafe {
+  height: 600px;
+}
 </style>

@@ -136,6 +136,8 @@
           <div style="margin: 20px">
             <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com</p>
             <p>2022 My_Stamp &copy; All Rights Reserved.</p>
+            <b-icon icon="instagram" scale="2" variant="white" style="margin-right: 20px"></b-icon>
+            <b-icon icon="github" scale="2" variant="white"></b-icon>
           </div>
         </div>
       </footer>

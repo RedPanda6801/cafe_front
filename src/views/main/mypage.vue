@@ -61,8 +61,15 @@
           <b-btn class="Save" variant="success" @click="updateprofile">저장</b-btn>
         </b-col>
       </b-row>
-      <!-- <b-overlay :show="!show" no-wrap></b-overlay> -->
     </b-card>
+    <div class="TTT" style="cursor: pointer" @click="$bvModal.show('modal-member-TTT')">탈퇴하기</div>
+    <b-modal id="modal-member-TTT" title="계정삭제" style="text-align: center" hide-footer>
+      <b-form-group style="text-align: center">
+        <p>정말로 탈퇴하시겠습니까?</p>
+        <p>가입한 멤버쉽 정보를 살펴보신 후 눌러주세요.</p>
+        <b-btn variant="danger" @click="deleteprofile">탈퇴하기</b-btn>
+      </b-form-group>
+    </b-modal>
   </div>
 </template>
 <script>
@@ -115,11 +122,38 @@ export default {
         .catch(error => {
           console.log('updateprofile - error : ', error)
         })
+    },
+    async deleteprofile() {
+      console.log('되나?')
+      await axios
+        .delete(process.env.VUE_APP_URL + `/profile/remove-profile/${this.user.email}/${this.user.password}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(response => {
+          console.log('deleteprofile - response : ', response)
+          alert('탈퇴 되었습니다. 마이 스탬프는 점주님을 다시 만나길 진심으로 바라고 있습니다.')
+          // this.$router.push('/')
+        })
+        .catch(error => {
+          console.log('deleteprofile - error : ', error)
+        })
     }
   }
 }
 </script>
 <style>
+.Mfooter {
+  /* margin-top: 161px; */
+  font-size: 12px;
+  color: #fff;
+  background: #5a38d4;
+  letter-spacing: 2px;
+  padding: 2vh 5vw;
+  display: flex;
+  justify-content: center;
+}
 .MyPage {
   width: 100%;
   height: 100vh;
@@ -155,5 +189,11 @@ export default {
 .PHONEB {
   display: grid;
   grid-template-columns: 4fr 2fr;
+}
+.TTT {
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 40%;
+  color: red;
 }
 </style>

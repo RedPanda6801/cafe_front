@@ -16,8 +16,14 @@
           <img class="logoImg" src="../../../public/whitelogo.png" style="margin-top: 20px" />
         </div>
         <div style="margin: 20px">
-          <p class="foot">서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com</p>
-          <p>2022 My_Stamp &copy; All Rights Reserved.</p>
+          <p>
+            서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com<br />2022 My_Stamp &copy; All Rights
+            Reserved.
+          </p>
+          <div class="ICON">
+            <b-icon icon="instagram" scale="2" variant="white" style="margin-right: 20px"></b-icon>
+            <b-icon icon="github" scale="2" variant="white"></b-icon>
+          </div>
         </div>
       </div>
     </footer>
@@ -100,5 +106,8 @@ export default {
 }
 .List {
   width: 105%;
+}
+.ICON {
+  margin-left: 5px;
 }
 </style>
