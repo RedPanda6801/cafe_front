@@ -20,25 +20,6 @@
             <button v-b-modal.modal-prevent-closing class="PhoneB" variant="outline-primary" @click="editMemo(item)">
               <b-icon icon="pencil" class="pencil"></b-icon>
             </button>
-            <b-modal
-              id="modal-prevent-closing"
-              ref="modal"
-              title="수정하실 고객메모를 입력해 주세요."
-              @show="resetModal"
-              @hidden="resetModal"
-              @ok="handleOk"
-            >
-              <form ref="form" @submit.stop.prevent="handleSubmit">
-                <b-form-group
-                  label="고객 메모"
-                  label-for="memo-input"
-                  invalid-feedback="메모를 입력해주세요!"
-                  :state="memoState"
-                >
-                  <b-form-input id="memo-input" v-model="memo" :state="memoState" required></b-form-input>
-                </b-form-group>
-              </form>
-            </b-modal>
           </span>
         </template>
       </b-table>
@@ -46,6 +27,25 @@
         <p>조회할 수 있는 고객 정보가 없습니다.</p>
       </div>
     </div>
+    <b-modal
+      id="modal-prevent-closing"
+      ref="modal"
+      title="수정하실 고객메모를 입력해 주세요."
+      @show="resetModal"
+      @hidden="resetModal"
+      @ok="handleOk"
+    >
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <b-form-group
+          label="고객 메모"
+          label-for="memo-input"
+          invalid-feedback="메모를 입력해주세요!"
+          :state="memoState"
+        >
+          <b-form-input id="memo-input" v-model="memo" :state="memoState" required></b-form-input>
+        </b-form-group>
+      </form>
+    </b-modal>
   </div>
 </template>
 
@@ -75,7 +75,6 @@ export default {
       cafeName: '',
       memo: '',
       memoState: null,
-      submittedMemo: '',
       custPhone: ''
     }
   },
@@ -105,7 +104,7 @@ export default {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-        .then(async res => {
+        .then(res => {
           const customers = res.data.customers
           console.log('res : ', res.data)
           for (let i = 0; i < customers.length; i++) {
@@ -161,8 +160,10 @@ export default {
       if (!this.checkFormValidity()) {
         return
       }
-      this.$nextTick(() => {
-        this.updateCustomerMemo()
+      this.$nextTick(async () => {
+        await this.updateCustomerMemo()
+        this.items = []
+        this.getCustomerInfo()
         this.$bvModal.hide('modal-prevent-closing')
       })
     }

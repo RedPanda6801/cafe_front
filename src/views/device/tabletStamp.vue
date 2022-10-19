@@ -44,10 +44,10 @@ export default {
           }
         })
         .then(async res => {
-          console.log('res : ', res.data.stamp)
-          this.visit = res.data.stamp.visit + 1
-          this.completedCoupon = res.data.stamp.leftStamp / 10
-          this.stackedStamp = res.data.stamp.leftStamp % 10
+          console.log('res : ', res.data.data)
+          this.visit = res.data.data.stamp.visit + 1
+          this.completedCoupon = res.data.data.stamp.leftStamp / 10
+          this.stackedStamp = res.data.data.stamp.leftStamp % 10
         })
         .catch(err => {
           console.log('cafeList -error : ', err)
