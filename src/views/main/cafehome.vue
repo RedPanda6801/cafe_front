@@ -114,7 +114,7 @@
       <b-form-group style="text-align: center">
         <p>정말로 탈퇴하시겠습니까?</p>
         <p>가입한 멤버쉽 정보를 살펴보신 후 눌러주세요.</p>
-        <b-btn variant="danger" @click="deleteprofile">탈퇴하기</b-btn>
+        <b-btn variant="danger">삭제하기</b-btn>
       </b-form-group>
     </b-modal>
   </div>
