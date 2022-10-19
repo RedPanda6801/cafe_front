@@ -143,7 +143,7 @@ export default {
         useCount: this.quantity
       }
       console.log(body.useCount)
-      this.socket.emit('stack', body)
+      this.socket.emit('use', body)
       //   const axiosBody = { useCount: this.quantity }
       //   await axios
       //     .put(process.env.VUE_APP_URL + `/stamp/use-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
