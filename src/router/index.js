@@ -50,7 +50,7 @@ const routes = [
             meta: { header: false }
           },
           {
-            path: '/main/customer',
+            path: '/main/:id/customer',
             component: () => import('../views/main/customerList'),
             meta: { header: false }
           }
