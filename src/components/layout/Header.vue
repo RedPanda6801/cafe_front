@@ -20,7 +20,7 @@
             <!-- Using 'button-content' slot -->
             <template #button-content>
               <!-- <em>로그인 / 회원가입</em> -->
-              <em class="loginName"><b-icon icon="person-fill"></b-icon> 점장님</em>
+              <em class="loginName"><b-icon icon="person-fill"></b-icon> 마이페이지</em>
             </template>
             <b-dropdown-item class="downITem" href="#" @click="$router.push('/main')">카페 관리 페이지</b-dropdown-item>
             <b-dropdown-item class="downITem" href="#" @click="signOut">로그아웃</b-dropdown-item>

@@ -18,7 +18,6 @@
         <qnaList v-for="qnaList in qnaLists" :key="qnaList.id" :qna-list="qnaList" />
       </div>
     </div>
-    <div class="footer">2022 My_Coupon &copy; All Rights Reserved.</div>
   </div>
 </template>
 
@@ -107,13 +106,5 @@ export default {
 }
 .qnaBtn:hover {
   filter: brightness(90%);
-}
-.footer {
-  font-size: 12px;
-  color: #fff;
-  background: #708ab8;
-  letter-spacing: 2px;
-  text-align: center;
-  padding: 3vh 5vw;
 }
 </style>

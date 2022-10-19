@@ -11,7 +11,7 @@
         </div>
         <textarea v-model="text" class="texts" type="text" />
         <div class="textBBB">
-          <b-btn class="textsA" @click="$router.go(-1)">취소</b-btn>
+          <b-btn class="textsA" variant="danger" @click="$router.go(-1)">취소</b-btn>
           <b-btn class="textsB" @click="AddContact">문의하기</b-btn>
         </div>
       </b-card>
@@ -105,8 +105,11 @@ export default {
 }
 .Titlel {
   width: 100%;
+  height: 40px;
+  margin-bottom: 15px;
 }
 .selee {
   width: 20vw;
+  margin-bottom: 15px;
 }
 </style>

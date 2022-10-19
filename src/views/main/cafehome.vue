@@ -86,7 +86,7 @@
           </b-col>
         </b-row>
         <div class="cafehomeB">
-          <b-btn variant="success" @click="updateCafe">저장</b-btn>
+          <b-btn class="cafeSAVE" variant="success" @click="updateCafe">저장</b-btn>
           <b-btn class="cafehomeTB" @click="$bvModal.show('modal-cafe')">테블릿 사진 추가</b-btn>
           <b-modal id="modal-cafe" title="카페 사진 추가" hide-footer>
             <b-form-group>
@@ -273,6 +273,8 @@ export default {
 }
 .formStyle {
   width: 15vw;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .cafehome-card {
   width: 100%;
@@ -299,5 +301,8 @@ export default {
 .ProIMG {
   width: 100%;
   height: 100%;
+}
+.cafeSAVE {
+  margin-right: 10px;
 }
 </style>

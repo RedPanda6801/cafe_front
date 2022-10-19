@@ -1,19 +1,20 @@
 <template>
-  <div>
-    <!-- qna 리스트에서 제목 누르면 들어올 수 있는 페이지 -->
-    <div>
-      <!-- qna 내용 보여줄 div -->
+  <div class="QNAhome">
+    <h3 class="qnaHome"><b-icon icon="house-door" scale="0.9"></b-icon> Contact Page</h3>
+    <b-card class="QNAP">
       <div>
-        <!-- 제목 / 분류  -->
+        <p>제목</p>
       </div>
       <div>
-        <!-- 문의 내용 출력 -->
+        <p>카테고리</p>
       </div>
-    </div>
-    <div>
-      <!-- 권한 조회해서 만약 관리자 (점장 X) 권한이 있다면 댓글 달 수 있는 input창과 입력 버튼 뜨게 하기 -->
-      <!-- 댓글 표시해주는 부분. 만약 달린 댓글이 없다면 그냥 안보여주는걸로 -->
-    </div>
+      <div>
+        <p>작성시간</p>
+      </div>
+      <div>
+        <p>내용</p>
+      </div>
+    </b-card>
   </div>
 </template>
 
@@ -21,4 +22,20 @@
 export default {}
 </script>
 
-<style scoped></style>
+<style>
+.QNAhome {
+  width: 100%;
+  height: 100vh;
+  padding: 25px;
+}
+.QNAP {
+  width: 50%;
+  height: 65vh;
+  padding: 25px;
+  margin-top: 20px;
+  margin-left: 22vw;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+</style>

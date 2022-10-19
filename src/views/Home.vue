@@ -132,10 +132,10 @@
       </section>
       <footer>
         <div class="Homefooter">
-          <img class="logoImg" src="../../public/whitelogo.png" />
-          <div>
-            <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프</p>
-            <p>2022 My_Stemp &copy; All Rights Reserved.</p>
+          <img class="logoImg" src="../../public/whitelogo.png" style="margin-top: 20px" />
+          <div style="margin: 20px">
+            <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com</p>
+            <p>2022 My_Stamp &copy; All Rights Reserved.</p>
           </div>
         </div>
       </footer>

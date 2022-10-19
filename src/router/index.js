@@ -63,6 +63,11 @@ const routes = [
             path: '/qna/write',
             component: () => import('../views/main/qnaWrite'),
             meta: { header: false }
+          },
+          {
+            path: '/qna/page',
+            component: () => import('../views/main/qnaDetail'),
+            meta: { header: false }
           }
         ]
       },

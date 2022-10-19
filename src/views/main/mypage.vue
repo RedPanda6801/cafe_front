@@ -30,8 +30,10 @@
               <b-icon icon="pencil" class="pencil"></b-icon>
             </button>
           </p>
-          <b-input v-if="!show" v-model="ownerPhone"></b-input>
-          <b-btn v-if="!show" variant="danger" @click="show = !show">취소</b-btn>
+          <div class="PHONEB">
+            <b-input v-if="!show" v-model="ownerPhone"></b-input>
+            <b-btn v-if="!show" variant="danger" @click="show = !show">취소</b-btn>
+          </div>
         </b-col>
       </b-row>
       <b-row class="my-1">
@@ -149,5 +151,9 @@ export default {
 }
 .PhoneB:hover .pencil {
   color: #fff;
+}
+.PHONEB {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
 }
 </style>
