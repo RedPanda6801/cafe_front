@@ -5,7 +5,7 @@
         <img src="../../public/job.jpg" />
         <div class="job-text">
           <p>자주묻는 질문과 답변</p>
-          <span>F&Q</span>
+          <span>FAQ</span>
         </div>
       </div>
       <div class="faqList">
@@ -14,7 +14,9 @@
             <p>{{ faqList[i].category }}</p>
             <p>{{ faqList[i].title }}</p>
           </div>
-          <p>{{ faqList[i].comment }}</p>
+          <div class="faqBody">
+            <p>{{ faqList[i].comment }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -62,10 +64,15 @@ export default {
 }
 .faqList {
   display: grid;
+  grid-template-rows: 30% 70%;
   margin: 50px;
 }
 .faqHeading {
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 15% 85%;
+}
+/* .faqBody {} */
+.faq {
+  width: 80%;
 }
 </style>

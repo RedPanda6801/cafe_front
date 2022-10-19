@@ -24,13 +24,35 @@
 
 <script>
 import axios from 'axios'
+import { io } from 'socket.io-client'
 export default {
   data() {
     return {
       visit: '',
       completedCoupon: '',
-      stackedStamp: ''
+      stackedStamp: '',
+      custPhone: this.$route.params.id1,
+      cafeId: this.$route.params.id
     }
+  },
+  async created() {
+    this.socket = io(
+      process.env.VUE_APP_URL + '/tablet',
+      {
+        cors: { origin: '*' }
+      },
+      {
+        extraHeaders: { token: localStorage.getItem('token') }
+      }
+    )
+    this.socket.emit('token', localStorage.getItem('token'))
+    this.socket.on('connect', data => console.log(data))
+    this.socket.emit('search', { custPhone: this.custPhone, cafeId: this.cafeId })
+
+    this.socket.on('messages', messages => {
+      //커스텀 이벤트
+      this.receivedMessage = messages
+    })
   },
   mounted() {
     this.getCouponInfo()
