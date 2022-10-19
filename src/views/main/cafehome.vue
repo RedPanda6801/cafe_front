@@ -109,12 +109,12 @@
         </div>
       </div>
     </div>
-    <div class="deletCafe" style="cursor: pointer" @click="$bvModal.show('modal-deletCafe')">탈퇴하기</div>
+    <div class="deletCafe" style="cursor: pointer" @click="$bvModal.show('modal-deletCafe')">삭제하기</div>
     <b-modal id="modal-deletCafe" title="카페삭제" style="text-align: center" hide-footer>
       <b-form-group style="text-align: center">
-        <p>정말로 탈퇴하시겠습니까?</p>
+        <p>정말로 카페를 삭제하시겠습니까?</p>
         <p>가입한 멤버쉽 정보를 살펴보신 후 눌러주세요.</p>
-        <b-btn variant="danger">삭제하기</b-btn>
+        <b-btn variant="danger" @click="deleteCafe">삭제하기</b-btn>
       </b-form-group>
     </b-modal>
   </div>
@@ -205,7 +205,7 @@ export default {
         .then(response => {
           console.log('updateLogo - response : ', response)
           alert('카페 프로필 사진이 추가 되었습니다.')
-          this.$router.go()
+          // this.$router.go()
         })
         .catch(error => {
           console.log('updateLogo - error : ', error)
@@ -225,7 +225,7 @@ export default {
         .then(response => {
           console.log('updateTablet - response : ', response)
           alert('테블릿 사진이 추가 되었습니다.')
-          this.$router.go()
+          // this.$router.go()
         })
         .catch(error => {
           console.log('updateTablet - error : ', error)
@@ -252,6 +252,23 @@ export default {
         })
         .catch(error => {
           console.log('updateCafe - error : ', error)
+        })
+    },
+    async deleteCafe() {
+      console.log(this.watchCafe.cafeName)
+      await axios
+        .delete(process.env.VUE_APP_URL + `/profile/remove-cafe/${this.watchCafe.cafeName}/${this.watchCafe.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(response => {
+          console.log('deleteCafe - response : ', response)
+          alert('카페가 삭제 되었습니다.')
+          this.$router.push('/main')
+        })
+        .catch(error => {
+          console.log('deleteCafe - error : ', error)
         })
     }
   }

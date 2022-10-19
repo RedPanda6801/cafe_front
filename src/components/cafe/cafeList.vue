@@ -49,7 +49,7 @@ export default {
 }
 .cafeName {
   margin-top: 10px;
-  width: 10vw;
+  width: 15vw;
   text-align: center;
   font-weight: bold;
   /* background-color: azure; */
