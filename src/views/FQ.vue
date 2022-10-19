@@ -1,19 +1,36 @@
 <template>
-  <div>
+  <div class="fnqContainer">
     <div class="job-wrap">
       <div class="job-image">
         <img src="../../public/job.jpg" />
+        <div class="job-text">
+          <p>자주묻는 질문과 답변</p>
+          <span>F&Q</span>
+        </div>
       </div>
-      <div class="job-text">
-        <p>자주묻는 질문과 답변</p>
-        <span>F&Q</span>
+      <div class="faqList">
+        <div v-for="(list, i) in faqList" :key="list" :faqList="faqList[i]" class="faq">
+          <div class="faqHeading">
+            <p>{{ faqList[i].category }}</p>
+            <p>{{ faqList[i].title }}</p>
+          </div>
+          <p>{{ faqList[i].comment }}</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import FAQ from '@/assets/FAQ.js'
+
+export default {
+  data() {
+    return {
+      faqList: FAQ
+    }
+  }
+}
 </script>
 
 <style>
@@ -38,5 +55,17 @@ export default {}
   font-weight: bold;
   text-align: center;
   color: #fff;
+}
+.fnqContainer {
+  display: grid;
+  grid-template-rows: 10% 90%;
+}
+.faqList {
+  display: grid;
+  margin: 50px;
+}
+.faqHeading {
+  display: grid;
+  grid-template-columns: 10% 90%;
 }
 </style>

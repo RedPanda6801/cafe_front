@@ -14,7 +14,34 @@
         :fields="fields"
         :head-variant="headVariant"
         :table-variant="tableVariant"
-      ></b-table>
+      >
+        <template v-slot:cell(edit)="{ item }">
+          <span>
+            <button v-b-modal.modal-prevent-closing class="PhoneB" variant="outline-primary" @click="editMemo(item)">
+              <b-icon icon="pencil" class="pencil"></b-icon>
+            </button>
+            <b-modal
+              id="modal-prevent-closing"
+              ref="modal"
+              title="수정하실 고객메모를 입력해 주세요."
+              @show="resetModal"
+              @hidden="resetModal"
+              @ok="handleOk"
+            >
+              <form ref="form" @submit.stop.prevent="handleSubmit">
+                <b-form-group
+                  label="고객 메모"
+                  label-for="memo-input"
+                  invalid-feedback="메모를 입력해주세요!"
+                  :state="memoState"
+                >
+                  <b-form-input id="memo-input" v-model="memo" :state="memoState" required></b-form-input>
+                </b-form-group>
+              </form>
+            </b-modal>
+          </span>
+        </template>
+      </b-table>
       <div v-show="items.length === 0">
         <p>조회할 수 있는 고객 정보가 없습니다.</p>
       </div>
@@ -32,16 +59,10 @@ export default {
         { key: '방문 횟수', sortable: true },
         { key: '누적 쿠폰', sortable: true },
         { key: '가용 쿠폰', sortable: true },
-        { key: '고객 메모', sortable: false }
+        { key: '고객 메모', sortable: false },
+        { key: 'edit', sortable: false }
       ],
-      items: [
-        // { '고객 번호': 2119, '방문 횟수': 10, '누적 쿠폰': 22, '가용 쿠폰': 2, '고객 메모': '착함' },
-        // { '고객 번호': 1119, '방문 횟수': 20, '누적 쿠폰': 32, '가용 쿠폰': 2, '고객 메모': null },
-        // { '고객 번호': 1230, '방문 횟수': 30, '누적 쿠폰': 42, '가용 쿠폰': 2, '고객 메모': null },
-        // { '고객 번호': 2169, '방문 횟수': 12, '누적 쿠폰': 21, '가용 쿠폰': 1, '고객 메모': '단골' },
-        // { '고객 번호': 1149, '방문 횟수': 24, '누적 쿠폰': 34, '가용 쿠폰': 4, '고객 메모': null },
-        // { '고객 번호': 5230, '방문 횟수': 35, '누적 쿠폰': 45, '가용 쿠폰': 5, '고객 메모': null }
-      ],
+      items: [],
       tableVariants: 'light',
       bordered: false,
       borderless: false,
@@ -51,7 +72,11 @@ export default {
       headVariant: null,
       tableVariant: '',
       noCollapse: false,
-      cafeName: ''
+      cafeName: '',
+      memo: '',
+      memoState: null,
+      submittedMemo: '',
+      custPhone: ''
     }
   },
   mounted() {
@@ -85,6 +110,7 @@ export default {
           console.log('res : ', res.data)
           for (let i = 0; i < customers.length; i++) {
             this.items.push({
+              phone: customers[i].custPhone,
               '고객 번호': customers[i].custPhone.slice(-4),
               '방문 횟수': customers[i].visit,
               '누적 쿠폰': customers[i].stackStamp,
@@ -96,6 +122,49 @@ export default {
         .catch(err => {
           console.log('Customer error : ', err)
         })
+    },
+    async updateCustomerMemo() {
+      const axiosBody = {
+        memo: this.memo
+      }
+      await axios
+        .put(process.env.VUE_APP_URL + `/stamp/update-memo/${this.custPhone}/${this.$route.params.id}`, axiosBody, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          console.log('res : ', res)
+        })
+        .catch(err => {
+          console.log('Customer error : ', err)
+        })
+    },
+    editMemo(item) {
+      console.log(item.phone)
+      this.custPhone = item.phone
+    },
+    checkFormValidity() {
+      const valid = this.$refs.form.checkValidity()
+      this.memoState = valid
+      return valid
+    },
+    resetModal() {
+      this.memo = ''
+      this.memoState = null
+    },
+    handleOk(bvModalEvent) {
+      bvModalEvent.preventDefault()
+      this.handleSubmit()
+    },
+    handleSubmit() {
+      if (!this.checkFormValidity()) {
+        return
+      }
+      this.$nextTick(() => {
+        this.updateCustomerMemo()
+        this.$bvModal.hide('modal-prevent-closing')
+      })
     }
   }
 }

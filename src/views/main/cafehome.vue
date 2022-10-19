@@ -100,7 +100,7 @@
               <b-btn variant="success" @click="updateTablet">저장</b-btn>
             </b-form-group>
           </b-modal>
-          <b-btn>고객관리</b-btn>
+          <b-btn @click="$router.push(`/main/${$route.params.id}/customer`)">고객관리</b-btn>
         </div>
       </div>
     </div>
