@@ -1,8 +1,7 @@
 <template>
   <div class="qnaContainer">
-    <Sidemenu />
     <div class="qna">
-      <h3>문의하기</h3>
+      <h3><b-icon icon="chat-left-text" scale="0.9"></b-icon> Contact</h3>
       <div class="btnOrganizer">
         <button class="qnaBtn" @click="$router.push('/qna/write')">
           <span class="Btext"><b-icon icon="plus-lg" scale="0.7"></b-icon> 문의글 남기기</span>
@@ -16,25 +15,43 @@
       </div>
       <!-- v-for로 질문 갯수만큼 반복 -->
       <div v-show="qnaList" class="qnaList">
-        <div><p>답변여부</p></div>
-        <div><p>카테고리</p></div>
-        <div><p>제목</p></div>
-        <div><p>문의날짜</p></div>
+        <qnaList v-for="qnaList in qnaLists" :key="qnaList.id" :qna-list="qnaList" />
       </div>
     </div>
-    <div class="footer">2022 My_Coupon &copy; All Rights Reserved.</div>
   </div>
 </template>
 
 <script>
-import Sidemenu from '../main/Sidemenu.vue'
+import qnaList from '../../components/qna/qnaList.vue'
+import axios from 'axios'
 export default {
   components: {
-    Sidemenu
+    qnaList
   },
   data() {
     return {
-      qnaList: false
+      qnaList: true,
+      qnaLists: []
+    }
+  },
+  mounted() {
+    this.getqnaLists()
+  },
+  methods: {
+    async getqnaLists() {
+      await axios
+        .get(process.env.VUE_APP_URL + '/question/info', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(async res => {
+          this.qnaLists = res.data.data
+          console.log('qnaLists : ', res.data.data)
+        })
+        .catch(err => {
+          console.log('qnaLists -error : ', err)
+        })
     }
   }
 }
@@ -48,7 +65,7 @@ export default {
 .btnOrganizer {
   display: flex;
   justify-content: flex-end;
-  width: 90%;
+  width: 95%;
 }
 .qnaNone {
   align-items: center;
@@ -68,15 +85,14 @@ export default {
   height: 250px;
   color: #eee;
 }
-.qnaList {
+/* .qnaList {
   display: grid;
   grid-template-columns: 15% 15% 50% 20%;
-}
+} */
 .qna {
-  width: 82vw;
-  height: 700px;
+  width: 100%;
+  height: 100vh;
   padding: 25px;
-  /* background-color: aqua; */
 }
 .qnaBtn {
   width: 180px;
@@ -86,16 +102,9 @@ export default {
   font-size: 18px;
   color: grey;
   border-radius: 20px;
+  transition: 0.5s;
 }
 .qnaBtn:hover {
-  filter: brightness(70%);
-}
-.footer {
-  font-size: 12px;
-  color: #fff;
-  background: #708ab8;
-  letter-spacing: 2px;
-  text-align: center;
-  padding: 3vh 5vw;
+  filter: brightness(90%);
 }
 </style>

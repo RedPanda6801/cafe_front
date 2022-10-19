@@ -3,7 +3,7 @@
     <div class="cafeList">
       <b-avatar>
         <b-icon v-if="!cafeList.img" icon="shop"></b-icon>
-        <img v-if="cafeList.img" class="ProIMG" :src="`http://192.168.0.50:8002/uploads/${cafeList.img}`" />
+        <img v-if="cafeList.img" class="ProIMG" :src="`http://192.168.0.50:8002/uploads/${cafeList.icon}`" />
       </b-avatar>
       <span class="cafeName">{{ cafeList.cafeName }}</span>
       <span class="cafelocation">{{ cafeList.location }}</span>
@@ -70,5 +70,6 @@ export default {
 }
 .ProIMG {
   width: 100%;
+  height: 100%;
 }
 </style>

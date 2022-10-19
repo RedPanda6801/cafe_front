@@ -10,7 +10,23 @@
         <cafe-list v-for="cafeList in cafeLists" :key="cafeList.id" :cafe-list="cafeList" />
       </div>
     </div>
-    <div class="footer">2022 My_Coupon &copy; All Rights Reserved</div>
+    <footer>
+      <div class="Mfooter">
+        <div>
+          <img class="logoImg" src="../../../public/whitelogo.png" style="margin-top: 20px" />
+        </div>
+        <div style="margin: 20px">
+          <p>
+            서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com<br />2022 My_Stamp &copy; All Rights
+            Reserved.
+          </p>
+          <div class="ICON">
+            <b-icon icon="instagram" scale="2" variant="white" style="margin-right: 20px"></b-icon>
+            <b-icon icon="github" scale="2" variant="white"></b-icon>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -50,13 +66,26 @@ export default {
 </script>
 
 <style>
+.Mfooter {
+  /* margin-top: 161px; */
+  font-size: 12px;
+  color: #fff;
+  background: #5a38d4;
+  letter-spacing: 2px;
+  padding: 2vh 5vw;
+  display: flex;
+  justify-content: center;
+}
+.AddCafe {
+  margin: 25px;
+}
 .maiNpage {
   width: 100%;
   height: 100vh;
 }
 .cafelist {
   width: 95%;
-  height: 700px;
+  height: 100vh;
   padding: 25px;
   /* background-color: aqua; */
 }
@@ -75,15 +104,10 @@ export default {
 .cafeAddB:hover {
   filter: brightness(70%);
 }
-.footer {
-  font-size: 12px;
-  color: #fff;
-  background: #708ab8;
-  letter-spacing: 2px;
-  text-align: center;
-  padding: 3vh 5vw;
-}
 .List {
   width: 105%;
+}
+.ICON {
+  margin-left: 5px;
 }
 </style>

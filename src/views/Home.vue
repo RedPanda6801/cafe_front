@@ -132,10 +132,12 @@
       </section>
       <footer>
         <div class="Homefooter">
-          <img class="logoImg" src="../../public/whitelogo.png" />
-          <div>
-            <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프</p>
-            <p>2022 My_Stemp &copy; All Rights Reserved.</p>
+          <img class="logoImg" src="../../public/whitelogo.png" style="margin-top: 20px" />
+          <div style="margin: 20px">
+            <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com</p>
+            <p>2022 My_Stamp &copy; All Rights Reserved.</p>
+            <b-icon icon="instagram" scale="2" variant="white" style="margin-right: 20px"></b-icon>
+            <b-icon icon="github" scale="2" variant="white"></b-icon>
           </div>
         </div>
       </footer>
@@ -176,7 +178,7 @@ export default {
   font-weight: bold;
   background-color: #5a38d4;
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   transition: 0.5s;
 }
 .SignUpB:hover {

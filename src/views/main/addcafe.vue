@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div title="addcafe" class="AddCafe">
-      <h3>AddCafe</h3>
-      <div style="margin-top: 10px">
-        <b-col cols="6">
+    <div class="AddCafe">
+      <h3><b-icon icon="plus-circle" scale="0.9"></b-icon> Cafe List</h3>
+      <b-card class="mpd">
+        <b-col cols="10">
           <b-form v-if="show" @reset="onReset">
             <b-form-group id="input-group-1" label="카페이름:" label-for="input-1">
               <b-form-input
@@ -41,11 +41,11 @@
             </b-form-group> -->
 
             <!-- <b-button size="sm">결제하기</b-button><br /> -->
-            <b-button variant="primary" @click="AddCafe">추가하기</b-button>
-            <b-button type="reset" variant="danger">취소하기</b-button>
+            <b-button class="ADDB" variant="primary" @click="AddCafe">추가하기</b-button>
+            <b-button class="ADDB" type="reset" variant="danger" @click="$router.go(-1)">취소하기</b-button>
           </b-form>
         </b-col>
-      </div>
+      </b-card>
     </div>
   </div>
 </template>
@@ -141,7 +141,21 @@ export default {
 }
 </script>
 <style>
+.mpd {
+  width: 70%;
+  height: 65vh;
+  padding: 25px;
+  margin-top: 20px;
+  margin-left: 12vw;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+.ADDB {
+  margin-top: 15px;
+  margin-right: 10px;
+}
 .AddCafe {
-  margin: 25px;
+  height: 600px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="LOGIN">
     <b-card class="login-box">
-      <h2>Login</h2>
+      <h2><img class="logoImg" src="../../../public/logo.png" /></h2>
       <ValidationObserver ref="signUpForm" v-slot="{ handleSubmit, invalid, validate }">
         <b-form @submit.prevent="handleSubmit(OwnerLogin)">
           <b-form-group class="user-box">
@@ -30,20 +30,25 @@
           </b-form-group>
           <b-form-group>
             <button class="sub" variant="primary" :disabled="invalid || !validate" @click="OwnerLogin">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <b-spinner v-if="loading" type="submit" small></b-spinner> Submit
+              <span v-if="loading"></span>
+              <span v-if="loading"></span>
+              <span v-if="loading"></span>
+              <span v-if="loading"></span>
+              <!-- <b-spinner v-if="loading" type="submit" small></b-spinner>  -->
+              Login
             </button>
           </b-form-group>
-          <b-form-group>
-            <b-button variant="primary" @click="signUp">회원가입</b-button>
-            <b-button variant="primary" @click="find">ID/PW찾기</b-button>
+          <b-form-group class="ath">
+            <button class="athA" variant="primary" @click="signUp">회원가입</button>
+            <button class="athB" variant="primary" @click="find">ID/PW찾기</button>
           </b-form-group>
         </b-form>
       </ValidationObserver>
     </b-card>
+    <section class="hero">
+      <div class="content"></div>
+      <div class="waves"></div>
+    </section>
   </div>
 </template>
 
@@ -97,11 +102,12 @@ export default {
 
 <style>
 .LOGIN {
-  width: 100vw;
+  width: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: linear-gradient(#141e30, #243b55);
+  background-color: #5a38d4;
 }
 
 .login-box {
@@ -116,6 +122,7 @@ export default {
   box-sizing: border-box;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  z-index: 1;
 }
 
 .login-box h2 {
@@ -162,17 +169,20 @@ export default {
 .login-box form .sub {
   position: relative;
   border: none;
+  /* border: 2px solid #5a38d4; */
+  border-radius: 5px;
+  background-color: #5a38d4;
   display: inline-block;
   padding: 10px 20px;
-  color: #5a38d4;
+  color: #fff;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
   transition: 0.5s;
-  margin-top: 40px;
+  margin-top: 14px;
+  margin-bottom: 22px;
   letter-spacing: 4px;
-  background-color: #fff;
 }
 
 .login-box .sub:hover {
@@ -183,14 +193,38 @@ export default {
 }
 
 .login-box .ath {
-  color: rgb(219, 219, 219);
   margin: 10px;
   font-size: 12px;
   text-align: center;
 }
 
-.login-box .ath a {
+.athA {
+  border: none;
+  background: #fff;
   color: #5a38d4;
+  margin-right: 17px;
+  transition: 0.5s;
+  padding: 8px;
+}
+
+.athB {
+  border: none;
+  background: #fff;
+  color: #5a38d4;
+  transition: 0.5s;
+  padding: 8px;
+}
+
+.athA:hover {
+  background: #5a38d4;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.athB:hover {
+  background: #5a38d4;
+  color: #fff;
+  border-radius: 10px;
 }
 
 .login-box form .sub {
@@ -283,5 +317,69 @@ export default {
 
 .login-box .sub:hover span {
   animation: none;
+}
+
+:root {
+  --color: #5a38d4;
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  position: relative;
+  background: #333333;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ========================= */
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background-color: var(--color);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  transition: 500ms;
+}
+
+.waves::before,
+.waves::after {
+  content: '';
+  position: absolute;
+  width: 300vw;
+  height: 300vw;
+  top: -70vw;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+
+.waves::before {
+  border-radius: 44%;
+  background: rgb(51, 51, 51);
+  animation: waves 8s linear infinite;
+}
+
+.waves::after {
+  border-radius: 44%;
+  background: #f0f2f3;
+  animation: waves 15s linear infinite;
+}
+
+@keyframes waves {
+  0% {
+    transform: translate(-50%, -75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
 }
 </style>
