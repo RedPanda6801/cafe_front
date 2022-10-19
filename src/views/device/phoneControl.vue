@@ -61,9 +61,7 @@ export default {
       memo: '',
       userNumber: '',
       cafeId: '',
-      socket: null,
-      message: '',
-      receivedMessage: []
+      socket: null
     }
   },
   async created() {
@@ -90,11 +88,6 @@ export default {
       //커스텀 이벤트
       this.receivedMessage = messages
     })
-  },
-  mounted() {
-    // this.addStamp()
-    // this.useCoupon()
-    // this.getCouponInfo()
   },
   methods: {
     increment(n) {

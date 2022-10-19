@@ -99,7 +99,7 @@ export default {
     },
     async getCustomerInfo() {
       await axios
-        .get(process.env.VUE_APP_URL + `/customer/info/${this.$route.params.id}`, {
+        .get(process.env.VUE_APP_URL + `/stamp/search-all/${this.$route.params.id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
