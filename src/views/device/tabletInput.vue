@@ -8,7 +8,7 @@
       </div>
       <div class="cafeBanner">
         <img v-if="cafeImg === null" src="../../../public/cafeDefault.png" class="banner" />
-        <img v-else :src="`http://192.168.0.50:8002/uploads/${cafeImg}`" class="banner" />
+        <img v-else :src="`${url}/uploads/${cafeImg}`" class="banner" />
       </div>
     </div>
     <div class="inputContainer">
@@ -74,7 +74,8 @@ export default {
       confirmModal: false,
       cafeName: '',
       cafeId: '',
-      cafeImg: ''
+      cafeImg: '',
+      url: ''
     }
   },
   mounted() {
@@ -89,6 +90,7 @@ export default {
           }
         })
         .then(async res => {
+          this.url = process.env.VUE_APP_URL
           this.cafeName = res.data.data.cafeName
           this.cafeId = res.data.data.id
           this.cafeImg = res.data.data.img

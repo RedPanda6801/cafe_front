@@ -3,16 +3,16 @@
     <h3 class="qnaHome"><b-icon icon="list-check" scale="0.9"></b-icon> Contact Page</h3>
     <b-card class="QNAP">
       <div>
-        <p>제목: {{ Watchqna.question.title }}</p>
+        <p>제목: {{ title }}</p>
       </div>
       <div>
-        <p>카테고리: {{ Watchqna.question.category }}</p>
+        <p>카테고리: {{ category }}</p>
       </div>
       <div>
-        <p>작성일자: {{ setRealFormat(Watchqna.question.createdAt) }}</p>
+        <p>작성일자: {{ setRealFormat(createdAt) }}</p>
       </div>
       <div>
-        <p>내용: {{ Watchqna.question.text }}</p>
+        <p>내용: {{ text }}</p>
       </div>
       <div class="LINE"></div>
       <div>
@@ -52,7 +52,12 @@ export default {
   data() {
     return {
       Watchqna: {},
-      comment: ''
+      comment: '',
+      title: '',
+      category: '',
+      Comment: {},
+      createdAt: '',
+      text: ''
     }
   },
   mounted() {
@@ -70,6 +75,10 @@ export default {
         .then(response => {
           console.log('getWatchqna - response : ', response.data.data)
           this.Watchqna = response.data.data
+          this.title = this.Watchqna.question.title
+          this.category = this.Watchqna.question.category
+          this.createdAt = this.Watchqna.question.createdAt
+          this.text = this.Watchqna.question.text
         })
         .catch(error => {
           console.log('getWatchqna - error : ', error)

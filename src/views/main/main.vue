@@ -6,9 +6,10 @@
         <span class="Btext"><b-icon icon="plus-lg" scale="0.7"></b-icon> 카페추가하기</span>
         <!-- <b-icon icon="plus-lg" scale="0.7"></b-icon> 카페 추가하기 -->
       </button>
-      <div class="List">
+      <div v-if="cafeLists" class="List">
         <cafe-list v-for="cafeList in cafeLists" :key="cafeList.id" :cafe-list="cafeList" />
       </div>
+      <div v-if="!cafeLists"></div>
     </div>
     <footer>
       <div class="Mfooter">

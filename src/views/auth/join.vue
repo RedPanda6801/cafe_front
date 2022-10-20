@@ -2,17 +2,15 @@
   <div class="join">
     <!--인증 후 넘어올 페이지-->
     <ValidationObserver ref="signUpForm" v-slot="{ handleSubmit, invalid, validate }">
-      <b-card no-body style="max-width: 50rem" img-src="#" img-alt="Image" img-top>
-        <template #header>
-          <h4 class="mb-0">여기에 이메일인증 위에는 사이트로고</h4>
-        </template>
+      <b-card no-body class="join-box">
+        <h2><img class="logoImg" src="../../../public/logo.png" /></h2>
         <form @submit.prevent="handleSubmit(signUp)">
-          <b-card-body>
+          <b-card-body style="text-align: center">
             <b-card-sub-title class="mt-3 mb-2">
               인증메일 전송 > 이메일 인증 >
               <span class="status"> 추가 정보 입력</span>
             </b-card-sub-title>
-            <b-card-title>가입</b-card-title>
+            <b-card-title style="margin: 20px">가입</b-card-title>
             <b-card-text>
               <!-- validation 넣을 예정 -->
               <ValidationProvider v-slot="{ errors }" name="name" rules="required">
@@ -33,11 +31,11 @@
                     :counter="20"
                     :error-messages="errors"
                     required
-                    class="mr-5 mb-1 inputId"
+                    class="mr-2 mb-1 inputId"
                     placeholder="이용하실 아이디를 입력해주세요"
                   ></b-input>
                 </ValidationProvider>
-                <b-button class="mb-1" @click="duplicationCheck">중복확인</b-button>
+                <button class="jung" @click="duplicationCheck">중복확인</button>
               </div>
               <b-input v-model="email" class="mb-1" disabled></b-input>
               <ValidationProvider v-slot="{ errors }" name="password" rules="required|min:6|max:20">
@@ -68,16 +66,17 @@
 
           <b-list-group flush>
             <b-list-group-item>
-              <b-button block type="submit" :disabled="invalid || !validate" @click="signUp">회원가입 완료</b-button>
+              <b-button block class="Ingle" type="submit" :disabled="invalid || !validate" @click="signUp">
+                회원가입 완료
+              </b-button>
             </b-list-group-item>
-            <b-list-group-item>여기에 안내사항들 리스트로 표기 </b-list-group-item>
             <!-- <b-list-group-item>Vestibulum at eros</b-list-group-item> -->
           </b-list-group>
         </form>
         <b-card-body>
           <a href="/auth/login" class="card-link">로그인창으로 돌아가기</a>
         </b-card-body>
-        <b-card-footer>이용약관/개인정보 처리방침/고객센터 등 footer</b-card-footer>
+        <b-card-footer style="text-align: center">2022 My_Stamp &copy; All Rights Reserved.</b-card-footer>
         <!-- <b-card-img src="https://placekitten.com/480/210" alt="Image" bottom></b-card-img> -->
       </b-card>
     </ValidationObserver>
@@ -172,7 +171,49 @@ export default {
 </script>
 
 <style>
+.Ingle {
+  background-color: #5a38d4;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.Ingle:hover {
+  background-color: #432a9f;
+}
+.join-box {
+  overflow: hidden;
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  width: 550px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  z-index: 1;
+}
+.join-box h2 {
+  padding: 0;
+  color: #5a38d4;
+  text-align: center;
+}
+.jung {
+  width: 10vw;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #5a38d4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 3px;
+  transition: 0.5s;
+}
+.jung:hover {
+  background-color: #432a9f;
+}
 .join {
+  height: 850px;
   display: flex;
   justify-content: center;
 }
@@ -184,6 +225,6 @@ export default {
   display: flex;
 }
 .inputId {
-  width: 300px;
+  width: 310px;
 }
 </style>
