@@ -1,6 +1,6 @@
 <template>
   <div class="find">
-    <b-card no-body style="max-width: 50rem">
+    <b-card no-body class="join-box">
       <template #header>
         <h4 class="mb-0">ID/PW 찾기</h4>
       </template>
@@ -118,7 +118,9 @@
         <a href="/auth/login" class="card-link">로그인창으로 돌아가기</a>
       </b-card-body>
 
-      <b-card-footer><footer>2022 My_Coupon &copy; All Rights Reserved.</footer></b-card-footer>
+      <b-card-footer style="text-align: center"
+        ><footer>2022 My_Coupon &copy; All Rights Reserved.</footer></b-card-footer
+      >
       <!-- <b-card-img src="https://placekitten.com/480/210" alt="Image" bottom></b-card-img> -->
     </b-card>
   </div>
@@ -189,7 +191,22 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 755px;
+  background-color: #f0f2f3;
+}
+.join-box {
+  overflow: hidden;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 550px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  z-index: 1;
 }
 .findMessage {
   font-size: 15px;

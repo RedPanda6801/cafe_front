@@ -2,7 +2,7 @@
   <div class="QNAhomeList" @click="qnaRoute(qnaList.id)">
     <div class="QNAList">
       <span v-if="!qnaList.SolutionId" class="QNAName">답변없음</span>
-      <span v-if="qnaList.SolutionId" class="QNAName">답변완료</span>
+      <span v-if="qnaList.SolutionId" class="QNPName">답변완료</span>
       <span class="QNAtitle">{{ qnaList.title }}</span>
       <span class="QNAcategory">{{ qnaList.category }}</span>
       <span class="QNATime">{{ setFormat(qnaList.createdAt) }}</span>
@@ -65,6 +65,12 @@ export default {
   background-color: rgba(232, 232, 232, 0.47);
 }
 .QNAName {
+  margin-top: 5px;
+  width: 10vw;
+  text-align: center;
+  font-weight: bold;
+}
+.QNPName {
   margin-top: 5px;
   width: 10vw;
   text-align: center;

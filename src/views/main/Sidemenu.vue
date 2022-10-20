@@ -35,7 +35,7 @@
         <ul class="nav-list" style="overflow: visible">
           <span v-for="(menuItem, index) in menuItems" :key="index">
             <li>
-              <button @click="$router.push(menuItem.link)">
+              <button @click="fkdnxj(menuItem.link)">
                 <i class="bx" :class="menuItem.icon || 'bx-square-rounded'" />
                 <span class="links_name">{{ menuItem.name }}</span>
               </button>
@@ -209,6 +209,11 @@ export default {
     signOut() {
       localStorage.removeItem('token')
       this.$router.push('/auth/login')
+    },
+    fkdnxj(value) {
+      const start = this.$router.currentRoute.path
+      if (start === value) return
+      this.$router.push(value)
     }
   }
 }

@@ -149,7 +149,7 @@ export default {
 }
 .QNAP {
   width: 70%;
-  height: 75vh;
+  height: 60vh;
   padding: 25px;
   margin-top: 20px;
   margin-left: 12vw;
@@ -181,6 +181,6 @@ export default {
   z-index: 2;
 }
 .LINE {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid rgb(195, 195, 195);
 }
 </style>

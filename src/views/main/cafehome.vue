@@ -17,7 +17,7 @@
               accept="image/*"
               @change="previewImage"
             ></b-form-file>
-            <div>
+            <div class="SUM">
               <b-img :src="previewImageData" class="formStyle"></b-img>
               <b-icon v-if="previewImageData" class="DelImg" icon="x" @click="deleteIMG"></b-icon>
             </div>
@@ -76,7 +76,7 @@
           <b-col sm="3">
             <label for="id">멤버쉽<br />만료기간:</label>
           </b-col>
-          <b-col sm="8">
+          <b-col sm="7">
             <span>{{ setDateFormat(watchCafe.createdAt) }}</span>
             <b-btn class="memberB" @click="$bvModal.show('modal-membership')">멤버쉽 결제</b-btn>
             <b-modal id="modal-membership" title="멤버쉽 결제" hide-footer>
@@ -316,7 +316,12 @@ export default {
 </script>
 
 <style>
+/* .SUM {
+  display: flex;
+  top: 0%;
+} */
 .DelImg {
+  /* margin-bottom: 15%; */
   width: 20px;
   height: 20px;
   border-radius: 10px;
@@ -337,7 +342,8 @@ export default {
   margin-right: 10px;
 }
 .formStyle {
-  width: 20vw;
+  max-height: 50%;
+  width: 50%;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -345,14 +351,19 @@ export default {
   width: 100%;
   padding-left: 18%;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 6fr;
 }
 .CafeHome {
   margin: 25px;
 }
 .memberB {
-  margin-left: 5vw;
-  width: 8vw;
+  margin-left: 3vw;
+  width: 120px;
+  background-color: #5a38d4;
+  transition: 0.5s;
+}
+.memberB:hover {
+  background-color: #432a9f;
 }
 .cafehoMeM {
   width: 75%;
