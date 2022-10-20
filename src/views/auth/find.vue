@@ -13,14 +13,19 @@
                 <b-card-body>
                   <b-card-title>아이디 찾기</b-card-title>
                   <p>가입하실 때 입력하신 이메일과 성함을 입력해 주세요</p>
-                  <b-input v-model="name" placeholder="성함"></b-input>
+                  <b-input v-model="name" class="mb-1" placeholder="성함"></b-input>
                   <b-input v-model="email" placeholder="이메일"></b-input>
                 </b-card-body>
                 <b-list-group flush>
                   <b-list-group-item>
                     <b-button @click="sendEmail">이메일로 아이디 전송받기</b-button>
                   </b-list-group-item>
-                  <b-list-group-item>여기에 안내사항들 리스트로 표기 </b-list-group-item>
+                  <b-list-group-item>
+                    <p class="findMessage">
+                      아이디 찾기 기능은 고객님들의 개인정보 보호를 위해<br />
+                      아이디의 일부만 보여드리는 형식으로 진행됩니다.
+                    </p>
+                  </b-list-group-item>
                 </b-list-group>
               </form>
             </div>
@@ -47,7 +52,12 @@
                 <b-list-group-item>
                   <b-button @click="$router.go(-1)">로그인 창으로 돌아가기</b-button>
                 </b-list-group-item>
-                <b-list-group-item>여기에 안내사항들 리스트로 표기 </b-list-group-item>
+                <b-list-group-item>
+                  <p class="findMessage">
+                    아이디 찾기 기능은 고객님들의 개인정보 보호를 위해<br />
+                    아이디의 일부만 보여드리는 형식으로 진행됩니다.
+                  </p>
+                </b-list-group-item>
               </b-list-group>
             </div>
           </b-tab>
@@ -58,15 +68,20 @@
                 <b-card-body>
                   <b-card-title>비밀번호 찾기</b-card-title>
                   <p>가입하실 때 입력하신 이메일과 아이디, 성함을 입력해 주세요</p>
-                  <b-input v-model="name" placeholder="성함"></b-input>
-                  <b-input v-model="userId" placeholder="아이디"></b-input>
+                  <b-input v-model="name" class="mb-1" placeholder="성함"></b-input>
+                  <b-input v-model="userId" class="mb-1" placeholder="아이디"></b-input>
                   <b-input v-model="email" placeholder="이메일"></b-input>
                 </b-card-body>
                 <b-list-group flush>
                   <b-list-group-item>
-                    <b-button @click="sendPwEmail">이메일로 비밀번호 변경</b-button>
+                    <b-button @click="sendPwEmail">비밀번호 변경</b-button>
                   </b-list-group-item>
-                  <b-list-group-item>여기에 안내사항들 리스트로 표기</b-list-group-item>
+                  <b-list-group-item>
+                    <p class="findMessage">
+                      비밀번호 찾기 기능은 고객님들의 개인정보 보호를 위해<br />
+                      이메일로 임시비밀번호를 발급해드리는 형식으로 진행됩니다.
+                    </p>
+                  </b-list-group-item>
                 </b-list-group>
               </form>
             </div>
@@ -129,7 +144,7 @@ export default {
       }
       console.log('user check : ', user)
       await axios
-        .get(process.env.VUE_APP_URL + '/find/userId/' + user.email)
+        .get(process.env.VUE_APP_URL + `/find/userId/${user.email}/${user.name}`)
         .then(async res => {
           console.log('res: ', res)
           this.emailSent = true
@@ -176,9 +191,15 @@ export default {
   align-items: center;
   height: 100vh;
 }
+.findMessage {
+  font-size: 15px;
+  color: grey;
+}
 .modalBtn {
   border: none;
   color: grey;
   background-color: white;
+  text-align: center;
+  justify-content: center;
 }
 </style>
