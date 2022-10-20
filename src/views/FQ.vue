@@ -8,10 +8,6 @@
           <span>FAQ</span>
         </div>
       </div>
-      <div class="job-text">
-        <p>자주묻는 질문과 답변</p>
-        <span>FAQ</span>
-      </div>
       <div class="faqList">
         <div v-for="(list, i) in faqList" :key="list" :faqList="faqList[i]" class="faq">
           <div class="faqHeading">
@@ -56,7 +52,7 @@ export default {
   top: 47%;
   left: 50%;
   width: 100%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 50%);
   font-size: 3vw;
   font-weight: bold;
   text-align: center;
@@ -72,12 +68,18 @@ export default {
 .faqHeading {
   display: grid;
   grid-template-columns: 15% 85%;
+
+  border-bottom: solid 1px PURPLE;
+
   font-size: 15px;
   margin-top: 5px;
+  margin-left: 20px;
 }
 .faqBody {
   font-size: 18px;
   color: #060218;
+  border-bottom: solid 1px PURPLE;
+  margin-left: 20px;
 }
 .faq {
   display: grid;
