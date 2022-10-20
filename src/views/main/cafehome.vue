@@ -298,7 +298,7 @@ export default {
   margin-right: 10px;
 }
 .formStyle {
-  width: 15vw;
+  width: 20vw;
   margin-top: 15px;
   margin-bottom: 15px;
 }

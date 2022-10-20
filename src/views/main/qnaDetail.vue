@@ -34,7 +34,7 @@
         </div>
       </div>
     </b-card>
-    <b-card v-if="!Watchqna.solution" class="QQQ">
+    <b-card v-if="!Watchqna.solution && Watchqna.isManager" class="QQQ">
       <div class="ROOT">
         <b-form-textarea id="textarea" v-model="comment" placeholder="댓글달기" rows="3" max-rows="6"></b-form-textarea>
         <b-btn @click="AddQUest">입력</b-btn>
