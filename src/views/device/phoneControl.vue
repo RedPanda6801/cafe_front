@@ -37,7 +37,7 @@
                 <!-- 버튼들 모아둘거임 -->
                 <b-button block variant="primary" @click="addStamp">적립하기</b-button>
                 <b-button block variant="primary" @click="useCoupon">쿠폰 사용하기</b-button>
-                <b-button block href="#" variant="primary">적립 취소</b-button>
+                <b-button block variant="primary" @click="backToMain">적립 취소</b-button>
               </div>
             </div>
           </div>
@@ -111,26 +111,8 @@ export default {
       }
       this.socket.emit('stack', body)
       this.quantity = 1
-      // const axiosBody = { addCount: this.quantity }
-      // await axios
-      //   .put(process.env.VUE_APP_URL + `/stamp/add-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
-      //     headers: {
-      //       Authorization: `Bearer ${localStorage.getItem('token')}`
-      //     }
-      //   })
-      //   .then(async res => {
-      //     console.log('res.data : ', res.data)
-      //     this.quantity = 1
-      //     this.visit = res.data.stamp.visit + 1
-      //     this.completedCoupon = res.data.stamp.leftStamp / 10
-      //     this.stackedStamp = res.data.stamp.leftStamp % 10
-      //   })
-      //   .catch(err => {
-      //     console.log('addStamp -error : ', err)
-      //   })
     },
     async useCoupon() {
-      console.log(this.quantity)
       const body = {
         custPhone: this.userNumber,
         cafeId: this.cafeId,
@@ -139,41 +121,11 @@ export default {
       console.log(body.useCount)
       this.socket.emit('use', body)
       this.quantity = 1
-      //   const axiosBody = { useCount: this.quantity }
-      //   await axios
-      //     .put(process.env.VUE_APP_URL + `/stamp/use-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
-      //       headers: {
-      //         Authorization: `Bearer ${localStorage.getItem('token')}`
-      //       }
-      //     })
-      //     .then(async res => {
-      //       console.log('res.data : ', res.data)
-      //       this.quantity = 1
-      //       // this.visit = res.data.stamp.visit + 1
-      //       // this.completedCoupon = res.data.stamp.leftStamp / 10
-      //       // this.stackedStamp = res.data.stamp.leftStamp % 10
-      //     })
-      //     .catch(err => {
-      //       console.log('addStamp -error : ', err)
-      //     })
+    },
+    backToMain() {
+      // 암것도 안담아보내도 되는지... 소켓 확인 필요
+      this.socket.emit('cancel', 'cancel')
     }
-    // async getCouponInfo() {
-    //   await axios
-    //     .get(process.env.VUE_APP_URL + `/stamp/search/${this.userNumber}/${this.cafeId}`, {
-    //       headers: {
-    //         Authorization: `Bearer ${localStorage.getItem('token')}`
-    //       }
-    //     })
-    //     .then(async res => {
-    //       console.log('res : ', res.data.data.stamp)
-    //       this.visit = res.data.data.stamp.visit + 1
-    //       this.completedCoupon = res.data.data.stamp.leftStamp / 10
-    //       // this.stackedStamp = res.data.stamp.leftStamp % 10
-    //     })
-    //     .catch(err => {
-    //       console.log('couponInfo -error : ', err)
-    //     })
-    // }
   }
 }
 </script>

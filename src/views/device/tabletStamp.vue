@@ -13,7 +13,7 @@
         {{ alertMessage }}
       </b-alert>
     </div>
-    <div class="greetingContainer">
+    <div v-show="!socketPassed" class="greetingContainer">
       <div class="userPhone">
         <p>{{ $route.params.id1 }} 님</p>
       </div>
@@ -21,7 +21,7 @@
         <p>{{ visit }} 번째 방문해 주셔서 감사합니다!</p>
       </div>
     </div>
-    <div class="stampContainer">
+    <div v-show="!socketPassed" class="stampContainer">
       <div class="stampHeader">
         <p>현재 사용 가능한 음료 쿠폰 : {{ completedCoupon }}개</p>
       </div>
@@ -63,7 +63,7 @@ export default {
       }
     )
     this.socket.emit('token', localStorage.getItem('token'))
-    // this.socket.on('success', data => console.log('success', data))
+    //this.socket.on('success', data => console.log('success', data))
     this.socket.on('success', data => this.showAlert(data))
     this.socket.emit('search', { custPhone: this.custPhone, cafeId: this.cafeId })
 
@@ -104,6 +104,7 @@ export default {
       }
     },
     showAlert(data) {
+      console.log(data)
       if (data.code == 200) {
         this.socketPassed = true
         this.alertMessage = '적립이 완료되었습니다. 감사합니다!'
