@@ -9,7 +9,15 @@
         <div>
           <input v-model="title" class="Titlel" type="text" placeholder="제목을 입력하세요" />
         </div>
-        <textarea v-model="text" class="texts" type="text" />
+        <!-- <textarea v-model="text" class="texts" type="text" /> -->
+        <b-form-textarea
+          id="textarea"
+          v-model="text"
+          class="texts"
+          placeholder="내용을 입력하세요..."
+          rows="12"
+          max-rows="6"
+        ></b-form-textarea>
         <div class="textBBB">
           <b-btn class="textsA" variant="danger" @click="$router.go(-1)">취소</b-btn>
           <b-btn class="textsB" @click="AddContact">문의하기</b-btn>
