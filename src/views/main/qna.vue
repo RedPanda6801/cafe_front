@@ -7,14 +7,14 @@
           <span class="Btext"><b-icon icon="plus-lg" scale="0.7"></b-icon> 문의글 남기기</span>
         </button>
       </div>
-      <div v-show="!qnaList" class="qnaNone">
+      <div v-if="!qnaLists.length" class="qnaNone">
         <div class="iconHolder">
           <b-icon icon="exclamation-circle" class="qnaNoneIcon"></b-icon>
         </div>
         <span class="mt-4"><p>작성하신 문의내역이 없습니다.</p></span>
       </div>
       <!-- v-for로 질문 갯수만큼 반복 -->
-      <div v-show="qnaList" class="qnaList">
+      <div v-if="qnaLists.length" class="qnaList">
         <qnaList v-for="qnaList in qnaLists" :key="qnaList.id" :qna-list="qnaList" />
       </div>
     </div>
@@ -30,7 +30,6 @@ export default {
   },
   data() {
     return {
-      qnaList: true,
       qnaLists: []
     }
   },

@@ -3,23 +3,52 @@
     <h3 class="qnaHome"><b-icon icon="house-door" scale="0.9"></b-icon> Contact Page</h3>
     <b-card class="QNAP">
       <div>
-        <p>제목</p>
+        <p>{{ Watchqna.question.title }}</p>
       </div>
       <div>
-        <p>카테고리</p>
+        <p>{{ Watchqna.question.category }}</p>
       </div>
       <div>
-        <p>작성시간</p>
+        <p>{{ setRealFormat(Watchqna.question.createdAt) }}</p>
       </div>
       <div>
-        <p>내용</p>
+        <p>{{ Watchqna.question.text }}</p>
       </div>
     </b-card>
   </div>
 </template>
 
 <script>
-export default {}
+import axios from 'axios'
+import SetFormat from '../../assets/mixins/SetFormat.vue'
+export default {
+  mixins: [SetFormat],
+  data() {
+    return {
+      Watchqna: {}
+    }
+  },
+  mounted() {
+    this.getWatchqna()
+  },
+  methods: {
+    async getWatchqna() {
+      await axios
+        .get(process.env.VUE_APP_URL + `/question/info-one/${this.$route.params.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(response => {
+          console.log('getWatchqna - response : ', response.data.data)
+          this.Watchqna = response.data.data
+        })
+        .catch(error => {
+          console.log('getWatchqna - error : ', error)
+        })
+    }
+  }
+}
 </script>
 
 <style>
@@ -29,8 +58,8 @@ export default {}
   padding: 25px;
 }
 .QNAP {
-  width: 50%;
-  height: 65vh;
+  width: 60%;
+  height: 75vh;
   padding: 25px;
   margin-top: 20px;
   margin-left: 22vw;

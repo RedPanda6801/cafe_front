@@ -1,16 +1,19 @@
 <template>
   <div class="QNAhomeList" @click="qnaRoute(qnaList.id)">
     <div class="QNAList">
-      <span class="QNAName">답변여부</span>
+      <span v-if="!qnaList.SolutionId" class="QNAName">답변없음</span>
+      <span v-if="qnaList.SolutionId" class="QNAName">답변완료</span>
       <span class="QNAtitle">{{ qnaList.title }}</span>
       <span class="QNAcategory">{{ qnaList.category }}</span>
       <span class="QNATime">{{ setFormat(qnaList.createdAt) }}</span>
+      <button class="QNAIcon" @click="deleteQna"><b-icon icon="trash"></b-icon></button>
     </div>
   </div>
 </template>
 
 <script>
 import SetFormat from '../../assets/mixins/SetFormat.vue'
+import axios from 'axios'
 export default {
   mixins: [SetFormat],
   props: {
@@ -22,6 +25,23 @@ export default {
   methods: {
     qnaRoute(questionId) {
       this.$router.push(`/qna/${questionId}`)
+    },
+    async deleteQna() {
+      // console.log(this.watchCafe.cafeName)
+      await axios
+        .delete(process.env.VUE_APP_URL + `/question/delete-question/${this.qnaList.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(response => {
+          console.log('deleteQna - response : ', response)
+          alert('질문이 삭제 되었습니다.')
+          this.$router.push('/qna')
+        })
+        .catch(error => {
+          console.log('deleteQna - error : ', error)
+        })
     }
   }
 }
@@ -66,6 +86,13 @@ export default {
   width: 15vw;
   text-align: center;
   color: #432a9f;
+  border-radius: 15px;
+}
+.QNAIcon {
+  margin-top: 3px;
+  width: 30px;
+  height: 30px;
+  border: none;
   border-radius: 15px;
 }
 </style>
