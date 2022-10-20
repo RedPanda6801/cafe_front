@@ -26,7 +26,7 @@
 
           <b-list-group flush>
             <b-list-group-item>
-              <b-button block variant="outline-dark" @click="duplicationCheck">인증메일 보내기</b-button>
+              <b-button class="Ingle" block @click="duplicationCheck">인증메일 보내기</b-button>
             </b-list-group-item>
             <b-list-group-item>
               - 입력하신 이메일로 인증코드가 전송됩니다.<br />
@@ -39,29 +39,27 @@
           <a href="/auth/login" class="card-link">로그인창으로 돌아가기</a>
         </b-card-body>
 
-        <b-card-footer>이용약관/개인정보 처리방침/고객센터 등 footer</b-card-footer>
+        <b-card-footer style="text-align: center">2022 My_Stamp &copy; All Rights Reserved.</b-card-footer>
         <!-- <b-card-img src="https://placekitten.com/480/210" alt="Image" bottom></b-card-img> -->
       </b-card>
     </div>
     <!-- v-show로 인증메일 보낸 후 인증코드 입력할 페이지 -->
     <div v-show="emailSent">
-      <b-card no-body style="max-width: 50rem" img-src="#" img-alt="Image" img-top>
-        <template #header>
-          <h4 class="mb-0">여기에 이메일인증 위에는 사이트로고</h4>
-        </template>
+      <b-card no-body class="join-box">
+        <h2><img class="logoImg" src="../../../public/logo.png" /></h2>
         <form @submit.prevent="handleSubmit(authCode)">
-          <b-card-body>
+          <b-card-body style="text-align: center">
             <b-card-sub-title class="mt-3 mb-2">
               인증메일 전송 >
               <span class="status"> 이메일 인증 </span>
               > 추가 정보 입력
             </b-card-sub-title>
-            <b-card-title>이메일로 발송된 인증코드를 입력해 주세요.</b-card-title>
+            <b-card-title style="margin: 20px">이메일로 발송된 인증코드를<br />입력해 주세요.</b-card-title>
             <b-card-text>
               <!-- 백 서버 연결 후 이메일 제대로 담기게 기능 구현 예정 -->
               <b-input v-model="tempEmail" disabled></b-input>
               <b-input v-model="inputCode" class="mt-3 mb-3" maxlength="6" placeholder="인증코드 입력"></b-input>
-              <b-button block variant="outline-dark" @click="authCode">인증 확인</b-button>
+              <b-button block class="Ingle" @click="authCode">인증 확인</b-button>
             </b-card-text>
           </b-card-body>
         </form>
@@ -90,7 +88,7 @@
           <a href="/auth/login" class="card-link">로그인창으로 돌아가기</a>
         </b-card-body>
 
-        <b-card-footer>이용약관/개인정보 처리방침/고객센터 등 footer</b-card-footer>
+        <b-card-footer style="text-align: center">2022 My_Stamp &copy; All Rights Reserved.</b-card-footer>
       </b-card>
     </div>
   </div>
@@ -200,6 +198,14 @@ export default {
 </script>
 
 <style>
+.Ingle {
+  background-color: #5a38d4;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.Ingle:hover {
+  background-color: #432a9f;
+}
 .join-box {
   overflow: hidden;
   position: absolute;
