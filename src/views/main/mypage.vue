@@ -48,8 +48,14 @@
         <b-col sm="3">
           <label for="password">비밀번호:</label>
         </b-col>
-        <b-col sm="6">
-          <b-input v-if="!on" v-model="password" type="password"></b-input>
+        <b-col sm="7">
+          <b-input
+            v-if="!on"
+            v-model="currentPassword"
+            placeholder="현재 비밀번호를 입력하세요."
+            type="password"
+          ></b-input>
+          <b-input v-if="!on" v-model="newPassword" placeholder="새 비밀번호를 입력하세요." type="password"></b-input>
           <button v-if="on" class="PhoneB" variant="outline-primary" @click="on = !on">
             <b-icon icon="pencil" class="pencil"></b-icon>
           </button>
@@ -65,8 +71,8 @@
     <div class="TTT" style="cursor: pointer" @click="$bvModal.show('modal-member-TTT')">탈퇴하기</div>
     <b-modal id="modal-member-TTT" title="계정삭제" style="text-align: center" hide-footer>
       <b-form-group style="text-align: center">
-        <p>정말로 탈퇴하시겠습니까?</p>
-        <p>가입한 멤버쉽 정보를 살펴보신 후 눌러주세요.</p>
+        <img class="IMOGG" src="../../../public/sad.png" />
+        <p>정말로 탈퇴하시겠습니까?<br />가입한 멤버쉽 정보를 살펴보신 후 눌러주세요.</p>
         <b-btn variant="danger" @click="deleteprofile">탈퇴하기</b-btn>
       </b-form-group>
     </b-modal>
@@ -78,7 +84,8 @@ export default {
   data: () => ({
     user: {},
     ownerPhone: '',
-    password: '',
+    currentPassword: '',
+    newPassword: '',
     show: true,
     on: true
   }),
@@ -103,7 +110,8 @@ export default {
     },
     async updateprofile() {
       const axiosBody = {
-        password: this.password,
+        currentPassword: this.currentPassword,
+        newPassword: this.newPassword,
         ownerPhone: this.ownerPhone
       }
       console.log('updateprofile - axiosBody', axiosBody)
@@ -196,5 +204,9 @@ export default {
   padding-top: 15px;
   padding-left: 40%;
   color: red;
+}
+.IMOGG {
+  width: 100px;
+  margin-bottom: 15px;
 }
 </style>
