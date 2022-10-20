@@ -240,7 +240,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'S-CoreDream-3Light' !important;
 }
 body {
   transition: all 0.5s ease;
