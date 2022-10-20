@@ -81,18 +81,6 @@ const routes = [
             meta: { header: false, noLogin: true }
           }
         ]
-      },
-      {
-        path: '/dashboard',
-        component: () => import('../views/dashboard')
-      },
-      {
-        path: '/department',
-        component: () => import('../views/department')
-      },
-      {
-        path: '/user',
-        component: () => import('../views/user')
       }
     ]
   },
