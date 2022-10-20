@@ -1,5 +1,5 @@
 <template>
-  <div class="join">
+  <div class="find">
     <b-card no-body style="max-width: 50rem">
       <template #header>
         <h4 class="mb-0">ID/PW 찾기</h4>
@@ -170,9 +170,11 @@ export default {
 </script>
 
 <style>
-.join {
+.find {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .modalBtn {
   border: none;

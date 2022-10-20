@@ -194,6 +194,5 @@ export default {
   align-items: center;
   font-size: 50px;
   /* position: absolute; */
-  z-index: 100;
 }
 </style>
