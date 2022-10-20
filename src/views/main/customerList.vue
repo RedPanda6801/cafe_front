@@ -23,8 +23,11 @@
           </span>
         </template>
       </b-table>
-      <div v-show="items.length === 0">
-        <p>조회할 수 있는 고객 정보가 없습니다.</p>
+      <div v-show="items.length === 0" class="customerNone">
+        <div class="iconHolder">
+          <b-icon icon="exclamation-circle" class="customerNoneIcon"></b-icon>
+        </div>
+        <span class="mt-4"><p>조회할 수 있는 고객정보가 없습니다.</p></span>
       </div>
     </div>
     <b-modal
@@ -195,5 +198,23 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+.customerNone {
+  align-items: center;
+  color: grey;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  justify-content: center;
+  font-size: 30px;
+  margin-top: 50px;
+}
+.iconHolder {
+  display: grid;
+  justify-items: center;
+}
+.customerNoneIcon {
+  width: 250px;
+  height: 250px;
+  color: #eee;
 }
 </style>
