@@ -87,13 +87,13 @@
               <div class="timeline-panel">
                 <div class="timeline-heading">
                   <h4>2022</h4>
-                  <h4 class="subheading">Our Humble Beginnings</h4>
+                  <h4 class="subheading">첫 발걸음</h4>
                 </div>
                 <div class="timeline-body">
                   <p class="text-muted">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-                    reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore
-                    laudantium consectetur!
+                    정작 필요할 땐 안보여서 계속해서 발급 받고, 그로 인해 지갑에 쌓여가는 종이 쿠폰들을 보며 생각해
+                    보았습니다. '개인카페도 전자스탬프 시스템을 도입할 방법이 없을까?' 비록 첫 발걸음은 이런 작고 사소한
+                    생각에서 시작되었지만, 결과는 결코 사소하지 않을것 입니다.
                   </p>
                 </div>
               </div>
@@ -105,13 +105,12 @@
               <div class="timeline-panel">
                 <div class="timeline-heading">
                   <h4>2022-10-21</h4>
-                  <h4 class="subheading">Lorem, ipsum dolor.</h4>
+                  <h4 class="subheading">베타서비스 오픈</h4>
                 </div>
                 <div class="timeline-body">
                   <p class="text-muted">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-                    reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore
-                    laudantium consectetur!
+                    드디어 베타서비스 오픈합니다! 오픈 기념 첫 달 무료 서비스도 함께 진행중 입니다. 많은 관심과 참여
+                    부탁드립니다!
                   </p>
                 </div>
               </div>
