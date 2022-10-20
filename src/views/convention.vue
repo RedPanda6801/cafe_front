@@ -88,6 +88,7 @@ export default {}
   filter: brightness(60%);
 }
 .job-text {
+  font-family: 'S-CoreDream-3Light';
   position: absolute;
   top: 47%;
   left: 50%;
@@ -97,5 +98,8 @@ export default {}
   font-weight: bold;
   text-align: center;
   color: #fff;
+}
+body {
+  font-family: 'S-CoreDream-3Light' !important;
 }
 </style>

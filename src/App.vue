@@ -15,4 +15,8 @@ export default {
 }
 </script>
 
-<style src="./assets/style/main.css"></style>
+<style src="./assets/style/main.css">
+body {
+  font-family: 'S-CoreDream-3Light' !important;
+}
+</style>

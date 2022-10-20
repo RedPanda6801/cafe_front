@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'EF_Diary';
+    src: url(./font/EF_Diary.ttf) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.App {
+  font-family: EF_Diary;
+}
+body {
+  font-family: EF_Diary;
+}

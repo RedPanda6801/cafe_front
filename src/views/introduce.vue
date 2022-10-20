@@ -24,8 +24,8 @@
                 <b-icon stacked icon="person-badge" scale="0.5" variant="white"></b-icon>
               </b-iconstack>
             </span>
-            <h4 class="my-3">Ji MIN</h4>
-            <p class="text-muted">#<br />#<br /># ENTP</p>
+            <h4 class="my-3">Jimin</h4>
+            <p class="text-muted">#프론트엔드 개발자<br />#<br /># ENTP</p>
           </div>
           <div class="col-md-3" style="margin-bottom: 8vh">
             <span>
@@ -35,7 +35,7 @@
               </b-iconstack>
             </span>
             <h4 class="my-3">Seung Gyu</h4>
-            <p class="text-muted">#<br />#<br /># ISFJ</p>
+            <p class="text-muted">#백엔드 개발자<br />#<br /># ISFJ</p>
           </div>
           <div class="col-md-3" style="margin-bottom: 8vh">
             <span class="fa-stack fa-4x">
@@ -45,7 +45,7 @@
               </b-iconstack>
             </span>
             <h4 class="my-3">Joo Ha</h4>
-            <p class="text-muted">#<br />#<br /># ISTJ</p>
+            <p class="text-muted">#프론트엔드 개발자<br />#<br /># ISTJ</p>
           </div>
           <div class="col-md-3" style="margin-bottom: 8vh">
             <span class="fa-stack fa-4x">
@@ -55,7 +55,7 @@
               </b-iconstack>
             </span>
             <h4 class="my-3">Tae Hwan</h4>
-            <p class="text-muted">#<br />#<br /># INTJ</p>
+            <p class="text-muted">#백엔드 개발자<br />#<br /># INTJ</p>
           </div>
         </div>
       </div>

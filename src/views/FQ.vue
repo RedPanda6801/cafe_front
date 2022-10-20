@@ -1,5 +1,5 @@
 <template>
-  <div class="fnqContainer">
+  <div class="faqContainer">
     <div class="job-wrap">
       <div class="job-image">
         <img src="../../public/job.jpg" />
@@ -15,8 +15,8 @@
       <div class="faqList">
         <div v-for="(list, i) in faqList" :key="list" :faqList="faqList[i]" class="faq">
           <div class="faqHeading">
-            <p>{{ faqList[i].category }}</p>
-            <p>{{ faqList[i].title }}</p>
+            <p class="category">{{ faqList[i].category }}</p>
+            <p class="title">{{ faqList[i].title }}</p>
           </div>
           <div class="faqBody">
             <p>{{ faqList[i].comment }}</p>
@@ -62,21 +62,34 @@ export default {
   text-align: center;
   color: #fff;
 }
-.fnqContainer {
+.faqContainer {
   display: grid;
   grid-template-rows: 10% 90%;
 }
 .faqList {
-  display: grid;
-  grid-template-rows: 30% 70%;
   margin: 50px;
 }
 .faqHeading {
   display: grid;
   grid-template-columns: 15% 85%;
+  font-size: 15px;
+  margin-top: 5px;
 }
-/* .faqBody {} */
+.faqBody {
+  font-size: 18px;
+  color: #060218;
+}
 .faq {
+  display: grid;
+  grid-template-rows: 30% 70%;
   width: 80%;
+}
+.category {
+  color: #432a9f;
+  font-weight: bold;
+}
+.title {
+  color: #110a2b;
+  font-weight: bold;
 }
 </style>
