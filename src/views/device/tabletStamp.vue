@@ -105,9 +105,17 @@ export default {
     },
     showAlert(data) {
       console.log(data)
-      if (data.code == 200) {
+      if (data == 'stack') {
         this.socketPassed = true
         this.alertMessage = '적립이 완료되었습니다. 감사합니다!'
+        this.dismissCountDown = this.dismissSecs
+      } else if (data == 'use') {
+        this.socketPassed = true
+        this.alertMessage = '쿠폰 사용이 완료되었습니다. 감사합니다!'
+        this.dismissCountDown = this.dismissSecs
+      } else {
+        this.socketPassed = true
+        this.alertMessage = '메인 화면으로 돌아갑니다!'
         this.dismissCountDown = this.dismissSecs
       }
     }
@@ -184,7 +192,7 @@ export default {
   height: 100vh;
   text-align: center;
   align-items: center;
-  font-size: 100px;
+  font-size: 50px;
   /* position: absolute; */
   z-index: 100;
 }
