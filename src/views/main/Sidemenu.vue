@@ -107,29 +107,11 @@ export default {
           icon: 'bx-chat'
         },
         {
-          link: '/main/FAQ',
-          name: 'FAQ',
-          tooltip: 'FAQ',
-          icon: 'bx-comment-detail'
-        },
-        {
           link: '/Instructions',
           name: 'Instructions',
           tooltip: 'Instructions',
           icon: 'bx-cog'
         }
-        // {
-        //   link: '/phone',
-        //   name: 'Mobile',
-        //   tooltip: 'Mobile',
-        //   icon: 'bx-cart-alt'
-        // },
-        // {
-        //   link: '/tablet',
-        //   name: 'Tablet',
-        //   tooltip: 'Tablet',
-        //   icon: 'bx-heart'
-        // }
       ]
     },
 
