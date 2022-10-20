@@ -33,34 +33,37 @@ const routes = [
           {
             path: '/main',
             component: () => import('../views/main/main'),
-            meta: { header: false }
-            // beforeEnter: function (to, from, next) {
-            //   if (localStorage.getItem('token') !== '') {
-            //     return next()
-            //   }
-            //   alert('로그인이 필요한 서비스입니다.')
-            //   to()
-            // }
+            meta: { header: false, noLogin: true }
           },
           {
             path: '/mypage',
             component: () => import('../views/main/mypage'),
-            meta: { header: false }
+            meta: { header: false, noLogin: true }
+          },
+          {
+            path: '/Instructions',
+            component: () => import('../views/main/Instructions'),
+            meta: { header: false, noLogin: true }
+          },
+          {
+            path: '/main/FAQ',
+            component: () => import('../views/main/FAQ'),
+            meta: { header: false, noLogin: true }
           },
           {
             path: '/main/addcafe',
             component: () => import('../views/main/addcafe'),
-            meta: { header: false }
+            meta: { header: false, noLogin: true }
           },
           {
             path: '/main/:id',
             component: () => import('../views/main/cafehome'),
-            meta: { header: false }
+            meta: { header: false, noLogin: true }
           },
           {
             path: '/main/:id/customer',
             component: () => import('../views/main/customerList'),
-            meta: { header: false }
+            meta: { header: false, noLogin: true }
           },
           {
             path: '/qna',
@@ -70,12 +73,12 @@ const routes = [
           {
             path: '/qna/write',
             component: () => import('../views/main/qnaWrite'),
-            meta: { header: false }
+            meta: { header: false, noLogin: true }
           },
           {
             path: '/qna/:id',
             component: () => import('../views/main/qnaDetail'),
-            meta: { header: false }
+            meta: { header: false, noLogin: true }
           }
         ]
       },
@@ -129,7 +132,7 @@ const routes = [
   {
     path: '/tablet',
     component: () => import('../views/device/tabletChoice'),
-    meta: { header: false }
+    meta: { header: false, noLogin: true }
     // children: [
     //   {
     //     path: '/tablet/:id',
@@ -146,7 +149,7 @@ const routes = [
   {
     path: '/tablet/:id',
     component: () => import('../views/device/tabletInput'),
-    meta: { header: false }
+    meta: { header: false, noLogin: true }
     // children: [
     //   {
     //     path: '/:id',
@@ -158,18 +161,18 @@ const routes = [
   {
     path: '/tablet/:id/:id1',
     component: () => import('../views/device/tabletStamp'),
-    meta: { header: false }
+    meta: { header: false, noLogin: true }
   },
   // 라우터 고민해봐야 함
   {
     path: '/phone',
     component: () => import('../views/device/phoneChoice'),
-    meta: { header: false }
+    meta: { header: false, noLogin: true }
   },
   {
     path: '/phone/:id',
     component: () => import('../views/device/phoneControl'),
-    meta: { header: false }
+    meta: { header: false, noLogin: true }
   },
   // {
   //   path: '/tablet',
@@ -242,7 +245,7 @@ router.beforeEach(async (to, from, next) => {
         // 1. tokenUser정보가 없어진 경우 다시 갱신한다.
         const tokenUser = store.getters['TokenUser']
         if (!tokenUser || !tokenUser.id > 0) {
-          store.dispatch('authTokenUser', token)
+          localStorage.setItem('authTokenUser', token)
         }
 
         // 처리를 다 했으면 가던길 가자

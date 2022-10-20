@@ -2,18 +2,20 @@
   <div class="cafehomeList" @click="cafeRoute(cafeList.id)">
     <div class="cafeList">
       <b-avatar>
-        <b-icon v-if="!cafeList.img" icon="shop"></b-icon>
-        <img v-if="cafeList.img" class="ProIMG" :src="`http://192.168.0.50:8002/uploads/${cafeList.icon}`" />
+        <b-icon v-if="!cafeList.icon" icon="shop"></b-icon>
+        <img v-if="cafeList.icon" class="ProIMG" :src="`http://192.168.0.50:8002/uploads/${cafeList.icon}`" />
       </b-avatar>
       <span class="cafeName">{{ cafeList.cafeName }}</span>
       <span class="cafelocation">{{ cafeList.location }}</span>
       <span class="cafeTime">{{ setDateFormat(cafeList.createdAt) }}</span>
+      <button class="cafeIcon" @click="deleteCAFE"><b-icon icon="trash"></b-icon></button>
     </div>
   </div>
 </template>
 
 <script>
 import SetFormat from '../../assets/mixins/SetFormat.vue'
+import axios from 'axios'
 export default {
   mixins: [SetFormat],
   props: {
@@ -25,6 +27,25 @@ export default {
   methods: {
     cafeRoute(cafeId) {
       this.$router.push(`/main/${cafeId}`)
+    },
+    async deleteCAFE() {
+      // console.log(this.watchCafe.cafeName)
+      await axios
+      console
+        .log('카페이름', this.cafeList.cafeName)
+        .delete(process.env.VUE_APP_URL + `/profile/remove-cafe/${this.cafeList.cafeName}/${this.cafeList.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then(response => {
+          console.log('deleteCafe - response : ', response)
+          alert('카페가 삭제 되었습니다.')
+          this.$router.go()
+        })
+        .catch(error => {
+          console.log('deleteCafe - error : ', error)
+        })
     }
   }
 }
@@ -71,5 +92,13 @@ export default {
 .ProIMG {
   width: 100%;
   height: 100%;
+}
+.cafeIcon {
+  margin-top: 3px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 15px;
+  z-index: 2;
 }
 </style>

@@ -107,15 +107,15 @@ export default {
           icon: 'bx-chat'
         },
         {
-          link: '#',
+          link: '/main/FAQ',
           name: 'FAQ',
           tooltip: 'FAQ',
           icon: 'bx-comment-detail'
         },
         {
-          link: '/Home',
-          name: 'Setting',
-          tooltip: 'Setting',
+          link: '/Instructions',
+          name: 'Instructions',
+          tooltip: 'Instructions',
           icon: 'bx-cog'
         }
         // {
