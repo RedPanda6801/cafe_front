@@ -11,9 +11,11 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <b-carousel-slide img-src="https://i.ibb.co/5629myW/slide1.jpg"></b-carousel-slide>
+      <b-carousel-slide img-src="https://i.ibb.co/xMKPZzq/slide1-1.jpg"></b-carousel-slide>
+
+      <b-carousel-slide img-src="https://i.ibb.co/RpRZXgm/slide2.jpg"></b-carousel-slide>
       <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://i.ibb.co/yBYDJ5F/slide2.jpg"></b-carousel-slide>
+      <b-carousel-slide img-src="https://i.ibb.co/8mRGhrD/slide3.jpg"></b-carousel-slide>
     </b-carousel>
     <section>
       <section id="start" class="page-section">
@@ -62,14 +64,14 @@
       <section id="solution" class="page-section">
         <div class="text-center">
           <b-iconstack font-scale="5">
-            <b-icon stacked icon="check"></b-icon>
+            <b-icon stacked icon="question"></b-icon>
           </b-iconstack>
-          <h2 class="section-heading text-uppercase">지금 바로 신청하러 오세요</h2>
-          <p class="section-subheading text-muted">신청이 어려우시다면 무료 가입 후 문의에 따라 빠르게 도와드립니다.</p>
+          <h2 class="section-heading text-uppercase">궁금하신 질문이 있나요?</h2>
+          <p class="section-subheading text-muted">문의 하기 전 FAQ를 살펴보시고 문의해 주시면 빠르게 도와드립니다.</p>
         </div>
         <div class="text-center">
           <div class="col-md-12">
-            <button class="SignUpB" @click="$router.push('/auth/login')">가입하기</button>
+            <button class="SignUpB" @click="$router.push('/faq')">FAQ 보러가기</button>
           </div>
         </div>
       </section>
@@ -127,6 +129,20 @@
               </div>
             </li>
           </ul>
+        </div>
+      </section>
+      <section id="solution" class="page-section">
+        <div class="text-center">
+          <b-iconstack font-scale="5">
+            <b-icon stacked icon="check"></b-icon>
+          </b-iconstack>
+          <h2 class="section-heading text-uppercase">지금 바로 신청하러 오세요</h2>
+          <p class="section-subheading text-muted">신청이 어려우시다면 무료 가입 후 문의에 따라 빠르게 도와드립니다.</p>
+        </div>
+        <div class="text-center">
+          <div class="col-md-12">
+            <button class="SignUpB" @click="$router.push('/auth/login')">가입하기</button>
+          </div>
         </div>
       </section>
       <footer>

@@ -42,6 +42,17 @@
         </div>
       </div>
     </section>
+    <footer>
+      <div class="Homefooter">
+        <img class="logoImg" src="../../public/whitelogo.png" style="margin-top: 20px" />
+        <div style="margin: 20px">
+          <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com</p>
+          <p>2022 My_Stamp &copy; All Rights Reserved.</p>
+          <b-icon icon="instagram" scale="2" variant="white" style="margin-right: 20px"></b-icon>
+          <b-icon icon="github" scale="2" variant="white"></b-icon>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -50,6 +61,14 @@ export default {}
 </script>
 
 <style>
+.Homefooter {
+  font-size: 12px;
+  color: #fff;
+  background: #5a38d4;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 3vh 5vw;
+}
 .job-wrap {
   width: 100%;
   margin: 10px auto;

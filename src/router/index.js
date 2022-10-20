@@ -43,13 +43,13 @@ const routes = [
           {
             path: '/Instructions',
             component: () => import('../views/main/Instructions'),
-            meta: { header: false, noLogin: true }
+            meta: { header: false }
           },
-          {
-            path: '/main/FAQ',
-            component: () => import('../views/main/FAQ'),
-            meta: { header: false, noLogin: true }
-          },
+          // {
+          //   path: '/main/FAQ',
+          //   component: () => import('../views/main/FAQ'),
+          //   meta: { header: false, noLogin: true }
+          // },
           {
             path: '/main/addcafe',
             component: () => import('../views/main/addcafe'),

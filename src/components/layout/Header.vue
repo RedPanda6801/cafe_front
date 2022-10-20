@@ -5,14 +5,14 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item class="navItem" @click="$router.push('/faq')">자주 묻는 질문</b-nav-item>
-          <b-nav-item class="navItem" @click="$router.push('/convention')">협약 기업</b-nav-item>
-          <b-nav-item class="navItem" @click="$router.push('/introduce')">개발 크루 소개</b-nav-item>
+          <b-nav-item class="navItem" @click="fkdnxj('/faq')">자주 묻는 질문</b-nav-item>
+          <b-nav-item class="navItem" @click="fkdnxj('/convention')">협약 기업</b-nav-item>
+          <b-nav-item class="navItem" @click="fkdnxj('/introduce')">개발 크루 소개</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav v-show="!isLoggedin" class="ml-auto">
-          <b-nav-item class="loginBBB" @click="$router.push('/auth/login')">로그인 / 회원가입</b-nav-item>
+          <b-nav-item class="loginBBB" @click="fkdnxj('/auth/login')">로그인 / 회원가입</b-nav-item>
         </b-navbar-nav>
 
         <b-navbar-nav v-show="isLoggedin" class="ml-auto">
@@ -22,7 +22,7 @@
               <!-- <em>로그인 / 회원가입</em> -->
               <em class="loginName"><b-icon icon="person-fill"></b-icon> 마이페이지</em>
             </template>
-            <b-dropdown-item class="downITem" href="#" @click="$router.push('/main')">카페 관리 페이지</b-dropdown-item>
+            <b-dropdown-item class="downITem" href="#" @click="fkdnxj('/main')">카페 관리 페이지</b-dropdown-item>
             <b-dropdown-item class="downITem" href="#" @click="signOut">로그아웃</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -60,6 +60,11 @@ export default {
     async signOut() {
       localStorage.removeItem('token')
       this.$router.go()
+    },
+    fkdnxj(value) {
+      const start = this.$router.currentRoute.path
+      if (start === value) return
+      this.$router.push(value)
     }
   }
 }
