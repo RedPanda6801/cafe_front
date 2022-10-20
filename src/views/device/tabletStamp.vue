@@ -1,6 +1,11 @@
 <template>
   <div class="tabletContainer">
     <div class="greetingContainer">
+      <div v-show="socketPassed" class="alertBox">
+        <b-alert :show="dismissCountDown" dismissible fade variant="warning" @dismiss-count-down="countDownChanged">
+          This alert will dismiss after {{ dismissCountDown }} seconds...
+        </b-alert>
+      </div>
       <div class="userPhone">
         <p>{{ $route.params.id1 }} 님</p>
       </div>
@@ -32,7 +37,10 @@ export default {
       completedCoupon: '',
       stackedStamp: '',
       custPhone: this.$route.params.id1,
-      cafeId: this.$route.params.id
+      cafeId: this.$route.params.id,
+      socketPassed: false,
+      dismissSecs: 5,
+      dismissCountDown: 0
     }
   },
   async created() {
@@ -46,7 +54,8 @@ export default {
       }
     )
     this.socket.emit('token', localStorage.getItem('token'))
-    this.socket.on('success', data => console.log(data))
+    this.socket.on('success', data => console.log('success', data))
+    // this.socket.on('success', data => console.log('success', data), this.showAlert())
     this.socket.emit('search', { custPhone: this.custPhone, cafeId: this.cafeId })
 
     this.socket.on('messages', messages => {
@@ -68,12 +77,19 @@ export default {
         .then(async res => {
           console.log('res : ', res.data.data)
           this.visit = res.data.data.stamp.visit + 1
-          this.completedCoupon = res.data.data.stamp.leftStamp / 10
+          this.completedCoupon = Math.floor(res.data.data.stamp.leftStamp / 10)
           this.stackedStamp = res.data.data.stamp.leftStamp % 10
         })
         .catch(err => {
           console.log('cafeList -error : ', err)
         })
+    },
+    countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
+    },
+    showAlert() {
+      this.socketPassed = true
+      this.dismissCountDown = this.dismissSecs
     }
   }
 }
@@ -100,6 +116,7 @@ export default {
   display: flex;
   font-size: 30px;
   justify-content: center;
+  color: rgb(116, 107, 118);
 }
 .stampBody {
   margin: 10px;
@@ -126,6 +143,7 @@ export default {
 }
 .userPhone {
   align-items: center;
+  clear: both;
   display: flex;
   justify-content: center;
   font-size: 65px;
@@ -139,5 +157,8 @@ export default {
 .stamp {
   width: 70%;
   transform: rotate(25deg);
+}
+.alertBox {
+  float: left;
 }
 </style>

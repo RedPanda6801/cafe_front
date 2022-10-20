@@ -79,7 +79,7 @@ export default {
       ;(this.userNumber = data.data.custPhone),
         (this.cafeId = data.data.CafeId),
         (this.completedCoupon = data.data.leftStamp / 10),
-        (this.visit = data.data.visit),
+        (this.visit = data.data.visit + 1),
         (this.memo = data.data.memo),
         (this.userPhone = this.userNumber.slice(-4)),
         console.log(data)
@@ -95,7 +95,7 @@ export default {
       return this.quantity
     },
     decrement(n) {
-      if (this.quantity - n < 0) {
+      if (this.quantity - n < 1) {
         this.quantity = 1
         return this.quantity
       } else {
@@ -110,6 +110,7 @@ export default {
         addCount: this.quantity
       }
       this.socket.emit('stack', body)
+      this.quantity = 1
       // const axiosBody = { addCount: this.quantity }
       // await axios
       //   .put(process.env.VUE_APP_URL + `/stamp/add-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
@@ -137,6 +138,7 @@ export default {
       }
       console.log(body.useCount)
       this.socket.emit('use', body)
+      this.quantity = 1
       //   const axiosBody = { useCount: this.quantity }
       //   await axios
       //     .put(process.env.VUE_APP_URL + `/stamp/use-stamp/${this.userNumber}/${this.cafeId}`, axiosBody, {
