@@ -21,7 +21,7 @@
                 <b-btn pill size="sm" variant="outline-danger" @click="decrement(5)">-</b-btn>
                 <b-btn class="ml-2" variant="outline-warning" @click="decrement(1)">-</b-btn>
                 <div class="quantity">
-                  <p>{{ quantity }}</p>
+                  <p style="font-size: 50px">{{ quantity }}</p>
                 </div>
                 <b-btn class="mr-2" variant="outline-warning" @click="increment(1)">+</b-btn>
                 <b-btn pill size="sm" variant="outline-danger" @click="increment(5)">+</b-btn>
@@ -204,7 +204,7 @@ export default {
   padding: 5px;
 }
 .cardContainer {
-  height: 100vh;
+  height: 120vh;
   padding: 5px;
 }
 .inputOrganizer {

@@ -1,11 +1,19 @@
 <template>
   <div class="tabletContainer">
+    <div v-show="socketPassed">
+      <b-alert
+        class="alertBox"
+        :show="dismissCountDown"
+        dismissible
+        fade
+        variant="secondary"
+        @dismiss-count-down="countDownChanged"
+        @input="onModalClose"
+      >
+        {{ alertMessage }}
+      </b-alert>
+    </div>
     <div class="greetingContainer">
-      <div v-show="socketPassed" class="alertBox">
-        <b-alert :show="dismissCountDown" dismissible fade variant="warning" @dismiss-count-down="countDownChanged">
-          This alert will dismiss after {{ dismissCountDown }} seconds...
-        </b-alert>
-      </div>
       <div class="userPhone">
         <p>{{ $route.params.id1 }} 님</p>
       </div>
@@ -40,7 +48,8 @@ export default {
       cafeId: this.$route.params.id,
       socketPassed: false,
       dismissSecs: 5,
-      dismissCountDown: 0
+      dismissCountDown: 0,
+      alertMessage: ''
     }
   },
   async created() {
@@ -54,8 +63,8 @@ export default {
       }
     )
     this.socket.emit('token', localStorage.getItem('token'))
-    this.socket.on('success', data => console.log('success', data))
-    // this.socket.on('success', data => console.log('success', data), this.showAlert())
+    // this.socket.on('success', data => console.log('success', data))
+    this.socket.on('success', data => this.showAlert(data))
     this.socket.emit('search', { custPhone: this.custPhone, cafeId: this.cafeId })
 
     this.socket.on('messages', messages => {
@@ -86,10 +95,20 @@ export default {
     },
     countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown
+      // setTimeout(), 5000)
     },
-    showAlert() {
-      this.socketPassed = true
-      this.dismissCountDown = this.dismissSecs
+    onModalClose(show) {
+      console.log('show', show)
+      if (show === 0) {
+        this.$router.push(`/tablet/${this.$route.params.id}`)
+      }
+    },
+    showAlert(data) {
+      if (data.code == 200) {
+        this.socketPassed = true
+        this.alertMessage = '적립이 완료되었습니다. 감사합니다!'
+        this.dismissCountDown = this.dismissSecs
+      }
     }
   }
 }
@@ -159,6 +178,13 @@ export default {
   transform: rotate(25deg);
 }
 .alertBox {
-  float: left;
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  align-items: center;
+  font-size: 100px;
+  /* position: absolute; */
+  z-index: 100;
 }
 </style>
