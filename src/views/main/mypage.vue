@@ -124,7 +124,7 @@ export default {
         })
     },
     async deleteprofile() {
-      console.log('되나?')
+      console.log('되나?', this.user.email)
       await axios
         .delete(process.env.VUE_APP_URL + '/profile/remove-profile/' + this.user.email + '/' + this.user.password, {
           headers: {
@@ -134,7 +134,7 @@ export default {
         .then(response => {
           console.log('deleteprofile - response : ', response)
           alert('탈퇴 되었습니다. 마이 스탬프는 점주님을 다시 만나길 진심으로 바라고 있습니다.')
-          // this.$router.push('/')
+          this.$router.push('/')
         })
         .catch(error => {
           console.log('deleteprofile - error : ', error)

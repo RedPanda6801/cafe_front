@@ -20,7 +20,8 @@
                 id="input-2"
                 v-model="location"
                 type="text"
-                placeholder="카페 주소를 입력하세요"
+                placeholder="카페 주소를 넣어주세요"
+                disabled
                 required
               ></b-form-input
               ><b-button @click="showApi"> 주소검색 </b-button>

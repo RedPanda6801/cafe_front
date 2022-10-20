@@ -205,7 +205,7 @@ export default {
         .then(response => {
           console.log('updateLogo - response : ', response)
           alert('카페 프로필 사진이 추가 되었습니다.')
-          // this.$router.go()
+          this.$router.go()
         })
         .catch(error => {
           console.log('updateLogo - error : ', error)
@@ -225,7 +225,7 @@ export default {
         .then(response => {
           console.log('updateTablet - response : ', response)
           alert('테블릿 사진이 추가 되었습니다.')
-          // this.$router.go()
+          this.$router.go()
         })
         .catch(error => {
           console.log('updateTablet - error : ', error)
@@ -255,9 +255,10 @@ export default {
         })
     },
     async deleteCafe() {
-      console.log(this.watchCafe.cafeName)
+      // console.log(this.watchCafe, this.watchCafe.cafeName)
+      //const url = process.env.VUE_APP_URL + `/profile/remove-cafe/${this.watchCafe.id}`
       await axios
-        .delete(process.env.VUE_APP_URL + `/profile/remove-cafe/${this.watchCafe.cafeName}/${this.watchCafe.id}`, {
+        .delete(process.env.VUE_APP_URL + `/cafe/remove-cafe/${this.watchCafe.id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

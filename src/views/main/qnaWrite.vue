@@ -7,16 +7,15 @@
           <b-form-select v-model="selected" :options="options"></b-form-select>
         </div>
         <div>
-          <input v-model="title" class="Titlel" type="text" placeholder="제목을 입력하세요" />
+          <b-input v-model="title" class="Titlel" type="text" placeholder="제목을 입력하세요" />
         </div>
         <!-- <textarea v-model="text" class="texts" type="text" /> -->
         <b-form-textarea
-          id="textarea"
           v-model="text"
           class="texts"
           placeholder="내용을 입력하세요..."
-          rows="12"
-          max-rows="6"
+          rows="11"
+          max-rows="11"
         ></b-form-textarea>
         <div class="textBBB">
           <b-btn class="textsA" variant="danger" @click="$router.go(-1)">취소</b-btn>
@@ -90,7 +89,7 @@ export default {
 }
 .texts {
   width: 100%;
-  height: 50vh;
+  height: 200px;
 }
 .textBBB {
   display: flex;
