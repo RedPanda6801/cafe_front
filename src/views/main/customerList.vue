@@ -2,7 +2,7 @@
   <div class="userContainer">
     <div class="userTable">
       <div class="userHeader">
-        <h3>유저 리스트</h3>
+        <h3><b-icon icon="card-list" scale="0.9"></b-icon> User List</h3>
         <div class="cafeName">
           <p>{{ cafeName }}</p>
         </div>

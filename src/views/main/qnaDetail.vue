@@ -2,6 +2,11 @@
   <div class="QNAhome">
     <h3 class="qnaHome"><b-icon icon="list-check" scale="0.9"></b-icon> Contact Page</h3>
     <b-card class="QNAP">
+      <div class="returnBtnDiv">
+        <button class="returnBtn" @click="$router.go(-1)">
+          <span><b-icon icon="arrow-left"></b-icon> 돌아가기</span>
+        </button>
+      </div>
       <div>
         <p>제목: {{ title }}</p>
       </div>
@@ -182,5 +187,19 @@ export default {
 }
 .LINE {
   border-bottom: 1px solid black;
+}
+.returnBtn {
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  color: grey;
+  width: 100px;
+}
+.returnBtn:active {
+  filter: brightness(80%);
+}
+.returnBtnDiv {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
