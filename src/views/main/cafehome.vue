@@ -1,6 +1,11 @@
 <template>
   <div class="CAHO">
     <h3 class="CafeHome"><b-icon icon="house-door" scale="0.9"></b-icon> Cafe Home</h3>
+    <div class="returnBtnDiv">
+      <button class="returnBtn" @click="$router.go(-1)">
+        <span><b-icon icon="arrow-left"></b-icon> 돌아가기</span>
+      </button>
+    </div>
     <div class="cafehome-card">
       <div class="cafepro">
         <b-avatar class="ABATAR" size="150px" button @click="$bvModal.show('modal-cafe-img')"
@@ -375,5 +380,21 @@ export default {
   padding-top: 15px;
   padding-left: 50%;
   color: red;
+}
+.returnBtn {
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  color: grey;
+  width: 100px;
+}
+.returnBtn:active {
+  filter: brightness(80%);
+}
+.returnBtnDiv {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 210px;
+  padding-bottom: 20px;
 }
 </style>
