@@ -2,10 +2,15 @@
   <div class="userContainer">
     <div class="userTable">
       <div class="userHeader">
-        <h3>유저 리스트</h3>
+        <h3><b-icon icon="card-list" scale="0.9"></b-icon> User List</h3>
         <div class="cafeName">
           <p>{{ cafeName }}</p>
         </div>
+      </div>
+      <div class="returnBtnDiv">
+        <button class="returnBtn" @click="$router.go(-1)">
+          <span><b-icon icon="arrow-left"></b-icon> 돌아가기</span>
+        </button>
       </div>
       <b-table
         :hover="hover"
@@ -216,5 +221,19 @@ export default {
   width: 250px;
   height: 250px;
   color: #eee;
+}
+.returnBtn {
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  color: grey;
+  width: 100px;
+}
+.returnBtn:active {
+  filter: brightness(80%);
+}
+.returnBtnDiv {
+  display: flex;
+  justify-content: flex-start;
 }
 </style>

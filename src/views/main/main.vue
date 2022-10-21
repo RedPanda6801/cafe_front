@@ -9,7 +9,12 @@
       <div v-if="cafeLists" class="List">
         <cafe-list v-for="cafeList in cafeLists" :key="cafeList.id" :cafe-list="cafeList" />
       </div>
-      <div v-if="!cafeLists"></div>
+      <div v-if="cafeLists.length === 0" class="cafeNone">
+        <div class="iconHolder">
+          <b-icon icon="exclamation-circle" class="cafeNoneIcon"></b-icon>
+        </div>
+        <span class="mt-4"><p>추가하신 카페가 없습니다. 카페를 추가해 주세요!</p></span>
+      </div>
     </div>
     <footer>
       <div class="Mfooter">
@@ -116,7 +121,22 @@ export default {
 .ICON {
   margin-left: 5px;
 }
-.logoImg {
-  cursor: pointer;
+.cafeNone {
+  align-items: center;
+  color: grey;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  justify-content: center;
+  font-size: 30px;
+  margin-top: 50px;
+}
+.iconHolder {
+  display: grid;
+  justify-items: center;
+}
+.cafeNoneIcon {
+  width: 250px;
+  height: 250px;
+  color: #eee;
 }
 </style>
