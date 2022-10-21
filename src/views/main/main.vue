@@ -77,6 +77,9 @@ export default {
 </script>
 
 <style>
+.logoImg {
+  cursor: pointer;
+}
 .Mfooter {
   /* margin-top: 161px; */
   font-size: 12px;
