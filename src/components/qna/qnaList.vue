@@ -69,6 +69,7 @@ export default {
   width: 10vw;
   text-align: center;
   font-weight: bold;
+  color: rgb(189, 189, 189);
 }
 .QNPName {
   margin-top: 5px;

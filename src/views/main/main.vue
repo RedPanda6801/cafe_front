@@ -14,7 +14,12 @@
     <footer>
       <div class="Mfooter">
         <div>
-          <img class="logoImg" src="../../../public/whitelogo.png" style="margin-top: 20px" />
+          <img
+            class="logoImg"
+            src="../../../public/whitelogo.png"
+            style="margin-top: 20px"
+            @click="$router.push('/')"
+          />
         </div>
         <div style="margin: 20px">
           <p>
@@ -110,5 +115,8 @@ export default {
 }
 .ICON {
   margin-left: 5px;
+}
+.logoImg {
+  cursor: pointer;
 }
 </style>
