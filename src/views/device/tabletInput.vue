@@ -154,7 +154,7 @@ export default {
 .tabletContainer {
   height: 100%;
   width: 100%;
-  padding-top: 25px;
+  padding-top: 40px;
   /*background-color: black;*/
   display: grid;
   grid-template-columns: 50% 50%;
