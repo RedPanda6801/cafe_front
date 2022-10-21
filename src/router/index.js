@@ -68,7 +68,7 @@ const routes = [
           {
             path: '/qna',
             component: () => import('../views/main/qna'),
-            meta: { header: false }
+            meta: { header: false, noLogin: true }
           },
           {
             path: '/qna/write',

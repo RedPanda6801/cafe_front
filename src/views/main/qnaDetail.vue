@@ -1,12 +1,12 @@
 <template>
   <div class="QNAhome">
     <h3 class="qnaHome"><b-icon icon="list-check" scale="0.9"></b-icon> Contact Page</h3>
+    <div class="returnBtnDiv">
+      <button class="returnBtn" @click="$router.go(-1)">
+        <span><b-icon icon="arrow-left"></b-icon> 돌아가기</span>
+      </button>
+    </div>
     <b-card class="QNAP">
-      <div class="returnBtnDiv">
-        <button class="returnBtn" @click="$router.go(-1)">
-          <span><b-icon icon="arrow-left"></b-icon> 돌아가기</span>
-        </button>
-      </div>
       <div>
         <p>제목: {{ title }}</p>
       </div>

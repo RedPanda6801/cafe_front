@@ -82,7 +82,7 @@
             <label for="id">멤버쉽<br />만료기간:</label>
           </b-col>
           <b-col sm="7">
-            <span>{{ setDateFormat(watchCafe.createdAt) }}</span>
+            <span>{{ setRealFormat(watchCafe.expireDate) }}</span>
             <b-btn class="memberB" @click="$bvModal.show('modal-membership')">멤버쉽 결제</b-btn>
             <b-modal id="modal-membership" title="멤버쉽 결제" hide-footer>
               <b-form-group>

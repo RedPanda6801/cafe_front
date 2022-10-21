@@ -87,6 +87,7 @@ export default {
         .catch(err => {
           alert('다시 시도해주세요!')
           console.log('/auth/login - error: ', err)
+          this.$router.go()
           this.loading = true
         })
     },
