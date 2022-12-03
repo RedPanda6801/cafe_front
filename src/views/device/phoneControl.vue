@@ -81,8 +81,7 @@ export default {
         (this.completedCoupon = data.data.leftStamp / 10),
         (this.visit = data.data.visit + 1),
         (this.memo = data.data.memo),
-        (this.userPhone = this.userNumber.slice(-4)),
-        console.log(data)
+        (this.userPhone = this.userNumber.slice(-4))
     })
     this.socket.on('messages', messages => {
       //커스텀 이벤트

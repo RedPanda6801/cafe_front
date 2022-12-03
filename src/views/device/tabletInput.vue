@@ -94,8 +94,6 @@ export default {
           this.cafeName = res.data.data.cafeName
           this.cafeId = res.data.data.id
           this.cafeImg = res.data.data.img
-          console.log('cafeName : ', this.cafeName)
-          console.log('res.data.data: ', res.data.data)
         })
         .catch(err => {
           console.log('cafeList -error : ', err)
@@ -109,8 +107,6 @@ export default {
           }
         })
         .then(async res => {
-          console.log('cafeId: ', this.cafeId)
-          console.log('res : ', res)
           this.$router.push(`/tablet/${this.cafeId}/${this.phone}`)
         })
         .catch(err => {
@@ -143,7 +139,6 @@ export default {
     },
     submit() {
       this.getCouponInfo()
-      console.log('아이디 제대로 뜨니?', this.cafeId)
       this.$bvModal.hide('confirmModal')
     }
   }

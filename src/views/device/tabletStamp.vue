@@ -25,7 +25,6 @@
       <div class="stampHeader">
         <p>현재 사용 가능한 음료 쿠폰 : {{ completedCoupon }}개</p>
       </div>
-      <!-- <h1>여기에 도장 현황 보여줄거야</h1> -->
       <div class="stampBody">
         <div v-for="stamp in stackedStamp" :key="stamp" class="stampHolder">
           <img src="../../../public/stamp.png" class="stamp" />
@@ -63,7 +62,6 @@ export default {
       }
     )
     this.socket.emit('token', localStorage.getItem('token'))
-    //this.socket.on('success', data => console.log('success', data))
     this.socket.on('success', data => this.showAlert(data))
     this.socket.emit('search', { custPhone: this.custPhone, cafeId: this.cafeId })
 
@@ -95,7 +93,6 @@ export default {
     },
     countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown
-      // setTimeout(), 5000)
     },
     onModalClose(show) {
       console.log('show', show)
@@ -133,14 +130,12 @@ export default {
   grid-template-rows: 30% 70%;
 }
 .stampContainer {
-  /* background-color: yellow; */
   display: grid;
   grid-template-rows: 20% 80%;
   margin: 5px;
 }
 .stampHeader {
   align-items: center;
-  /* background-color: orange; */
   display: flex;
   font-size: 30px;
   justify-content: center;
@@ -153,7 +148,6 @@ export default {
   border: 5px;
   border-color: #6147be;
   border-style: outset;
-  /* border-style: solid; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -193,6 +187,5 @@ export default {
   text-align: center;
   align-items: center;
   font-size: 50px;
-  /* position: absolute; */
 }
 </style>

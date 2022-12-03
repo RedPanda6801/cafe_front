@@ -49,7 +49,6 @@ export default {
           for (let i = 0; i < res.data.data.length; i++) {
             this.cafeLists.push(res.data.data[i])
           }
-          console.log('cafeList : ', this.cafeLists)
         })
         .catch(err => {
           console.log('cafeList -error : ', err)
