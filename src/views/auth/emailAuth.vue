@@ -2,7 +2,7 @@
   <div class="join">
     <!-- v-show로 인증 메일 보내기 전 페이지 -->
     <div v-show="!emailSent">
-      <b-card no-body class="join-box">
+      <b-card no-body class="joinContainer">
         <h2><img class="logoImg" src="../../../public/logo.png" /></h2>
         <form @submit.prevent="handleSubmit(sendEmail)">
           <b-card-body style="text-align: center">
@@ -26,7 +26,7 @@
 
           <b-list-group flush>
             <b-list-group-item>
-              <b-button class="Ingle" block @click="duplicationCheck">인증메일 보내기</b-button>
+              <b-button class="ingle" block @click="duplicationCheck">인증메일 보내기</b-button>
             </b-list-group-item>
             <b-list-group-item>
               - 입력하신 이메일로 인증코드가 전송됩니다.<br />
@@ -59,7 +59,7 @@
               <!-- 백 서버 연결 후 이메일 제대로 담기게 기능 구현 예정 -->
               <b-input v-model="tempEmail" disabled></b-input>
               <b-input v-model="inputCode" class="mt-3 mb-3" maxlength="6" placeholder="인증코드 입력"></b-input>
-              <b-button block class="Ingle" @click="authCode">인증 확인</b-button>
+              <b-button block class="ingle" @click="authCode">인증 확인</b-button>
             </b-card-text>
           </b-card-body>
         </form>
@@ -198,15 +198,15 @@ export default {
 </script>
 
 <style>
-.Ingle {
+.ingle {
   background-color: #5a38d4;
   font-weight: bold;
   transition: 0.5s;
 }
-.Ingle:hover {
+.ingle:hover {
   background-color: #432a9f;
 }
-.join-box {
+.joinContainer {
   overflow: hidden;
   position: absolute;
   top: 50%;
@@ -220,7 +220,7 @@ export default {
   border-radius: 10px;
   z-index: 1;
 }
-.join-box h2 {
+.joinContainer h2 {
   padding: 0;
   color: #5a38d4;
   text-align: center;
