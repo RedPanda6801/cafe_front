@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="job-wrap">
-      <div class="job-image">
+    <div class="jobWrap">
+      <div class="jobImage">
         <img src="../../public/introduce.png" />
       </div>
-      <div class="job-text">
+      <div class="jobText">
         <p>개발 크루 소개</p>
       </div>
     </div>
@@ -43,7 +43,7 @@
       </div>
     </section>
     <footer>
-      <div class="Homefooter">
+      <div class="homeFooter">
         <img class="logoImg" src="../../public/whitelogo.png" style="margin-top: 20px" />
         <div style="margin: 20px">
           <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com</p>
@@ -61,7 +61,7 @@ export default {}
 </script>
 
 <style>
-.Homefooter {
+.homeFooter {
   font-size: 12px;
   color: #fff;
   background: #5a38d4;
@@ -69,18 +69,18 @@ export default {}
   text-align: center;
   padding: 3vh 5vw;
 }
-.job-wrap {
+.jobWrap {
   width: 100%;
   margin: 10px auto;
   position: relative;
 }
-.job-wrap img {
+.jobWrap img {
   width: 100%;
   height: 55vh;
   object-fit: cover;
   filter: brightness(60%);
 }
-.job-text {
+.jobText {
   position: absolute;
   top: 47%;
   left: 50%;

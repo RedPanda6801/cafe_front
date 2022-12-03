@@ -71,7 +71,7 @@
         </div>
         <div class="text-center">
           <div class="col-md-12">
-            <button class="SignUpB" @click="$router.push('/faq')">FAQ 보러가기</button>
+            <button class="signUpBtn" @click="$router.push('/faq')">FAQ 보러가기</button>
           </div>
         </div>
       </section>
@@ -141,12 +141,12 @@
         </div>
         <div class="text-center">
           <div class="col-md-12">
-            <button class="SignUpB" @click="$router.push('/auth/login')">가입하기</button>
+            <button class="signUpBtn" @click="$router.push('/auth/login')">가입하기</button>
           </div>
         </div>
       </section>
       <footer>
-        <div class="Homefooter">
+        <div class="homeFooter">
           <img class="logoImg" src="../../public/whitelogo.png" style="margin-top: 20px" />
           <div style="margin: 20px">
             <p>서울특별시 강남구 테헤란로4길 38-5 | 마이스탬프 | my_stamp@naver.com</p>
@@ -177,7 +177,7 @@ export default {
 }
 </script>
 <style>
-.Homefooter {
+.homeFooter {
   font-size: 12px;
   color: #fff;
   background: #5a38d4;
@@ -185,7 +185,7 @@ export default {
   text-align: center;
   padding: 3vh 5vw;
 }
-.SignUpB {
+.signUpBtn {
   width: 22vw;
   height: 11vh;
   margin-bottom: 15vh;
@@ -196,7 +196,7 @@ export default {
   border-radius: 15px;
   transition: 0.5s;
 }
-.SignUpB:hover {
+.signUpBtn:hover {
   background-color: #432a9f;
 }
 #start {
