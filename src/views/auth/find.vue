@@ -1,6 +1,6 @@
 <template>
   <div class="find">
-    <b-card no-body class="join-box">
+    <b-card no-body class="joinContainer">
       <template #header>
         <h4 class="mb-0">ID/PW 찾기</h4>
       </template>
@@ -144,16 +144,13 @@ export default {
         name: this.name,
         email: this.email
       }
-      console.log('user check : ', user)
       await axios
         .get(process.env.VUE_APP_URL + `/find/userId/${user.email}/${user.name}`)
         .then(async res => {
-          console.log('res: ', res)
           this.emailSent = true
         })
         .catch(err => {
           alert('유저정보가 일치하지 않습니다!')
-          console.log(err)
         })
     },
     async sendPwEmail() {
@@ -162,16 +159,13 @@ export default {
         name: this.name,
         userId: this.userId
       }
-      console.log('axiosBody : ', axiosBody)
       await axios
         .post(process.env.VUE_APP_URL + '/find/password', axiosBody)
         .then(async res => {
-          console.log('res: ', res)
           this.pwEmailSent = true
         })
         .catch(err => {
           alert('유저정보가 일치하지 않습니다!')
-          console.log(err)
         })
     },
     resend() {
@@ -194,7 +188,7 @@ export default {
   height: 755px;
   background-color: #f0f2f3;
 }
-.join-box {
+.joinContainer {
   overflow: hidden;
   position: absolute;
   top: 55%;

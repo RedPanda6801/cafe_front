@@ -2,7 +2,7 @@
   <div class="join">
     <!--인증 후 넘어올 페이지-->
     <ValidationObserver ref="signUpForm" v-slot="{ handleSubmit, invalid, validate }">
-      <b-card no-body class="join-box">
+      <b-card no-body class="joinContainer">
         <h2><img class="logoImg" src="../../../public/logo.png" /></h2>
         <form @submit.prevent="handleSubmit(signUp)">
           <b-card-body style="text-align: center">
@@ -66,7 +66,7 @@
 
           <b-list-group flush>
             <b-list-group-item>
-              <b-button block class="Ingle" type="submit" :disabled="invalid || !validate" @click="signUp">
+              <b-button block class="ingle" type="submit" :disabled="invalid || !validate" @click="signUp">
                 회원가입 완료
               </b-button>
             </b-list-group-item>
@@ -113,7 +113,6 @@ export default {
       }
     },
     async signUp() {
-      console.log(process.env)
       if (this.loading) return
       this.loading = true
       const axiosBody = {
@@ -123,7 +122,6 @@ export default {
         password: this.password,
         phone: this.phone
       }
-      console.log('auth/ register - axiosBody : ', axiosBody)
       await axios
         .post(process.env.VUE_APP_URL + '/auth/join', axiosBody)
         .then(async res => {
@@ -145,16 +143,13 @@ export default {
         })
     },
     async duplicationCheck() {
-      console.log(process.env)
       const axiosBody = {
         userId: this.userId
       }
-      console.log('duplication check - axiosBody : ', axiosBody)
       await axios
         .get(process.env.VUE_APP_URL + '/auth/check-id/' + axiosBody.userId)
         .then(async res => {
           const code = res.status
-          console.log('check code : ', code)
           if (code == 200) {
             alert('사용 가능한 아이디 입니다.')
           } else if (code == 400) {
@@ -163,7 +158,6 @@ export default {
         })
         .catch(err => {
           alert('이미 사용중인 아이디 입니다. 다른 아이디를 지정해 주세요!')
-          console.log(err)
         })
     }
   }
@@ -171,15 +165,15 @@ export default {
 </script>
 
 <style>
-.Ingle {
+.ingle {
   background-color: #5a38d4;
   font-weight: bold;
   transition: 0.5s;
 }
-.Ingle:hover {
+.ingle:hover {
   background-color: #432a9f;
 }
-.join-box {
+.joinContainer {
   overflow: hidden;
   position: absolute;
   top: 62%;
@@ -193,7 +187,7 @@ export default {
   border-radius: 10px;
   z-index: 1;
 }
-.join-box h2 {
+.joinContainer h2 {
   padding: 0;
   color: #5a38d4;
   text-align: center;

@@ -1,10 +1,10 @@
 <template>
-  <div class="LOGIN">
-    <b-card class="login-box">
+  <div class="login">
+    <b-card class="loginContainer">
       <h2><img class="logoImg" src="../../../public/logo.png" /></h2>
       <ValidationObserver ref="signUpForm" v-slot="{ handleSubmit, invalid, validate }">
         <b-form @submit.prevent="handleSubmit(OwnerLogin)">
-          <b-form-group class="user-box">
+          <b-form-group class="userContainer">
             <ValidationProvider v-slot="{ errors }" name="userid" rules="required">
               <b-form-input
                 v-model="userId"
@@ -16,7 +16,7 @@
               <label>User Id</label>
             </ValidationProvider>
           </b-form-group>
-          <b-form-group class="user-box">
+          <b-form-group class="userContainer">
             <ValidationProvider v-slot="{ errors }" name="password" rules="required|min:6|max:20">
               <b-form-input
                 v-model="password"
@@ -78,7 +78,6 @@ export default {
       await axios
         .post(process.env.VUE_APP_URL + '/auth/login', axiosBody)
         .then(async res => {
-          console.log(res)
           const code = res.data
           localStorage.setItem('token', res.data.token)
           console.log('/auth/login - response: ', code)
@@ -86,7 +85,6 @@ export default {
         })
         .catch(err => {
           alert('다시 시도해주세요!')
-          console.log('/auth/login - error: ', err)
           this.$router.go()
           this.loading = true
         })
@@ -102,7 +100,7 @@ export default {
 </script>
 
 <style>
-.LOGIN {
+.login {
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -111,7 +109,7 @@ export default {
   background-color: #5a38d4;
 }
 
-.login-box {
+.loginContainer {
   overflow: hidden;
   position: absolute;
   top: 50%;
@@ -126,18 +124,18 @@ export default {
   z-index: 1;
 }
 
-.login-box h2 {
+.loginContainer h2 {
   margin: 0 0 30px;
   padding: 0;
   color: #5a38d4;
   text-align: center;
 }
 
-.login-box .user-box {
+.loginContainer .userContainer {
   position: relative;
 }
 
-.login-box .user-box input {
+.loginContainer .userContainer input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -148,7 +146,7 @@ export default {
   outline: none;
   background: transparent;
 }
-.login-box .user-box label {
+.loginContainer .userContainer label {
   position: absolute;
   top: 0;
   left: 0;
@@ -159,15 +157,15 @@ export default {
   transition: 0.5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.loginContainer .userContainer input:focus ~ label,
+.loginContainer .userContainer input:valid ~ label {
   top: -20px;
   left: 0;
   color: #5a38d4;
   font-size: 12px;
 }
 
-.login-box form .sub {
+.loginContainer form .sub {
   position: relative;
   border: none;
   /* border: 2px solid #5a38d4; */
@@ -186,14 +184,14 @@ export default {
   letter-spacing: 4px;
 }
 
-.login-box .sub:hover {
+.loginContainer .sub:hover {
   background: #fff;
   color: #5a38d4;
   border-radius: 5px;
   box-shadow: 0 0 5px #5a38d4, 0 0 15px #5a38d4;
 }
 
-.login-box .ath {
+.loginContainer .ath {
   margin: 10px;
   font-size: 12px;
   text-align: center;
@@ -228,16 +226,16 @@ export default {
   border-radius: 10px;
 }
 
-.login-box form .sub {
+.loginContainer form .sub {
   left: 30%;
 }
 
-.login-box .sub span {
+.loginContainer .sub span {
   position: absolute;
   display: block;
 }
 
-.login-box .sub span:nth-child(1) {
+.loginContainer .sub span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -256,7 +254,7 @@ export default {
   }
 }
 
-.login-box .sub span:nth-child(2) {
+.loginContainer .sub span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -276,7 +274,7 @@ export default {
   }
 }
 
-.login-box .sub span:nth-child(3) {
+.loginContainer .sub span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -296,7 +294,7 @@ export default {
   }
 }
 
-.login-box .sub span:nth-child(4) {
+.loginContainer .sub span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
@@ -316,7 +314,7 @@ export default {
   }
 }
 
-.login-box .sub:hover span {
+.loginContainer .sub:hover span {
   animation: none;
 }
 

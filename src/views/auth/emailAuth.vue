@@ -121,7 +121,6 @@ export default {
           ? `${this.emailId}@${this.emailProvider}.net`
           : `${this.emailId}@${this.emailProvider}.com`
       const user = JSON.parse(localStorage.getItem('auth'))
-      console.log('유저 : ', user)
       axios
         .post(process.env.VUE_APP_URL + '/mail/process-code', {
           email: email,
@@ -129,14 +128,12 @@ export default {
           hash: user.hash
         })
         .then(response => {
-          console.log('auth success : ', response)
           alert('이메일 인증에 성공하셨습니다. 회원가입 페이지로 넘어갑니다.')
           localStorage.setItem('email', user.email)
           localStorage.removeItem('auth')
           this.$router.push('/auth/join/info')
         })
         .catch(error => {
-          console.log('auth fail : ', error)
           alert('인증에 실패하셨습니다. 입력하신 인증코드를 다시 확인해 주세요!')
         })
     },
@@ -150,11 +147,9 @@ export default {
       axios
         .get(process.env.VUE_APP_URL + `/mail/send-email/${email}`)
         .then(response => {
-          console.log('email sent : ', response)
           if (localStorage.getItem('auth')) {
             localStorage.removeItem('auth')
           }
-          console.log(response.data)
           this.emailSent = true
           localStorage.setItem('auth', JSON.stringify(response.data.user))
         })
@@ -190,7 +185,6 @@ export default {
         })
         .catch(err => {
           alert('이미 사용중인 이메일 입니다. 다른 이메일을 지정해 주세요!')
-          console.log(err)
         })
     }
   }
