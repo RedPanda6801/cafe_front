@@ -25,7 +25,6 @@ export default new Vuex.Store({
       return state.isUserLoggedIn
     }
   },
-  // 스테이트 값을 직접적으로 바꿔줌
   mutations: {
     MU_SET_TOKEN(state, token) {
       state.token = token
@@ -45,19 +44,6 @@ export default new Vuex.Store({
       state.isUserLoggedIn = false
     }
   },
-  // 비동기적으로 값을 바꿔줘야 할 때 사용
   actions: {},
-  // plugins: [createPersistedState()],
   modules: {}
 })
-
-// state: 상태 값 정의, 컴포넌트 간 공유하는 상태를 관리
-// main.js 루트 인스턴스에 store 옵션을 추가 -> 하위 컴포넌트에서 this.$store 로 접근 가능
-// 1 app - 1 store: 단일 상태 트리
-
-// getters: state에 접근해 데이터 조작 ===> computed
-
-// mutations: state 값 변경 ===> methods, commit으로 호출
-
-// actions: 비동기 처리 담당, dispatch로 접근
-// commit을 여러 번 호출해야 하는 경우 코드를 단순화하기 위해 ES2015 전달인자 분해 사용

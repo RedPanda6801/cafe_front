@@ -45,11 +45,6 @@ const routes = [
             component: () => import('../views/main/Instructions'),
             meta: { header: false, noLogin: true }
           },
-          // {
-          //   path: '/main/FAQ',
-          //   component: () => import('../views/main/FAQ'),
-          //   meta: { header: false, noLogin: true }
-          // },
           {
             path: '/main/addcafe',
             component: () => import('../views/main/addcafe'),
@@ -92,14 +87,12 @@ const routes = [
         path: '/auth/login',
         component: () => import('../views/auth/login'),
         meta: { header: false }
-        //meta: { header: false, noLogin: true }
       },
       {
         path: '/auth/join',
         component: () => import('../views/auth/emailAuth'),
         meta: { header: false }
       },
-      // url 어떻게 처리할지 구상 후 수정 예정
       {
         path: '/auth/join/info',
         component: () => import('../views/auth/join'),
@@ -121,37 +114,17 @@ const routes = [
     path: '/tablet',
     component: () => import('../views/device/tabletChoice'),
     meta: { header: false, noLogin: true }
-    // children: [
-    //   {
-    //     path: '/tablet/:id',
-    //     component: () => import('../views/device/tabletInput'),
-    //     meta: { header: false }
-    //   }
-    // {
-    //   path: '/tablet/:id/stamp',
-    //   component: () => import('../views/device/tabletStamp'),
-    //   meta: { header: false }
-    // }
-    // ]
   },
   {
     path: '/tablet/:id',
     component: () => import('../views/device/tabletInput'),
     meta: { header: false, noLogin: true }
-    // children: [
-    //   {
-    //     path: '/:id',
-    //     component: () => import('../views/device/tabletStamp'),
-    //     meta: { header: false }
-    //   }
-    // ]
   },
   {
     path: '/tablet/:id/:id1',
     component: () => import('../views/device/tabletStamp'),
     meta: { header: false, noLogin: true }
   },
-  // 라우터 고민해봐야 함
   {
     path: '/phone',
     component: () => import('../views/device/phoneChoice'),
@@ -162,37 +135,6 @@ const routes = [
     component: () => import('../views/device/phoneControl'),
     meta: { header: false, noLogin: true }
   },
-  // {
-  //   path: '/tablet',
-  //   component: () => import('../views/device/tabletInput'),
-  //   meta: { header: false }
-  // },
-  // {
-  //   path: '/tablet/stamp',
-  //   component: () => import('../views/device/tabletStamp'),
-  //   meta: { header: false }
-  // },
-  // {
-  //   path: '/tablet/Choice',
-  //   component: () => import('../views/device/tabletChoice'),
-  //   meta: { header: false }
-  // },
-  // {
-  //   path: '/qna',
-  //   component: () => import('../views/qna'),
-  //   children: [
-  //     {
-  //       path: '/qna',
-  //       component: () => import('../views/qna/qna'),
-  //       meta: { header: false }
-  //     },
-  //     {
-  //       path: '/qna/write',
-  //       component: () => import('../views/qna/qnaWrite'),
-  //       meta: { header: false }
-  //     }
-  //   ]
-  // },
   {
     path: '*',
     component: () => import('../components/NotFound.vue'),
