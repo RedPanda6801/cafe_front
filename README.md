@@ -127,6 +127,7 @@ module.exports = {
 
 ```
 > npm i
+> $env:NODE_OPTIONS="--openssl-legacy-provider"  // node 버전이 낮을 때 windows 환경에서 사용
 ```
 
 ## vue cli 실행
