@@ -47,8 +47,8 @@
               <b-modal id="confirmModal" size="xl" centered backdrop hide-footer>
                 <template #modal-title>입력하신 번호를 확인해 주세요!</template>
                 <div class="confirmContainer">
-                  <p class="confirmMessage">{{ phone }}으로</p>
-                  <p class="confirmMessage">적립하시겠습니까?</p>
+                  <p class="confirmMessage">"{{ phone }}"</p>
+                  <p class="confirmMessage">쿠폰을 확인하겠습니까?</p>
                 </div>
                 <div class="d-block text-center btnOrganizer">
                   <b-button class="modalBtn" @click="submit">네</b-button>
@@ -127,7 +127,11 @@ export default {
       } else return this.phone
     },
     deleteNumber() {
-      this.phone = this.phone.slice(0, -1)
+      if (this.phone[this.phone.length - 1] == '-') {
+        this.phone = this.phone.slice(0, -2)
+      } else {
+        this.phone = this.phone.slice(0, -1)
+      }
       return this.phone
     },
     confirmMessage() {

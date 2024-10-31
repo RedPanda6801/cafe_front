@@ -23,7 +23,12 @@
     </div>
     <div v-show="!socketPassed" class="stampContainer">
       <div class="stampHeader">
-        <p>현재 사용 가능한 음료 쿠폰 : {{ completedCoupon }}개</p>
+        <pre style="text-align: center">
+          "스탬프는 10개당 쿠폰 1개로 교환됩니다.
+          쿠폰 1장당 아이스 아메리카노 1장으로 교환해 드립니다."
+
+          현재 사용 가능한 음료 쿠폰 : {{ completedCoupon }}개
+        </pre>
       </div>
       <div class="stampBody">
         <div v-for="stamp in stackedStamp" :key="stamp" class="stampHolder">

@@ -11,11 +11,21 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <b-carousel-slide img-src="https://i.ibb.co/xMKPZzq/slide1-1.jpg"></b-carousel-slide>
-
-      <b-carousel-slide img-src="https://i.ibb.co/RpRZXgm/slide2.jpg"></b-carousel-slide>
-      <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://i.ibb.co/8mRGhrD/slide3.jpg"></b-carousel-slide>
+      <b-carousel-slide
+        img-src="https://picsum.photos/1024/480/?image=7"
+        caption="MY STAMP"
+        text="고객과 함께 성장하는 MY STAMP"
+      ></b-carousel-slide>
+      <b-carousel-slide
+        img-src="https://picsum.photos/1024/480/?image=27"
+        caption="MY STAMP"
+        text="고객을 항상 생각하는 MY STAMP"
+      ></b-carousel-slide>
+      <b-carousel-slide
+        img-src="https://picsum.photos/1024/480/?image=9"
+        caption="MY STAMP"
+        text="고객과 소통하는 MY STAMP"
+      ></b-carousel-slide>
     </b-carousel>
     <section>
       <section id="start" class="page-section">

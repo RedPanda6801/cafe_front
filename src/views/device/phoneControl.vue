@@ -27,6 +27,7 @@
                 <b-btn pill size="sm" variant="outline-danger" @click="increment(5)">+</b-btn>
               </div>
               <p>
+                <b-alert :show="dismissCountDown">{{ alertText }}되었습니다.</b-alert>
                 <span style="color: #dc3545">빨간색 버튼</span>은 5씩 증감,
                 <span style="color: #ffc107">노란색 버튼</span>은 1씩 증감합니다.<br />
                 <span style="color: grey; font-size: 15px">
@@ -61,7 +62,10 @@ export default {
       memo: '',
       userNumber: '',
       cafeId: '',
-      socket: null
+      socket: null,
+      dismissCountDown: 0,
+      dismissSecs: 2,
+      alertText: ''
     }
   },
   async created() {
@@ -83,12 +87,25 @@ export default {
         (this.memo = data.data.memo),
         (this.userPhone = this.userNumber.slice(-4))
     })
+    this.socket.on('response', data => {
+      if (data == 'stack') this.alertText = '쿠폰이 적립'
+      else this.alertText = '쿠폰이 차감'
+      this.showAlert()
+    })
     this.socket.on('messages', messages => {
       //커스텀 이벤트
       this.receivedMessage = messages
     })
   },
   methods: {
+    showAlert() {
+      this.dismissCountDown = this.dismissSecs
+
+      // 타이머 설정
+      setTimeout(() => {
+        this.dismissCountDown = 0 // 일정 시간이 지난 후 알림 숨기기
+      }, this.dismissSecs * 1000) // seconds to milliseconds
+    },
     increment(n) {
       this.quantity = this.quantity + n
       return this.quantity
@@ -109,6 +126,7 @@ export default {
         addCount: this.quantity
       }
       this.socket.emit('stack', body)
+      this.showAlert()
       this.quantity = 1
     },
     async useCoupon() {
@@ -119,6 +137,7 @@ export default {
       }
       console.log(body.useCount)
       this.socket.emit('use', body)
+      this.showAlert()
       this.quantity = 1
     },
     backToMain() {
